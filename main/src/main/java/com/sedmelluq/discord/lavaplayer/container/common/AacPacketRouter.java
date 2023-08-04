@@ -14,6 +14,7 @@ import java.nio.ByteOrder;
 import java.nio.ShortBuffer;
 
 public class AacPacketRouter {
+
     private static final Logger log = LoggerFactory.getLogger(AacPacketRouter.class);
 
     private final AudioProcessingContext context;
@@ -112,4 +113,5 @@ public class AacPacketRouter {
             }
         }
     }
+
 }

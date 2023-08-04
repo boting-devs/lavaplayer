@@ -7,6 +7,7 @@ import java.nio.ShortBuffer;
  * Encodes one chunk of audio from internal PCM format.
  */
 public interface AudioChunkEncoder {
+
     /**
      * @param buffer Input buffer containing the PCM samples.
      * @return Encoded bytes
@@ -23,4 +24,5 @@ public interface AudioChunkEncoder {
      * Frees up all held resources.
      */
     void close();
+
 }

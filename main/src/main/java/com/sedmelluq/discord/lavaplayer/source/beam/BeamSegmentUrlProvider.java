@@ -19,6 +19,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.io.HttpClientTools.fetchRes
  * Provider for Beam segment URLs from a channel.
  */
 public class BeamSegmentUrlProvider extends M3uStreamSegmentUrlProvider {
+
     private static final Logger log = LoggerFactory.getLogger(BeamSegmentUrlProvider.class);
 
     private final String channelId;
@@ -68,4 +69,5 @@ public class BeamSegmentUrlProvider extends M3uStreamSegmentUrlProvider {
     protected HttpUriRequest createSegmentGetRequest(String url) {
         return new HttpGet(url);
     }
+
 }

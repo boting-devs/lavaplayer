@@ -7,6 +7,7 @@ import java.io.InputStream;
  * Utility methods for streams.
  */
 public class StreamTools {
+
     /**
      * Reads from the stream until either the length number of bytes is read, or the stream ends. Note that neither case
      * throws an exception.
@@ -32,4 +33,5 @@ public class StreamTools {
 
         return position;
     }
+
 }

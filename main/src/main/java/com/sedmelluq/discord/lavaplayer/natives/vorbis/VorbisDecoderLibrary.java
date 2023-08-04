@@ -5,6 +5,7 @@ import com.sedmelluq.discord.lavaplayer.natives.ConnectorNativeLibLoader;
 import java.nio.ByteBuffer;
 
 class VorbisDecoderLibrary {
+
     private VorbisDecoderLibrary() {
 
     }
@@ -26,4 +27,5 @@ class VorbisDecoderLibrary {
     native int input(long instance, ByteBuffer directBuffer, int offset, int length);
 
     native int output(long instance, float[][] channels, int length);
+
 }

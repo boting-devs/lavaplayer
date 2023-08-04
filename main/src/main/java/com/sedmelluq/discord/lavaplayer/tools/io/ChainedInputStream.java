@@ -7,6 +7,7 @@ import java.io.InputStream;
  * Input stream which can swap the underlying input stream if the current one ends.
  */
 public class ChainedInputStream extends InputStream {
+
     private final Provider provider;
     private InputStream currentStream;
     private boolean streamEnded;
@@ -103,10 +104,13 @@ public class ChainedInputStream extends InputStream {
      * Provider for next input stream of a chained stream.
      */
     public interface Provider {
+
         /**
          * @return Next input stream, null to cause EOF on the chained stream.
          * @throws IOException On read error.
          */
         InputStream next() throws IOException;
+
     }
+
 }

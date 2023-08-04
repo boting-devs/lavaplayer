@@ -11,6 +11,7 @@ import java.io.InputStream;
 import static com.sedmelluq.discord.lavaplayer.container.mpegts.MpegTsElementaryInputStream.ADTS_ELEMENTARY_STREAM;
 
 public abstract class MpegTsM3uStreamAudioTrack extends M3uStreamAudioTrack {
+
     /**
      * @param trackInfo Track info
      */
@@ -25,4 +26,5 @@ public abstract class MpegTsM3uStreamAudioTrack extends M3uStreamAudioTrack {
 
         processDelegate(new AdtsAudioTrack(trackInfo, pesPacketInputStream), localExecutor);
     }
+
 }

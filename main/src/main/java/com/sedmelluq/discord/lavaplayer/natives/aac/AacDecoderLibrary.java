@@ -6,6 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 
 class AacDecoderLibrary {
+
     private AacDecoderLibrary() {
 
     }
@@ -26,4 +27,5 @@ class AacDecoderLibrary {
     native int decode(long instance, ShortBuffer directBuffer, int length, boolean flush);
 
     native long getStreamInfo(long instance);
+
 }

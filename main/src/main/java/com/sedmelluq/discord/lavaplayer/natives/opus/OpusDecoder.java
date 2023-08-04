@@ -9,6 +9,7 @@ import java.nio.ShortBuffer;
  * A wrapper around the native methods of OpusDecoderLibrary.
  */
 public class OpusDecoder extends NativeResourceHolder {
+
     private final OpusDecoderLibrary library;
     private final long instance;
     private final int channels;
@@ -111,4 +112,5 @@ public class OpusDecoder extends NativeResourceHolder {
             return (frequency << shiftBits) / 100;
         }
     }
+
 }

@@ -14,6 +14,7 @@ import java.io.File;
  * Audio track that handles processing local files as audio tracks.
  */
 public class LocalAudioTrack extends DelegatedAudioTrack {
+
     private final File file;
     private final MediaContainerDescriptor containerTrackFactory;
     private final LocalAudioSourceManager sourceManager;
@@ -56,4 +57,5 @@ public class LocalAudioTrack extends DelegatedAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

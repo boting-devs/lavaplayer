@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat;
  * Audio frame where {@link #isTerminator()} is <code>true</code>.
  */
 public class TerminatorAudioFrame implements AudioFrame {
+
     public static final TerminatorAudioFrame INSTANCE = new TerminatorAudioFrame();
 
     @Override
@@ -42,4 +43,5 @@ public class TerminatorAudioFrame implements AudioFrame {
     public boolean isTerminator() {
         return true;
     }
+
 }

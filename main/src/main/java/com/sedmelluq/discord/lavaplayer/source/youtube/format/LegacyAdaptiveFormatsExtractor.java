@@ -12,6 +12,7 @@ import java.util.Map;
 import static com.sedmelluq.discord.lavaplayer.tools.DataFormatTools.decodeUrlEncodedItems;
 
 public class LegacyAdaptiveFormatsExtractor implements OfflineYoutubeTrackFormatExtractor {
+
     @Override
     public List<YoutubeTrackFormat> extract(YoutubeTrackJsonData data) {
         String adaptiveFormats = data.polymerArguments.get("adaptive_fmts").text();
@@ -44,4 +45,5 @@ public class LegacyAdaptiveFormatsExtractor implements OfflineYoutubeTrackFormat
 
         return tracks;
     }
+
 }

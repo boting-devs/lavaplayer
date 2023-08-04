@@ -6,6 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 
 class Mp3DecoderLibrary {
+
     private Mp3DecoderLibrary() {
 
     }
@@ -19,5 +20,10 @@ class Mp3DecoderLibrary {
 
     native void destroy(long instance);
 
-    native int decode(long instance, ByteBuffer directInput, int inputLength, ShortBuffer directOutput, int outputLengthInBytes);
+    native int decode(long instance,
+                      ByteBuffer directInput,
+                      int inputLength,
+                      ShortBuffer directOutput,
+                      int outputLengthInBytes);
+
 }

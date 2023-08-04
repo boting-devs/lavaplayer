@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.mpeg;
  * Codec information for an MP4 track
  */
 public class MpegTrackInfo {
+
     /**
      * ID of the track
      */
@@ -34,7 +35,12 @@ public class MpegTrackInfo {
      * @param sampleRate    Sample rate for audio
      * @param decoderConfig
      */
-    public MpegTrackInfo(int trackId, String handler, String codecName, int channelCount, int sampleRate, byte[] decoderConfig) {
+    public MpegTrackInfo(int trackId,
+                         String handler,
+                         String codecName,
+                         int channelCount,
+                         int sampleRate,
+                         byte[] decoderConfig) {
         this.trackId = trackId;
         this.handler = handler;
         this.codecName = codecName;
@@ -47,6 +53,7 @@ public class MpegTrackInfo {
      * Helper class for constructing a track info instance.
      */
     public static class Builder {
+
         private int trackId;
         private String handler;
         private String codecName;
@@ -92,5 +99,7 @@ public class MpegTrackInfo {
         public MpegTrackInfo build() {
             return new MpegTrackInfo(trackId, handler, codecName, channelCount, sampleRate, decoderConfig);
         }
+
     }
+
 }

@@ -18,6 +18,7 @@ import java.util.Map;
  * Track provider for the standard (non-fragmented) MP4 file format.
  */
 public class MpegStandardFileTrackProvider implements MpegFileTrackProvider {
+
     private final MpegReader reader;
     private final List<TrackSeekInfoBuilder> builders = new ArrayList<>();
     private final Map<Integer, Integer> trackTimescales = new HashMap<>();
@@ -207,6 +208,7 @@ public class MpegStandardFileTrackProvider implements MpegFileTrackProvider {
     }
 
     private static class TrackSeekInfo {
+
         private final long totalDuration;
         private final long[] chunkOffsets;
         private final long[] chunkTimecodes;
@@ -218,9 +220,11 @@ public class MpegStandardFileTrackProvider implements MpegFileTrackProvider {
             this.chunkTimecodes = chunkTimecodes;
             this.chunkSamples = chunkSamples;
         }
+
     }
 
     private static class TrackSeekInfoBuilder {
+
         private final int trackId;
         private int presence;
         private int[] sampleTimeCounts;
@@ -263,7 +267,10 @@ public class MpegStandardFileTrackProvider implements MpegFileTrackProvider {
             return new TrackSeekInfo(timeOffset, chunkOffsets, chunkTimecodes, chunkSamples);
         }
 
-        private static int[] buildChunkSampleSizes(int sampleCount, int sampleOffset, int sampleSize, int[] sampleSizes) {
+        private static int[] buildChunkSampleSizes(int sampleCount,
+                                                   int sampleOffset,
+                                                   int sampleSize,
+                                                   int[] sampleSizes) {
             int[] chunkSampleSizes = new int[sampleCount];
 
             if (sampleSize != 0) {
@@ -286,9 +293,11 @@ public class MpegStandardFileTrackProvider implements MpegFileTrackProvider {
 
             return duration;
         }
+
     }
 
     private static class SampleChunkingIterator {
+
         private final int[] sampleChunkingFirst;
         private final int[] sampleChunkingCount;
         private int chunkIndex = 1;
@@ -309,9 +318,11 @@ public class MpegStandardFileTrackProvider implements MpegFileTrackProvider {
 
             return result;
         }
+
     }
 
     private static class SampleDurationIterator {
+
         private final int[] sampleTimeCounts;
         private final int[] sampleTimeDeltas;
         private int relativeSampleIndex = 0;
@@ -331,5 +342,7 @@ public class MpegStandardFileTrackProvider implements MpegFileTrackProvider {
 
             return result;
         }
+
     }
+
 }

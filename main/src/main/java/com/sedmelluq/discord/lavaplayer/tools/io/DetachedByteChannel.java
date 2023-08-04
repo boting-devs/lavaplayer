@@ -9,6 +9,7 @@ import java.nio.channels.ReadableByteChannel;
  * Creates a readable byte channel which can be closed without closing the underlying channel.
  */
 public class DetachedByteChannel implements ReadableByteChannel {
+
     private final ReadableByteChannel delegate;
     private boolean closed;
 
@@ -37,4 +38,5 @@ public class DetachedByteChannel implements ReadableByteChannel {
     public void close() throws IOException {
         closed = true;
     }
+
 }

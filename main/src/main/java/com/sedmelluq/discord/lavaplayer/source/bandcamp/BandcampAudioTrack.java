@@ -24,6 +24,7 @@ import java.nio.charset.StandardCharsets;
  * Audio track that handles processing Bandcamp tracks.
  */
 public class BandcampAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(BandcampAudioTrack.class);
 
     private final BandcampAudioSourceManager sourceManager;
@@ -75,4 +76,5 @@ public class BandcampAudioTrack extends DelegatedAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

@@ -13,4 +13,5 @@ public final class RateLimitException extends RuntimeException {
     public RateLimitException(final String message, final Throwable cause) {
         super(message, cause);
     }
+
 }

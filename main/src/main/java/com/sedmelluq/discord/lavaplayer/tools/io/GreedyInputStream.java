@@ -8,6 +8,7 @@ import java.io.InputStream;
  * Input stream wrapper which reads or skips until EOF or requested length.
  */
 public class GreedyInputStream extends FilterInputStream {
+
     /**
      * @param in Underlying input stream.
      */
@@ -48,4 +49,5 @@ public class GreedyInputStream extends FilterInputStream {
 
         return skipped;
     }
+
 }

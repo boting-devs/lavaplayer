@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
  * Event that is fired when an audio track ends in an audio player, either by interruption, exception or reaching the end.
  */
 public class TrackEndEvent extends AudioEvent {
+
     /**
      * Audio track that ended
      */
@@ -27,4 +28,5 @@ public class TrackEndEvent extends AudioEvent {
         this.track = track;
         this.endReason = endReason;
     }
+
 }

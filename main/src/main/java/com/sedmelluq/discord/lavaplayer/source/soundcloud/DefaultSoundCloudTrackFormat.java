@@ -1,6 +1,7 @@
 package com.sedmelluq.discord.lavaplayer.source.soundcloud;
 
 public class DefaultSoundCloudTrackFormat implements SoundCloudTrackFormat {
+
     private final String trackId;
     private final String protocol;
     private final String mimeType;
@@ -32,4 +33,5 @@ public class DefaultSoundCloudTrackFormat implements SoundCloudTrackFormat {
     public String getLookupUrl() {
         return lookupUrl;
     }
+
 }

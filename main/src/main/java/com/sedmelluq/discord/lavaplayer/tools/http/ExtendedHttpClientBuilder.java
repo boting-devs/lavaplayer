@@ -42,6 +42,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
 import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.SUSPICIOUS;
 
 public class ExtendedHttpClientBuilder extends HttpClientBuilder {
+
     private static final Logger log = LoggerFactory.getLogger(ExtendedHttpClientBuilder.class);
 
     private static final SSLContext defaultSslContext = setupSslContext();
@@ -152,6 +153,7 @@ public class ExtendedHttpClientBuilder extends HttpClientBuilder {
     }
 
     private static class GarbageAllergicHttpResponseParser extends DefaultHttpResponseParser {
+
         public GarbageAllergicHttpResponseParser(
             SessionInputBuffer buffer,
             LineParser lineParser,
@@ -171,9 +173,11 @@ public class ExtendedHttpClientBuilder extends HttpClientBuilder {
 
             return false;
         }
+
     }
 
     private static class IcyHttpLineParser extends BasicLineParser {
+
         private static final IcyHttpLineParser ICY_INSTANCE = new IcyHttpLineParser();
         private static final ProtocolVersion ICY_PROTOCOL = new ProtocolVersion("HTTP", 1, 0);
 
@@ -201,12 +205,16 @@ public class ExtendedHttpClientBuilder extends HttpClientBuilder {
 
             return super.hasProtocolVersion(buffer, cursor);
         }
+
     }
 
     public interface ConnectionManagerFactory {
+
         HttpClientConnectionManager create(
             HttpClientConnectionOperator operator,
             HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connectionFactory
         );
+
     }
+
 }

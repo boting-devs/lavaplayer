@@ -10,6 +10,7 @@ import java.util.Objects;
  * Describes the format for audio with fixed chunk size.
  */
 public abstract class AudioDataFormat {
+
     /**
      * Number of channels.
      */
@@ -81,14 +82,14 @@ public abstract class AudioDataFormat {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {return true;}
+        if (o == null || getClass() != o.getClass()) {return false;}
 
         AudioDataFormat that = (AudioDataFormat) o;
 
-        if (channelCount != that.channelCount) return false;
-        if (sampleRate != that.sampleRate) return false;
-        if (chunkSampleCount != that.chunkSampleCount) return false;
+        if (channelCount != that.channelCount) {return false;}
+        if (sampleRate != that.sampleRate) {return false;}
+        if (chunkSampleCount != that.chunkSampleCount) {return false;}
         return Objects.equals(codecName(), that.codecName());
     }
 
@@ -100,4 +101,5 @@ public abstract class AudioDataFormat {
         result = 31 * result + codecName().hashCode();
         return result;
     }
+
 }

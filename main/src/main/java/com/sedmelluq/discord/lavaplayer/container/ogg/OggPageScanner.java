@@ -8,6 +8,7 @@ import java.util.List;
  * Scanner for determining OGG stream information by seeking around in it.
  */
 public class OggPageScanner {
+
     private static final int OGG_PAGE_HEADER_INT = ByteBuffer.wrap(new byte[]{0x4F, 0x67, 0x67, 0x53}).getInt(0);
 
     private final long absoluteOffset;
@@ -130,4 +131,5 @@ public class OggPageScanner {
         buffer.position(minimumCapacity);
         return true;
     }
+
 }

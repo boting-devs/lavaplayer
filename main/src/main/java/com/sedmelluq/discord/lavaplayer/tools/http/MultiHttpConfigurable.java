@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class MultiHttpConfigurable implements ExtendedHttpConfigurable {
+
     private final Collection<ExtendedHttpConfigurable> configurables;
 
     public MultiHttpConfigurable(Collection<ExtendedHttpConfigurable> configurables) {
@@ -34,4 +35,5 @@ public class MultiHttpConfigurable implements ExtendedHttpConfigurable {
             configurable.configureBuilder(configurator);
         }
     }
+
 }

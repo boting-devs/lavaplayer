@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.matroska.format;
  * Matroska container element.
  */
 public class MatroskaElement {
+
     protected final int level;
     protected long id;
     protected MatroskaElementType type;
@@ -100,4 +101,5 @@ public class MatroskaElement {
         element.dataSize = dataSize;
         return element;
     }
+
 }

@@ -3,6 +3,7 @@ package com.sedmelluq.discord.lavaplayer.container;
 import java.util.List;
 
 public class MediaContainerRegistry {
+
     public static final MediaContainerRegistry DEFAULT_REGISTRY = new MediaContainerRegistry(MediaContainer.asList());
 
     private final List<MediaContainerProbe> probes;
@@ -34,4 +35,5 @@ public class MediaContainerRegistry {
 
         return new MediaContainerRegistry(probes);
     }
+
 }

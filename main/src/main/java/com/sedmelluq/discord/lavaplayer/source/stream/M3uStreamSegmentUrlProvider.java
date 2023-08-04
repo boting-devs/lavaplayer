@@ -26,8 +26,13 @@ import static com.sedmelluq.discord.lavaplayer.tools.io.HttpClientTools.fetchRes
  * {@link M3uStreamSegmentUrlProvider#getNextSegmentStream}.
  */
 public abstract class M3uStreamSegmentUrlProvider {
+
     private static final long SEGMENT_WAIT_STEP_MS = 200;
-    private static final RequestConfig streamingRequestConfig = RequestConfig.custom().setSocketTimeout(5000).setConnectionRequestTimeout(5000).setConnectTimeout(5000).build();
+    private static final RequestConfig streamingRequestConfig = RequestConfig.custom()
+        .setSocketTimeout(5000)
+        .setConnectionRequestTimeout(5000)
+        .setConnectTimeout(5000)
+        .build();
 
     protected SegmentInfo lastSegment;
 
@@ -145,7 +150,8 @@ public abstract class M3uStreamSegmentUrlProvider {
         return streams;
     }
 
-    protected List<SegmentInfo> loadStreamSegmentsList(HttpInterface httpInterface, String streamSegmentPlaylistUrl) throws IOException {
+    protected List<SegmentInfo> loadStreamSegmentsList(HttpInterface httpInterface,
+                                                       String streamSegmentPlaylistUrl) throws IOException {
         List<SegmentInfo> segments = new ArrayList<>();
         ExtendedM3uParser.Line segmentInfo = null;
 
@@ -206,6 +212,7 @@ public abstract class M3uStreamSegmentUrlProvider {
     }
 
     protected static class ChannelStreamInfo {
+
         /**
          * Stream quality extracted from stream M3U directive.
          */
@@ -219,9 +226,11 @@ public abstract class M3uStreamSegmentUrlProvider {
             this.quality = quality;
             this.url = url;
         }
+
     }
 
     protected static class SegmentInfo {
+
         /**
          * URL of the segment.
          */
@@ -240,5 +249,7 @@ public abstract class M3uStreamSegmentUrlProvider {
             this.duration = duration;
             this.name = name;
         }
+
     }
+
 }

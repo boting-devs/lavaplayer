@@ -6,6 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.ShortBuffer;
 
 class OpusEncoderLibrary {
+
     static final int APPLICATION_AUDIO = 2049;
 
     private OpusEncoderLibrary() {
@@ -21,5 +22,10 @@ class OpusEncoderLibrary {
 
     native void destroy(long instance);
 
-    native int encode(long instance, ShortBuffer directInput, int frameSize, ByteBuffer directOutput, int outputCapacity);
+    native int encode(long instance,
+                      ShortBuffer directInput,
+                      int frameSize,
+                      ByteBuffer directOutput,
+                      int outputCapacity);
+
 }

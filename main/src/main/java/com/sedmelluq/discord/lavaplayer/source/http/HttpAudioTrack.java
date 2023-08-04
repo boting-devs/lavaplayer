@@ -19,6 +19,7 @@ import java.net.URI;
  * Audio track that handles processing HTTP addresses as audio tracks.
  */
 public class HttpAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(HttpAudioTrack.class);
 
     private final MediaContainerDescriptor containerTrackFactory;
@@ -65,4 +66,5 @@ public class HttpAudioTrack extends DelegatedAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

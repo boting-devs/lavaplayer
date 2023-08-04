@@ -22,6 +22,7 @@ import java.net.URISyntaxException;
 import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.COMMON;
 
 public class YoutubeHttpContextFilter implements HttpContextFilter {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeHttpContextFilter.class);
     private static final String ATTRIBUTE_RESET_RETRY = "isResetRetry";
     public static final String ATTRIBUTE_USER_AGENT_SPECIFIED = "isUserAgentSpecified";
@@ -120,4 +121,5 @@ public class YoutubeHttpContextFilter implements HttpContextFilter {
 
         return false;
     }
+
 }

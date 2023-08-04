@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
  * Audio track that handles a WAV stream
  */
 public class WavAudioTrack extends BaseAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(WavAudioTrack.class);
 
     private final SeekableInputStream inputStream;
@@ -36,4 +37,5 @@ public class WavAudioTrack extends BaseAudioTrack {
             trackProvider.close();
         }
     }
+
 }

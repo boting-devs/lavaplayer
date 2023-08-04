@@ -15,8 +15,7 @@ public final class BigRandom extends Random {
             bits -= 32;
             value = value.add(BigInteger.valueOf(next(32)).shiftLeft((index++) * 32));
         }
-        if (bits > 0)
-            value = value.add(BigInteger.valueOf(next(bits)).shiftLeft(index * 32));
+        if (bits > 0) {value = value.add(BigInteger.valueOf(next(bits)).shiftLeft(index * 32));}
         return value;
     }
 

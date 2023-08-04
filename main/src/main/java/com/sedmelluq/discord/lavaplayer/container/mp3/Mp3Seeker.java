@@ -8,6 +8,7 @@ import java.io.IOException;
  * A seeking handler for MP3 files.
  */
 public interface Mp3Seeker {
+
     /**
      * @return The duration of the file in milliseconds. May be an estimate.
      */
@@ -25,4 +26,5 @@ public interface Mp3Seeker {
      * @throws IOException On IO error
      */
     long seekAndGetFrameIndex(long timecode, SeekableInputStream inputStream) throws IOException;
+
 }

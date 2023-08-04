@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
  * the start position at which to start reading on a new connection.
  */
 public class YoutubePersistentHttpStream extends PersistentHttpStream {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubePersistentHttpStream.class);
 
     // Valid range for requesting without throttling is 0-11862014
@@ -139,4 +140,5 @@ public class YoutubePersistentHttpStream extends PersistentHttpStream {
     public boolean canSeekHard() {
         return true;
     }
+
 }

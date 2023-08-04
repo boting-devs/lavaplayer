@@ -19,6 +19,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
 import static com.sedmelluq.discord.lavaplayer.container.mpegts.MpegTsElementaryInputStream.ADTS_ELEMENTARY_STREAM;
 
 public class MpegAdtsContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(MpegAdtsContainerProbe.class);
 
     @Override
@@ -72,4 +73,5 @@ public class MpegAdtsContainerProbe implements MediaContainerProbe {
     public AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream) {
         return new MpegAdtsAudioTrack(trackInfo, inputStream);
     }
+
 }

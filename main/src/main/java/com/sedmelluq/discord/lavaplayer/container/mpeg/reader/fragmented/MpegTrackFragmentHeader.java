@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.mpeg.reader.fragmented;
  * Header for an MP4 track in a fragment.
  */
 public class MpegTrackFragmentHeader {
+
     /**
      * Track ID which this header is for
      */
@@ -32,7 +33,11 @@ public class MpegTrackFragmentHeader {
      * @param sampleDurations Duration of each sample for this track in this fragment using file timescale
      * @param sampleSizes     Size of each sample for this track in this fragment
      */
-    public MpegTrackFragmentHeader(int trackId, long baseTimecode, int dataOffset, int[] sampleDurations, int[] sampleSizes) {
+    public MpegTrackFragmentHeader(int trackId,
+                                   long baseTimecode,
+                                   int dataOffset,
+                                   int[] sampleDurations,
+                                   int[] sampleSizes) {
         this.trackId = trackId;
         this.baseTimecode = baseTimecode;
         this.dataOffset = dataOffset;
@@ -44,6 +49,7 @@ public class MpegTrackFragmentHeader {
      * A helper for building an instance of this class.
      */
     public static class Builder {
+
         private int trackId;
         private long baseTimecode;
         private int dataOffset;
@@ -137,5 +143,7 @@ public class MpegTrackFragmentHeader {
 
             return new MpegTrackFragmentHeader(trackId, baseTimecode, dataOffset, sampleDurations, finalSampleSizes);
         }
+
     }
+
 }

@@ -11,6 +11,7 @@ import java.nio.ShortBuffer;
  * in [2, 0, 1, 2] out [0, 1, 0, 1] saved []
  */
 public class ChannelCountPcmAudioFilter implements UniversalPcmAudioFilter {
+
     private final UniversalPcmAudioFilter downstream;
     private final int outputChannels;
     private final ShortBuffer outputBuffer;
@@ -146,4 +147,5 @@ public class ChannelCountPcmAudioFilter implements UniversalPcmAudioFilter {
     public void close() {
         // Nothing to do.
     }
+
 }

@@ -26,6 +26,7 @@ import static com.sun.management.GarbageCollectionNotificationInfo.from;
  * considered bad for latency, the statistics are logged at a warning level.
  */
 public class GarbageCollectionMonitor implements NotificationListener, Runnable {
+
     private static final Logger log = LoggerFactory.getLogger(GarbageCollectionMonitor.class);
 
     private static final long REPORTING_FREQUENCY = TimeUnit.MINUTES.toMillis(2);
@@ -140,4 +141,5 @@ public class GarbageCollectionMonitor implements NotificationListener, Runnable 
             log.debug("GC results for the last 2 minutes: {}", statistics);
         }
     }
+
 }

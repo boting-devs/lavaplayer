@@ -18,6 +18,7 @@ import java.nio.channels.ReadableByteChannel;
  * format is supported, although the underlying decoder can handler other types as well.
  */
 public class MpegAacTrackConsumer implements MpegTrackConsumer {
+
     private static final Logger log = LoggerFactory.getLogger(MpegAacTrackConsumer.class);
 
     private final MpegTrackInfo track;
@@ -122,4 +123,5 @@ public class MpegAacTrackConsumer implements MpegTrackConsumer {
             return (decoder.configure(AacDecoder.AAC_LC, track.sampleRate, track.channelCount) == 0);
         }
     }
+
 }

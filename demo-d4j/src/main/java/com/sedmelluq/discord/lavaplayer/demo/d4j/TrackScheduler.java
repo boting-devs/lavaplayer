@@ -12,6 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * This class schedules tracks for the audio player. It contains the queue of tracks.
  */
 public class TrackScheduler extends AudioEventAdapter {
+
     private final AudioPlayer player;
     private final BlockingQueue<AudioTrack> queue;
 
@@ -53,4 +54,5 @@ public class TrackScheduler extends AudioEventAdapter {
             nextTrack();
         }
     }
+
 }

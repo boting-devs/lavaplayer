@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
  * Handles reading various different EBML code formats.
  */
 public class MatroskaEbmlReader {
+
     /**
      * Read an EBML code from data input with fixed size - no size encoded in the data.
      *
@@ -166,4 +167,5 @@ public class MatroskaEbmlReader {
          */
         UNSIGNED
     }
+
 }

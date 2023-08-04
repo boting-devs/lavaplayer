@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.ogg;
  * Header of an OGG stream page.
  */
 public class OggPageHeader {
+
     public static final int FLAG_CONTINUATION = 0x01;
     public static final int FLAG_FIRST_PAGE = 0x02;
     public static final int FLAG_LAST_PAGE = 0x04;
@@ -67,4 +68,5 @@ public class OggPageHeader {
         this.segmentCount = segmentCount;
         this.byteStreamPosition = byteStreamPosition;
     }
+
 }

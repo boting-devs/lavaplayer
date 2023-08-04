@@ -6,6 +6,7 @@ import java.util.List;
  * The basic implementation of AudioPlaylist
  */
 public class BasicAudioPlaylist implements AudioPlaylist {
+
     private final String name;
     private final List<AudioTrack> tracks;
     private final AudioTrack selectedTrack;
@@ -43,4 +44,5 @@ public class BasicAudioPlaylist implements AudioPlaylist {
     public boolean isSearchResult() {
         return isSearchResult;
     }
+
 }

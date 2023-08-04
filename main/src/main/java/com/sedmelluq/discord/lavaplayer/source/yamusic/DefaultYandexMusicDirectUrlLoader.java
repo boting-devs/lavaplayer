@@ -64,10 +64,13 @@ public class DefaultYandexMusicDirectUrlLoader extends AbstractYandexMusicApiLoa
     }
 
     private class DownloadInfo {
+
         String host;
         String path;
         String ts;
         String region;
         String s;
+
     }
+
 }

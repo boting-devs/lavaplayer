@@ -20,6 +20,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio track that handles the processing of MP4 format
  */
 public class MpegAudioTrack extends BaseAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(MpegAudioTrack.class);
 
     private final SeekableInputStream inputStream;
@@ -65,7 +66,8 @@ public class MpegAudioTrack extends BaseAudioTrack {
             if (trackConsumer == null) {
                 StringBuilder error = new StringBuilder();
                 error.append("The audio codec used in the track is not supported, options:\n");
-                file.getTrackList().forEach(track -> error.append(track.handler).append("|").append(track.codecName).append("\n"));
+                file.getTrackList()
+                    .forEach(track -> error.append(track.handler).append("|").append(track.codecName).append("\n"));
                 throw new FriendlyException(error.toString(), SUSPICIOUS, null);
             } else {
                 log.debug("Starting to play track with codec {}", trackConsumer.getTrack().codecName);
@@ -91,4 +93,5 @@ public class MpegAudioTrack extends BaseAudioTrack {
         }
         return null;
     }
+
 }

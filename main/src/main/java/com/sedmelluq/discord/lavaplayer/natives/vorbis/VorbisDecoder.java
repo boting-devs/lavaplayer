@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
  * A wrapper around the native methods of AacDecoder, which uses libvorbis native library.
  */
 public class VorbisDecoder extends NativeResourceHolder {
+
     private final VorbisDecoderLibrary library;
     private final long instance;
     private int channelCount = 0;
@@ -98,4 +99,5 @@ public class VorbisDecoder extends NativeResourceHolder {
     protected void freeResources() {
         library.destroy(instance);
     }
+
 }

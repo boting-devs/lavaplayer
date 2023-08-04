@@ -6,6 +6,7 @@ import java.util.List;
  * Playlist of audio tracks
  */
 public interface AudioPlaylist extends AudioItem {
+
     /**
      * @return Name of the playlist
      */
@@ -25,4 +26,5 @@ public interface AudioPlaylist extends AudioItem {
      * @return True if the playlist was created from search results.
      */
     boolean isSearchResult();
+
 }

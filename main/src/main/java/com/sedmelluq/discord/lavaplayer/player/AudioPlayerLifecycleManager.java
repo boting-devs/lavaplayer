@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Triggers cleanup checks on all active audio players at a fixed interval.
  */
 public class AudioPlayerLifecycleManager implements Runnable, AudioEventListener {
+
     private static final long CHECK_INTERVAL = 10000;
 
     private final ConcurrentMap<AudioPlayer, AudioPlayer> activePlayers;
@@ -66,4 +67,5 @@ public class AudioPlayerLifecycleManager implements Runnable, AudioEventListener
             player.checkCleanup(cleanupThreshold.get());
         }
     }
+
 }

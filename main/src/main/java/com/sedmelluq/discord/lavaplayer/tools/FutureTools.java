@@ -12,6 +12,7 @@ import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 public class FutureTools {
+
     private static final Logger log = LoggerFactory.getLogger(FutureTools.class);
 
     @SuppressWarnings("unchecked")
@@ -49,4 +50,5 @@ public class FutureTools {
             return Collections.emptyList();
         }
     }
+
 }

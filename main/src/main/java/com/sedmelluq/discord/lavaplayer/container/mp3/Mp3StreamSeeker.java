@@ -10,6 +10,7 @@ import java.io.IOException;
  * duration.
  */
 public class Mp3StreamSeeker implements Mp3Seeker {
+
     @Override
     public long getDuration() {
         return Units.DURATION_MS_UNKNOWN;
@@ -24,4 +25,5 @@ public class Mp3StreamSeeker implements Mp3Seeker {
     public long seekAndGetFrameIndex(long timecode, SeekableInputStream inputStream) throws IOException {
         throw new UnsupportedOperationException("Cannot seek on a stream.");
     }
+
 }

@@ -6,6 +6,7 @@ import static com.sedmelluq.discord.lavaplayer.natives.statistics.CpuStatisticsL
  * Provides information about system CPU usage.
  */
 public class CpuStatistics {
+
     private static final int TIMINGS_LENGTH = CpuStatisticsLibrary.Timings.class.getEnumConstants().length;
 
     private final CpuStatisticsLibrary library = CpuStatisticsLibrary.getInstance();
@@ -30,6 +31,7 @@ public class CpuStatistics {
      * CPU timings
      */
     public static class Times {
+
         /**
          * Total amount of CPU time since system start
          */
@@ -87,6 +89,7 @@ public class CpuStatistics {
                 return (float) (processUser + processKernel) / systemTotal;
             }
         }
+
     }
 
     /**
@@ -103,4 +106,5 @@ public class CpuStatistics {
             current.processKernel - old.processKernel
         );
     }
+
 }

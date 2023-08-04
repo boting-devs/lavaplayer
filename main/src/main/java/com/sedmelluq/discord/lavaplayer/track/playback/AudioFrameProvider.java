@@ -7,6 +7,7 @@ import java.util.concurrent.TimeoutException;
  * A provider for audio frames
  */
 public interface AudioFrameProvider {
+
     /**
      * @return Provided frame, or null if none available
      */
@@ -38,4 +39,5 @@ public interface AudioFrameProvider {
      */
     boolean provide(MutableAudioFrame targetFrame, long timeout, TimeUnit unit)
         throws TimeoutException, InterruptedException;
+
 }

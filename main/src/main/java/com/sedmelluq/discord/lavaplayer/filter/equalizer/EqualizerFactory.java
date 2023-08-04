@@ -14,6 +14,7 @@ import java.util.List;
  * the only custom filter used.
  */
 public class EqualizerFactory extends EqualizerConfiguration implements PcmFilterFactory {
+
     /**
      * Creates a new instance no gains applied initially.
      */
@@ -29,4 +30,5 @@ public class EqualizerFactory extends EqualizerConfiguration implements PcmFilte
             return Collections.emptyList();
         }
     }
+
 }

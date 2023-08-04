@@ -12,6 +12,7 @@ import java.io.InputStream;
  * Audio track that handles an ADTS packet stream
  */
 public class AdtsAudioTrack extends BaseAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(AdtsAudioTrack.class);
 
     private final InputStream inputStream;
@@ -38,4 +39,5 @@ public class AdtsAudioTrack extends BaseAudioTrack {
             provider.close();
         }
     }
+
 }

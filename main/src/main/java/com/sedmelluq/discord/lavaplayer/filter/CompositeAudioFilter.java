@@ -9,6 +9,7 @@ import java.util.List;
  * An audio filter which may consist of a number of other filters.
  */
 public abstract class CompositeAudioFilter implements UniversalPcmAudioFilter {
+
     private static final Logger log = LoggerFactory.getLogger(CompositeAudioFilter.class);
 
     @Override
@@ -45,4 +46,5 @@ public abstract class CompositeAudioFilter implements UniversalPcmAudioFilter {
     }
 
     protected abstract List<AudioFilter> getFilters();
+
 }

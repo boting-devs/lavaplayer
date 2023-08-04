@@ -15,6 +15,7 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 
 public class DefaultSoundCloudDataLoader implements SoundCloudDataLoader {
+
     @Override
     public JsonBrowser load(HttpInterface httpInterface, String url) throws IOException {
         try (CloseableHttpResponse response = httpInterface.execute(new HttpGet(buildUri(url)))) {
@@ -39,4 +40,5 @@ public class DefaultSoundCloudDataLoader implements SoundCloudDataLoader {
             throw new RuntimeException(e);
         }
     }
+
 }

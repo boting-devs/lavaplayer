@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
  * Finds and reads ADTS packet headers from an input stream.
  */
 public class AdtsStreamReader {
+
     private static final AdtsPacketHeader EOF_PACKET = new AdtsPacketHeader(false, 0, 0, 0, 0);
 
     private static final int HEADER_BASE_SIZE = 7;
@@ -162,4 +163,5 @@ public class AdtsStreamReader {
 
         return new AdtsPacketHeader(isProtectionAbsent, profile + 1, sampleRate, channels, payloadLength);
     }
+
 }

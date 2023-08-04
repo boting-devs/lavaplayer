@@ -8,6 +8,7 @@ import java.io.InputStream;
  * discarding the buffer.
  */
 public class ExtendedBufferedInputStream extends BufferedInputStream {
+
     /**
      * @param in Underlying input stream
      */
@@ -37,4 +38,5 @@ public class ExtendedBufferedInputStream extends BufferedInputStream {
     public void discardBuffer() {
         pos = count;
     }
+
 }

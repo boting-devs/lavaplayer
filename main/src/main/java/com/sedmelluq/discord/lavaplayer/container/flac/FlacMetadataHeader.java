@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
  * A header of FLAC metadata.
  */
 public class FlacMetadataHeader {
+
     public static final int LENGTH = 4;
 
     public static final int BLOCK_SEEKTABLE = 3;
@@ -38,4 +39,5 @@ public class FlacMetadataHeader {
         blockType = bitReader.asInteger(7);
         blockLength = bitReader.asInteger(24);
     }
+
 }

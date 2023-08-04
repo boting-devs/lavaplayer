@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Consumes frames in a blocking manner and provides frames in a non-blocking manner.
  */
 public class AllocatingAudioFrameBuffer extends AbstractAudioFrameBuffer {
+
     private static final Logger log = LoggerFactory.getLogger(AudioFrameBuffer.class);
 
     private final int fullCapacity;
@@ -205,4 +206,5 @@ public class AllocatingAudioFrameBuffer extends AbstractAudioFrameBuffer {
     protected void signalWaiters() {
         audioFrames.offer(TerminatorAudioFrame.INSTANCE);
     }
+
 }

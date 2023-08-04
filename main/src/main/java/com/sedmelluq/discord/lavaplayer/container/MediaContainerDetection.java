@@ -19,6 +19,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Detects the container used by a file and whether the specific file is supported for playback.
  */
 public class MediaContainerDetection {
+
     public static final String UNKNOWN_TITLE = "Unknown title";
     public static final String UNKNOWN_ARTIST = "Unknown artist";
     public static final int STREAM_SCAN_DISTANCE = 1000;
@@ -149,7 +150,10 @@ public class MediaContainerDetection {
      * @return True if the next bytes in the stream are a match
      * @throws IOException On read error
      */
-    public static boolean matchNextBytesAsRegex(SeekableInputStream stream, int distance, Pattern pattern, Charset charset) throws IOException {
+    public static boolean matchNextBytesAsRegex(SeekableInputStream stream,
+                                                int distance,
+                                                Pattern pattern,
+                                                Charset charset) throws IOException {
         long position = stream.getPosition();
         byte[] bytes = new byte[distance];
 
@@ -163,4 +167,5 @@ public class MediaContainerDetection {
         String text = new String(bytes, 0, read, charset);
         return pattern.matcher(text).find();
     }
+
 }

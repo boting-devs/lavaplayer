@@ -6,6 +6,7 @@ import java.nio.ShortBuffer;
  * Audio chunk post processor.
  */
 public interface AudioPostProcessor {
+
     /**
      * Receives chunk buffer in its final PCM format with the sample count, sample rate and channel count matching that of
      * the output format.
@@ -20,4 +21,5 @@ public interface AudioPostProcessor {
      * Frees up all resources this processor is holding internally.
      */
     void close();
+
 }

@@ -35,6 +35,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio source manager which detects Vimeo tracks by URL.
  */
 public class VimeoAudioSourceManager implements AudioSourceManager, HttpConfigurable {
+
     private static final String TRACK_URL_REGEX = "^https://vimeo.com/[0-9]+(?:\\?.*|)$";
     private static final Pattern trackUrlPattern = Pattern.compile(TRACK_URL_REGEX);
 
@@ -123,7 +124,8 @@ public class VimeoAudioSourceManager implements AudioSourceManager, HttpConfigur
                     new IllegalStateException("Response code is " + statusCode));
             }
 
-            return loadTrackFromPageContent(trackUrl, IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8));
+            return loadTrackFromPageContent(trackUrl, IOUtils.toString(response.getEntity()
+                .getContent(), StandardCharsets.UTF_8));
         }
     }
 
@@ -145,4 +147,5 @@ public class VimeoAudioSourceManager implements AudioSourceManager, HttpConfigur
             null
         ), this);
     }
+
 }

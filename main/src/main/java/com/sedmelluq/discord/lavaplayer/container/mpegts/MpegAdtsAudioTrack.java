@@ -10,6 +10,7 @@ import java.io.InputStream;
 import static com.sedmelluq.discord.lavaplayer.container.mpegts.MpegTsElementaryInputStream.ADTS_ELEMENTARY_STREAM;
 
 public class MpegAdtsAudioTrack extends DelegatedAudioTrack {
+
     private final InputStream inputStream;
 
     /**
@@ -27,4 +28,5 @@ public class MpegAdtsAudioTrack extends DelegatedAudioTrack {
         PesPacketInputStream pesPacketInputStream = new PesPacketInputStream(elementaryInputStream);
         processDelegate(new AdtsAudioTrack(trackInfo, pesPacketInputStream), executor);
     }
+
 }

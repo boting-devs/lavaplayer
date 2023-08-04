@@ -11,6 +11,7 @@ import java.nio.ShortBuffer;
  * Audio chunk encoder for Opus codec.
  */
 public class OpusChunkEncoder implements AudioChunkEncoder {
+
     private final AudioDataFormat format;
     private final OpusEncoder encoder;
     private final ByteBuffer encodedBuffer;
@@ -53,4 +54,5 @@ public class OpusChunkEncoder implements AudioChunkEncoder {
     public void close() {
         encoder.close();
     }
+
 }

@@ -10,6 +10,7 @@ import java.nio.ShortBuffer;
  * Audio chunk decoder for PCM data.
  */
 public class PcmChunkDecoder implements AudioChunkDecoder {
+
     private final ByteBuffer encodedAsByte;
     private final ShortBuffer encodedAsShort;
 
@@ -45,4 +46,5 @@ public class PcmChunkDecoder implements AudioChunkDecoder {
     public void close() {
         // Nothing to close here
     }
+
 }

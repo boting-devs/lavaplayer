@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class SoundCloudHttpContextFilter implements HttpContextFilter {
+
     private static final HttpContextRetryCounter retryCounter = new HttpContextRetryCounter("sc-id-retry");
 
     private final SoundCloudClientIdTracker clientIdTracker;
@@ -77,4 +78,5 @@ public class SoundCloudHttpContextFilter implements HttpContextFilter {
     public boolean onRequestException(HttpClientContext context, HttpUriRequest request, Throwable error) {
         return false;
     }
+
 }

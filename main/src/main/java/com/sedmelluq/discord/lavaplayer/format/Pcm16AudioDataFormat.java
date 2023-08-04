@@ -10,6 +10,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration;
  * An {@link AudioDataFormat} for 16-bit signed PCM.
  */
 public class Pcm16AudioDataFormat extends AudioDataFormat {
+
     public static final String CODEC_NAME_BE = "PCM_S16_BE";
     public static final String CODEC_NAME_LE = "PCM_S16_LE";
 
@@ -67,4 +68,5 @@ public class Pcm16AudioDataFormat extends AudioDataFormat {
     public int hashCode() {
         return super.hashCode();
     }
+
 }

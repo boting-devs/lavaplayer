@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat;
  * Common parts of a frame buffer which are not likely to depend on the specific implementation.
  */
 public abstract class AbstractAudioFrameBuffer implements AudioFrameBuffer {
+
     protected final AudioDataFormat format;
     protected final Object synchronizer;
     protected volatile boolean locked;
@@ -73,4 +74,5 @@ public abstract class AbstractAudioFrameBuffer implements AudioFrameBuffer {
     }
 
     protected abstract void signalWaiters();
+
 }

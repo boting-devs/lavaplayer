@@ -14,6 +14,7 @@ import java.util.Collection;
  * Collects buffers of the required chunk size and passes them on to audio post processors.
  */
 public class FinalPcmAudioFilter implements UniversalPcmAudioFilter {
+
     private static final Logger log = LoggerFactory.getLogger(FinalPcmAudioFilter.class);
     private static final short[] zeroPadding = new short[128];
 
@@ -163,4 +164,5 @@ public class FinalPcmAudioFilter implements UniversalPcmAudioFilter {
             timecodeSampleOffset += format.chunkSampleCount;
         }
     }
+
 }

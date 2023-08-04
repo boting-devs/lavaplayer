@@ -25,6 +25,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Container detection probe for matroska format.
  */
 public class MatroskaContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(MatroskaContainerProbe.class);
 
     public static final String OPUS_CODEC = "A_OPUS";
@@ -45,7 +46,8 @@ public class MatroskaContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!checkNextBytes(inputStream, EBML_TAG)) {
             return null;
         }
@@ -77,4 +79,5 @@ public class MatroskaContainerProbe implements MediaContainerProbe {
     public AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream) {
         return new MatroskaAudioTrack(trackInfo, inputStream);
     }
+
 }

@@ -7,6 +7,7 @@ import java.util.List;
  * Represents an audio pipeline (top-level audio filter chain).
  */
 public class AudioPipeline extends CompositeAudioFilter {
+
     private final List<AudioFilter> filters;
     private final UniversalPcmAudioFilter first;
 
@@ -42,4 +43,5 @@ public class AudioPipeline extends CompositeAudioFilter {
     protected List<AudioFilter> getFilters() {
         return filters;
     }
+
 }

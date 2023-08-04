@@ -14,6 +14,7 @@ import java.nio.ByteBuffer;
  * Consumes Vorbis track data from a matroska file.
  */
 public class MatroskaVorbisTrackConsumer implements MatroskaTrackConsumer {
+
     private static final int PCM_BUFFER_SIZE = 4096;
     private static final int COPY_BUFFER_SIZE = 256;
 
@@ -158,4 +159,5 @@ public class MatroskaVorbisTrackConsumer implements MatroskaTrackConsumer {
         downstream.close();
         decoder.close();
     }
+
 }

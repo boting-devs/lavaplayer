@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
  * A byte buffer wrapped in an output stream.
  */
 public class ByteBufferOutputStream extends OutputStream {
+
     private final ByteBuffer buffer;
 
     /**
@@ -26,4 +27,5 @@ public class ByteBufferOutputStream extends OutputStream {
     public void write(byte[] b, int off, int len) throws IOException {
         buffer.put(b, off, len);
     }
+
 }

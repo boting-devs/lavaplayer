@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.function.Supplier;
 
 public class SoundCloudOpusSegmentDecoder implements SoundCloudSegmentDecoder {
+
     private final Supplier<SeekableInputStream> nextStreamProvider;
     private OggPacketInputStream lastJoinedStream;
     private OggTrackBlueprint blueprint;
@@ -75,4 +76,5 @@ public class SoundCloudOpusSegmentDecoder implements SoundCloudSegmentDecoder {
 
         return lastJoinedStream;
     }
+
 }

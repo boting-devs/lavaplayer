@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.track.TrackStateListener;
  * Executor which handles track execution and all operations on playing tracks.
  */
 public interface AudioTrackExecutor extends AudioFrameProvider {
+
     /**
      * @return The audio buffer of this executor.
      */
@@ -53,4 +54,5 @@ public interface AudioTrackExecutor extends AudioFrameProvider {
      * @return True if this track threw an exception before it provided any audio.
      */
     boolean failedBeforeLoad();
+
 }

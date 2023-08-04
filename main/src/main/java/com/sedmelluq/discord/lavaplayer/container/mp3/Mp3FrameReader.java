@@ -13,6 +13,7 @@ import static com.sedmelluq.discord.lavaplayer.natives.mp3.Mp3Decoder.HEADER_SIZ
  * Handles reading MP3 frames from a stream.
  */
 public class Mp3FrameReader {
+
     private final SeekableInputStream inputStream;
     private final DataInput dataInput;
     private final byte[] scanBuffer;
@@ -151,4 +152,5 @@ public class Mp3FrameReader {
         System.arraycopy(data, offset, scanBuffer, 0, length);
         scanBufferPosition = length;
     }
+
 }

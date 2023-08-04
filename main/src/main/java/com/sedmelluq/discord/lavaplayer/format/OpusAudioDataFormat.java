@@ -10,6 +10,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration;
  * An {@link AudioDataFormat} for OPUS.
  */
 public class OpusAudioDataFormat extends AudioDataFormat {
+
     public static final String CODEC_NAME = "OPUS";
 
     private static final byte[] SILENT_OPUS_FRAME = new byte[]{(byte) 0xFC, (byte) 0xFF, (byte) 0xFE};
@@ -68,4 +69,5 @@ public class OpusAudioDataFormat extends AudioDataFormat {
     public int hashCode() {
         return super.hashCode();
     }
+
 }

@@ -9,6 +9,7 @@ import com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor;
  * Methods of an audio track that should not be visible outside of the library
  */
 public interface InternalAudioTrack extends AudioTrack, AudioFrameProvider {
+
     /**
      * @param executor             Executor to assign to the track
      * @param applyPrimordialState True if the state previously applied to this track should be copied to new executor.
@@ -34,4 +35,5 @@ public interface InternalAudioTrack extends AudioTrack, AudioFrameProvider {
      * null as the default one will be used in that case.
      */
     AudioTrackExecutor createLocalExecutor(AudioPlayerManager playerManager);
+
 }

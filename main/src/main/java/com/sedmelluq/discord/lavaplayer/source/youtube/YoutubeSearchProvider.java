@@ -30,6 +30,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * Handles processing YouTube searches.
  */
 public class YoutubeSearchProvider implements YoutubeSearchResultLoader {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeSearchProvider.class);
 
     private final HttpInterfaceManager httpInterfaceManager;
@@ -89,7 +90,8 @@ public class YoutubeSearchProvider implements YoutubeSearchResultLoader {
         }
     }
 
-    private List<AudioTrack> extractSearchPage(JsonBrowser jsonBrowser, Function<AudioTrackInfo, AudioTrack> trackFactory) throws IOException {
+    private List<AudioTrack> extractSearchPage(JsonBrowser jsonBrowser,
+                                               Function<AudioTrackInfo, AudioTrack> trackFactory) throws IOException {
         ArrayList<AudioTrack> list = new ArrayList<>();
         jsonBrowser.get("contents")
             .get("sectionListRenderer")
@@ -100,7 +102,7 @@ public class YoutubeSearchProvider implements YoutubeSearchResultLoader {
                 .values()
                 .forEach(jsonTrack -> {
                     AudioTrack track = extractPolymerData(jsonTrack, trackFactory);
-                    if (track != null) list.add(track);
+                    if (track != null) {list.add(track);}
                 })
             );
         return list;
@@ -108,14 +110,20 @@ public class YoutubeSearchProvider implements YoutubeSearchResultLoader {
 
     private AudioTrack extractPolymerData(JsonBrowser json, Function<AudioTrackInfo, AudioTrack> trackFactory) {
         json = json.get("compactVideoRenderer");
-        if (json.isNull()) return null; // Ignore everything which is not a track
+        if (json.isNull()) {
+            return null; // Ignore everything which is not a track
+        }
 
         String title = json.get("title").get("runs").index(0).get("text").text();
         String author = json.get("longBylineText").get("runs").index(0).get("text").text();
         if (json.get("lengthText").isNull()) {
             return null; // Ignore if the video is a live stream
         }
-        long duration = DataFormatTools.durationTextToMillis(json.get("lengthText").get("runs").index(0).get("text").text());
+        long duration = DataFormatTools.durationTextToMillis(json.get("lengthText")
+            .get("runs")
+            .index(0)
+            .get("text")
+            .text());
         String videoId = json.get("videoId").text();
 
         AudioTrackInfo info = new AudioTrackInfo(title, author, duration, videoId, false,
@@ -123,4 +131,5 @@ public class YoutubeSearchProvider implements YoutubeSearchResultLoader {
 
         return trackFactory.apply(info);
     }
+
 }

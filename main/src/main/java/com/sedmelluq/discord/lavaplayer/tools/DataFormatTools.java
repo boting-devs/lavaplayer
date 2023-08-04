@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
  * Helper methods related to strings and maps.
  */
 public class DataFormatTools {
+
     private static final Pattern lineSplitPattern = Pattern.compile("[\\r\\n\\s]*\\n[\\r\\n\\s]*");
 
     /**
@@ -202,6 +203,7 @@ public class DataFormatTools {
     }
 
     public static class TextRange {
+
         public final String start;
         public final String end;
 
@@ -209,5 +211,7 @@ public class DataFormatTools {
             this.start = start;
             this.end = end;
         }
+
     }
+
 }

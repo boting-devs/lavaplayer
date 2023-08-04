@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultSoundCloudDataReader implements SoundCloudDataReader {
+
     private static final Logger log = LoggerFactory.getLogger(DefaultSoundCloudDataReader.class);
 
     @Override
@@ -99,4 +100,5 @@ public class DefaultSoundCloudDataReader implements SoundCloudDataReader {
 
         return null;
     }
+
 }

@@ -9,6 +9,7 @@ import java.net.BindException;
 import java.net.SocketException;
 
 public class YoutubeIpRotatorRetryHandler implements HttpRequestRetryHandler {
+
     @Override
     public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
         if (exception instanceof BindException) {
@@ -23,4 +24,5 @@ public class YoutubeIpRotatorRetryHandler implements HttpRequestRetryHandler {
 
         return DefaultHttpRequestRetryHandler.INSTANCE.retryRequest(exception, executionCount, context);
     }
+
 }

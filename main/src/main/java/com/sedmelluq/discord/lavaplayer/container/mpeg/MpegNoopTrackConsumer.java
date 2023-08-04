@@ -6,6 +6,7 @@ import java.nio.channels.ReadableByteChannel;
  * No-op MP4 track consumer, for probing purposes.
  */
 public class MpegNoopTrackConsumer implements MpegTrackConsumer {
+
     private final MpegTrackInfo trackInfo;
 
     /**
@@ -44,4 +45,5 @@ public class MpegNoopTrackConsumer implements MpegTrackConsumer {
     public void close() {
         // Nothing to do
     }
+
 }

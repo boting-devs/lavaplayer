@@ -10,6 +10,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
  * HTTP interface manager which creates a new HTTP context for each interface.
  */
 public class SimpleHttpInterfaceManager extends AbstractHttpInterfaceManager {
+
     private final SettableHttpRequestFilter filterHolder;
 
     /**
@@ -32,4 +33,5 @@ public class SimpleHttpInterfaceManager extends AbstractHttpInterfaceManager {
     public void setHttpContextFilter(HttpContextFilter filter) {
         filterHolder.set(filter);
     }
+
 }

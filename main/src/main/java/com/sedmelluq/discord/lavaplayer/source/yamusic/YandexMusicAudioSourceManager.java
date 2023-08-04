@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
  * Audio source manager that implements finding Yandex Music tracks based on URL.
  */
 public class YandexMusicAudioSourceManager implements AudioSourceManager, HttpConfigurable {
+
     private static final String PROTOCOL_REGEX = "https?://";
     private static final String DOMAIN_REGEX = "music\\.yandex\\.[a-zA-Z]+";
     private static final String TRACK_ID_REGEX = "track/([0-9]+)(?:\\?.*|)";
@@ -210,4 +211,5 @@ public class YandexMusicAudioSourceManager implements AudioSourceManager, HttpCo
     public String getSourceName() {
         return "yandex-music";
     }
+
 }

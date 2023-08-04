@@ -36,6 +36,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio source manager that implements finding Bandcamp tracks based on URL.
  */
 public class BandcampAudioSourceManager implements AudioSourceManager, HttpConfigurable {
+
     private static final String URL_REGEX = "^(https?://(?:[^.]+\\.|)bandcamp\\.com)/(track|album)/([a-zA-Z0-9-_]+)/?(?:\\?.*|)$";
     private static final Pattern urlRegex = Pattern.compile(URL_REGEX);
 
@@ -151,7 +152,9 @@ public class BandcampAudioSourceManager implements AudioSourceManager, HttpConfi
         }
     }
 
-    private AudioItem extractFromPageWithInterface(HttpInterface httpInterface, String url, AudioItemExtractor extractor) throws Exception {
+    private AudioItem extractFromPageWithInterface(HttpInterface httpInterface,
+                                                   String url,
+                                                   AudioItemExtractor extractor) throws Exception {
         String responseText;
 
         try (CloseableHttpResponse response = httpInterface.execute(new HttpGet(url))) {
@@ -222,10 +225,13 @@ public class BandcampAudioSourceManager implements AudioSourceManager, HttpConfi
     }
 
     private interface AudioItemExtractor {
+
         AudioItem extract(HttpInterface httpInterface, String text) throws Exception;
+
     }
 
     private static class UrlInfo {
+
         public final String fullUrl;
         public final String baseUrl;
         public final boolean isAlbum;
@@ -235,5 +241,7 @@ public class BandcampAudioSourceManager implements AudioSourceManager, HttpConfi
             this.baseUrl = baseUrl;
             this.isAlbum = isAlbum;
         }
+
     }
+
 }

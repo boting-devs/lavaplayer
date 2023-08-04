@@ -3,6 +3,7 @@ package com.sedmelluq.lava.common.natives;
 import com.sedmelluq.lava.common.natives.architecture.SystemType;
 
 public interface NativeLibraryProperties {
+
     /**
      * @return Explicit filesystem path for the library. If this is set, this is loaded directly and no resource
      * extraction and/or system name detection is performed. If this returns <code>null</code>, library directory
@@ -47,4 +48,5 @@ public interface NativeLibraryProperties {
      * @return Architecture name to use. If this is set, operating system detection is still performed.
      */
     String getArchitectureName();
+
 }

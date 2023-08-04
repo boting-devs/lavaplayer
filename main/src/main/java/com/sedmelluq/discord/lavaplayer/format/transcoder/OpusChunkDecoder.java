@@ -10,6 +10,7 @@ import java.nio.ShortBuffer;
  * Audio chunk decoder for Opus codec.
  */
 public class OpusChunkDecoder implements AudioChunkDecoder {
+
     private final OpusDecoder decoder;
     private final ByteBuffer encodedBuffer;
 
@@ -35,4 +36,5 @@ public class OpusChunkDecoder implements AudioChunkDecoder {
     public void close() {
         decoder.close();
     }
+
 }

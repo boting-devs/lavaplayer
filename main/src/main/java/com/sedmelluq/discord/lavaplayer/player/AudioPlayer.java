@@ -9,6 +9,7 @@ import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrameProvider;
  * An audio player that is capable of playing audio tracks and provides audio frames from the currently playing track.
  */
 public interface AudioPlayer extends AudioFrameProvider {
+
     /**
      * @return Currently playing track
      */
@@ -74,4 +75,5 @@ public interface AudioPlayer extends AudioFrameProvider {
      * @param threshold Threshold in milliseconds to use
      */
     void checkCleanup(long threshold);
+
 }

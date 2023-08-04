@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.tools;
  * An exception with a friendly message.
  */
 public class FriendlyException extends RuntimeException {
+
     /**
      * Severity of the exception
      */
@@ -40,4 +41,5 @@ public class FriendlyException extends RuntimeException {
          */
         FAULT
     }
+
 }

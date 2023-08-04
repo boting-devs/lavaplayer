@@ -9,6 +9,7 @@ import java.util.concurrent.*;
  * Utility methods for working with executors.
  */
 public class ExecutorTools {
+
     private static final Logger log = LoggerFactory.getLogger(ExecutorTools.class);
 
     private static final long WAIT_TIME = 1000L;
@@ -69,6 +70,7 @@ public class ExecutorTools {
     }
 
     private static class EagerlyScalingTaskQueue extends LinkedBlockingQueue<Runnable> {
+
         public EagerlyScalingTaskQueue(int capacity) {
             super(capacity);
         }
@@ -81,18 +83,22 @@ public class ExecutorTools {
         public boolean offerDirectly(Runnable runnable) {
             return super.offer(runnable);
         }
+
     }
 
     private static class EagerlyScalingRejectionHandler implements RejectedExecutionHandler {
+
         @Override
         public void rejectedExecution(Runnable runnable, ThreadPoolExecutor executor) {
             if (!((EagerlyScalingTaskQueue) executor.getQueue()).offerDirectly(runnable)) {
                 throw new RejectedExecutionException("Task " + runnable.toString() + " rejected from " + runnable.toString());
             }
         }
+
     }
 
     private static class CompletedVoidFuture implements Future<Void> {
+
         @Override
         public boolean cancel(boolean mayInterruptIfRunning) {
             return false;
@@ -117,5 +123,7 @@ public class ExecutorTools {
         public Void get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
             return null;
         }
+
     }
+
 }

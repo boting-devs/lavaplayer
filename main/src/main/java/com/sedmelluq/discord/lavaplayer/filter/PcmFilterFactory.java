@@ -9,6 +9,7 @@ import java.util.List;
  * Factory for custom PCM filters.
  */
 public interface PcmFilterFactory {
+
     /**
      * Builds a filter chain for processing a track. Note that this may be called several times during the playback of a
      * single track. All filters should send the output from the filter either to the next filter in the list, or to the
@@ -22,4 +23,5 @@ public interface PcmFilterFactory {
      * @return The list of filters in the built chain. May be empty, but not <code>null</code>.
      */
     List<AudioFilter> buildChain(AudioTrack track, AudioDataFormat format, UniversalPcmAudioFilter output);
+
 }

@@ -14,6 +14,7 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.TimeUnit;
 
 public class SimpleHttpClientConnectionManager implements HttpClientConnectionManager {
+
     private final HttpClientConnectionOperator connectionOperator;
     private final HttpConnectionFactory<HttpRoute, ManagedHttpClientConnection> connectionFactory;
     private volatile SocketConfig socketConfig = SocketConfig.DEFAULT;
@@ -112,4 +113,5 @@ public class SimpleHttpClientConnectionManager implements HttpClientConnectionMa
     public void shutdown() {
         // Nothing to do.
     }
+
 }

@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.COMMON;
 
 public class DefaultYoutubeLinkRouter implements YoutubeLinkRouter {
+
     private static final String SEARCH_PREFIX = "ytsearch:";
     private static final String SEARCH_MUSIC_PREFIX = "ytmsearch:";
 
@@ -138,6 +139,7 @@ public class DefaultYoutubeLinkRouter implements YoutubeLinkRouter {
     }
 
     private static class UrlInfo {
+
         private final String path;
         private final Map<String, String> parameters;
 
@@ -145,9 +147,11 @@ public class DefaultYoutubeLinkRouter implements YoutubeLinkRouter {
             this.path = path;
             this.parameters = parameters;
         }
+
     }
 
     private static class Extractor {
+
         private final Pattern pattern;
         private final ExtractorRouter router;
 
@@ -155,9 +159,13 @@ public class DefaultYoutubeLinkRouter implements YoutubeLinkRouter {
             this.pattern = pattern;
             this.router = router;
         }
+
     }
 
     private interface ExtractorRouter {
+
         <T> T extract(Routes<T> routes, String url);
+
     }
+
 }

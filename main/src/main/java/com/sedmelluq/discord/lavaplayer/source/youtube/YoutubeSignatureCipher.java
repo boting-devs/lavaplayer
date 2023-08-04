@@ -10,6 +10,7 @@ import java.util.List;
  * Describes one signature cipher
  */
 public class YoutubeSignatureCipher {
+
     private final List<YoutubeCipherOperation> operations = new ArrayList<>();
     String nFunction = "";
     String scriptTimestamp = "";
@@ -93,4 +94,5 @@ public class YoutubeSignatureCipher {
     public void setRawScript(String script) {
         rawScript = script;
     }
+
 }

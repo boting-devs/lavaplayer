@@ -21,6 +21,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Container detection probe for MP3 format.
  */
 public class Mp3ContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(Mp3ContainerProbe.class);
 
     private static final int[] ID3_TAG = new int[]{0x49, 0x44, 0x33};
@@ -38,7 +39,8 @@ public class Mp3ContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!checkNextBytes(inputStream, ID3_TAG)) {
             byte[] frameHeader = new byte[4];
             Mp3FrameReader frameReader = new Mp3FrameReader(inputStream, frameHeader);
@@ -67,4 +69,5 @@ public class Mp3ContainerProbe implements MediaContainerProbe {
     public AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream) {
         return new Mp3AudioTrack(trackInfo, inputStream);
     }
+
 }

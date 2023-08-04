@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
  * Audio track that handles processing Beam.pro tracks.
  */
 public class BeamAudioTrack extends MpegTsM3uStreamAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(BeamAudioTrack.class);
 
     private final BeamAudioSourceManager sourceManager;
@@ -65,4 +66,5 @@ public class BeamAudioTrack extends MpegTsM3uStreamAudioTrack {
     private String getChannelUrl() {
         return trackInfo.identifier.substring(trackInfo.identifier.lastIndexOf('|') + 1);
     }
+
 }

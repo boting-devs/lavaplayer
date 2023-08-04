@@ -15,6 +15,7 @@ import java.util.UUID;
  * Contains common helper methods for dealing with exceptions.
  */
 public class ExceptionTools {
+
     private static final Logger log = LoggerFactory.getLogger(ExceptionTools.class);
     private static volatile ErrorDebugInfoHandler debugInfoHandler = new DefaultErrorDebugInfoHandler();
 
@@ -244,6 +245,7 @@ public class ExceptionTools {
     }
 
     public static class ErrorDebugInfo {
+
         public final Logger log;
         public final String errorId;
         public final Throwable cause;
@@ -266,10 +268,13 @@ public class ExceptionTools {
             this.name = name;
             this.value = value;
         }
+
     }
 
     public interface ErrorDebugInfoHandler {
+
         void handle(ErrorDebugInfo payload);
+
     }
 
     public static class DefaultErrorDebugInfoHandler implements ErrorDebugInfoHandler {
@@ -278,5 +283,7 @@ public class ExceptionTools {
         public void handle(ErrorDebugInfo debugInfo) {
             log.warn("{} EID: {}, {}: {}", debugInfo.message, debugInfo.errorId, debugInfo.name, debugInfo.value);
         }
+
     }
+
 }

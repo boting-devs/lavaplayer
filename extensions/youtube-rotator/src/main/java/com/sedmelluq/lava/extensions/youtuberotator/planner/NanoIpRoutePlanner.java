@@ -24,8 +24,9 @@ public final class NanoIpRoutePlanner extends AbstractRoutePlanner {
 
     public NanoIpRoutePlanner(final List<IpBlock> ipBlocks, final boolean handleSearchFailure) {
         super(ipBlocks, handleSearchFailure);
-        if (ipBlock.getSize().compareTo(Ipv6Block.BLOCK64_IPS) < 0)
+        if (ipBlock.getSize().compareTo(Ipv6Block.BLOCK64_IPS) < 0) {
             throw new IllegalArgumentException("Nano IP Route planner requires an IPv6Block which is greater or equal to a /64");
+        }
         startTime = BigInteger.valueOf(System.nanoTime());
         maskBits = ipBlock.getMaskBits();
     }
@@ -74,7 +75,8 @@ public final class NanoIpRoutePlanner extends AbstractRoutePlanner {
         if (maskBits == 64) {
             return ipBlock.getAddressAtIndex(nanoOffset);
         }
-        final BigInteger randomOffset = random.nextBigInt(Ipv6Block.IPV6_BIT_SIZE - maskBits).shiftLeft(Ipv6Block.IPV6_BIT_SIZE - maskBits); // most {{maskBits}}-64 bit
+        final BigInteger randomOffset = random.nextBigInt(Ipv6Block.IPV6_BIT_SIZE - maskBits)
+            .shiftLeft(Ipv6Block.IPV6_BIT_SIZE - maskBits); // most {{maskBits}}-64 bit
         return ipBlock.getAddressAtIndex(randomOffset.add(nanoOffset));
     }
 

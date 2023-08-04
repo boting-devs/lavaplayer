@@ -12,6 +12,7 @@ import java.util.concurrent.TimeoutException;
  * information, which is applied to the actual executor when one is attached.
  */
 public class PrimordialAudioTrackExecutor implements AudioTrackExecutor {
+
     private static final Logger log = LoggerFactory.getLogger(LocalAudioTrackExecutor.class);
 
     private final AudioTrackInfo trackInfo;
@@ -102,4 +103,5 @@ public class PrimordialAudioTrackExecutor implements AudioTrackExecutor {
 
         executor.setMarker(markerTracker.remove());
     }
+
 }

@@ -14,6 +14,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Loads either WAV header information or a WAV track provider from a stream.
  */
 public class WavFileLoader {
+
     static final int[] WAV_RIFF_HEADER = new int[]{0x52, 0x49, 0x46, 0x46, -1, -1, -1, -1, 0x57, 0x41, 0x56, 0x45};
 
     private final SeekableInputStream inputStream;
@@ -89,6 +90,7 @@ public class WavFileLoader {
     }
 
     private static class InfoBuilder {
+
         private int audioFormat;
         private int channelCount;
         private int sampleRate;
@@ -127,5 +129,7 @@ public class WavFileLoader {
                 throw new IllegalStateException("Negative sample area size: " + sampleAreaSize);
             }
         }
+
     }
+
 }

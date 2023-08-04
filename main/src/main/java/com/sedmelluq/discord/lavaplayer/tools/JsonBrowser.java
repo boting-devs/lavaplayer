@@ -17,6 +17,7 @@ import java.util.List;
  * Allows to easily navigate in decoded JSON data
  */
 public class JsonBrowser {
+
     public static final JsonBrowser NULL_BROWSER = new JsonBrowser(null);
 
     private static final ObjectMapper mapper = setupMapper();
@@ -301,4 +302,5 @@ public class JsonBrowser {
     private static JsonBrowser create(JsonNode node) {
         return node != null ? new JsonBrowser(node) : NULL_BROWSER;
     }
+
 }

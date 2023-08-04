@@ -6,6 +6,7 @@ import java.util.function.Function;
  * Utility class for calculating averages on the last N values, with input and output transformers.
  */
 public class RingBufferMath {
+
     private final double[] values;
     private final Function<Double, Double> inputProcessor;
     private final Function<Double, Double> outputProcessor;
@@ -48,4 +49,5 @@ public class RingBufferMath {
             return outputProcessor.apply(sum / size);
         }
     }
+
 }

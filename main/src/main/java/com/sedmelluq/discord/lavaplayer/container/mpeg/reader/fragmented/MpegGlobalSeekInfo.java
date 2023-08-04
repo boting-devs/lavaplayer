@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.mpeg.reader.fragmented;
  * Describes the seek info for a fragmented MP4 file
  */
 public class MpegGlobalSeekInfo {
+
     /**
      * The value of the internal timecodes that corresponds to one second
      */
@@ -39,4 +40,5 @@ public class MpegGlobalSeekInfo {
             fileOffsets[i] = fileOffsets[i - 1] + entries[i - 1].size;
         }
     }
+
 }

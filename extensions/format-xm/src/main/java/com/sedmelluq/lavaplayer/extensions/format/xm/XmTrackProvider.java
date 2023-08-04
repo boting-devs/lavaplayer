@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.track.playback.AudioProcessingContext;
 import ibxm.IBXM;
 
 public class XmTrackProvider {
+
     private final IBXM ibxm;
     private final AudioPipeline downstream;
     private final int blocksInBuffer;
@@ -34,4 +35,5 @@ public class XmTrackProvider {
     public void close() {
         downstream.close();
     }
+
 }

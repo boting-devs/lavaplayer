@@ -8,6 +8,7 @@ import java.nio.ShortBuffer;
  * Filter which takes in PCM data in any representation and outputs it as float PCM.
  */
 public class ToFloatAudioFilter extends ConverterAudioFilter {
+
     private final FloatPcmAudioFilter downstream;
     private final int channelCount;
     private final float[][] buffers;
@@ -88,4 +89,5 @@ public class ToFloatAudioFilter extends ConverterAudioFilter {
     private static float shortToFloat(short value) {
         return value / 32768.0f;
     }
+
 }

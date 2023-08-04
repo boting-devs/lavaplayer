@@ -13,6 +13,7 @@ import java.util.function.Function;
 import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.SUSPICIOUS;
 
 public class DefaultYandexMusicPlaylistLoader extends DefaultYandexMusicTrackLoader implements YandexMusicPlaylistLoader {
+
     private static final String PLAYLIST_INFO_FORMAT = "https://api.music.yandex.net/users/%s/playlists/%s";
     private static final String ALBUM_INFO_FORMAT = "https://api.music.yandex.net/albums/%s/with-tracks";
     private static final String ARTIST_INFO_FORMAT = "https://api.music.yandex.net/artists/%s/brief-info";
@@ -24,7 +25,10 @@ public class DefaultYandexMusicPlaylistLoader extends DefaultYandexMusicTrackLoa
     }
 
     @Override
-    public AudioItem loadPlaylist(String login, String id, String trackProperty, Function<AudioTrackInfo, AudioTrack> trackFactory) {
+    public AudioItem loadPlaylist(String login,
+                                  String id,
+                                  String trackProperty,
+                                  Function<AudioTrackInfo, AudioTrack> trackFactory) {
         return loadPlaylistUrl(String.format(PLAYLIST_INFO_FORMAT, login, id), trackProperty, trackFactory);
     }
 
@@ -37,9 +41,11 @@ public class DefaultYandexMusicPlaylistLoader extends DefaultYandexMusicTrackLoa
         }
     }
 
-    private AudioItem loadPlaylistUrl(String url, String trackProperty, Function<AudioTrackInfo, AudioTrack> trackFactory) {
+    private AudioItem loadPlaylistUrl(String url,
+                                      String trackProperty,
+                                      Function<AudioTrackInfo, AudioTrack> trackFactory) {
         return extractFromApi(url, (httpClient, result) -> {
-            if (hasError(result)) return AudioReference.NO_TRACK;
+            if (hasError(result)) {return AudioReference.NO_TRACK;}
             JsonBrowser volumes = result.get(trackProperty);
             if (volumes.isNull()) {
                 throw new FriendlyException("Volumes is empty", SUSPICIOUS, null);
@@ -108,4 +114,5 @@ public class DefaultYandexMusicPlaylistLoader extends DefaultYandexMusicTrackLoa
         super.shutdown();
         tracksLoader.shutdown();
     }
+
 }

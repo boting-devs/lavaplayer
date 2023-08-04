@@ -7,6 +7,7 @@ import java.nio.ByteBuffer;
  * Provides information and buffer to read from for a Matroska block.
  */
 public interface MatroskaBlock {
+
     /**
      * @return The timecode of this block relative to its cluster
      */
@@ -37,4 +38,5 @@ public interface MatroskaBlock {
      * @throws IOException On read error.
      */
     ByteBuffer getNextFrameBuffer(MatroskaFileReader reader, int index) throws IOException;
+
 }

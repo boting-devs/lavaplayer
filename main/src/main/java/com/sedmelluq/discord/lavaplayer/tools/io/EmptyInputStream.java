@@ -6,6 +6,7 @@ import java.io.InputStream;
  * Represents an empty input stream.
  */
 public class EmptyInputStream extends InputStream {
+
     public static final EmptyInputStream INSTANCE = new EmptyInputStream();
 
     @Override
@@ -17,4 +18,5 @@ public class EmptyInputStream extends InputStream {
     public int read() {
         return -1;
     }
+
 }

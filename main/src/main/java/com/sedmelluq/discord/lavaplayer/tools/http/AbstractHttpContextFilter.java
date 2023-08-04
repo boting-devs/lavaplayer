@@ -5,6 +5,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 
 public abstract class AbstractHttpContextFilter implements HttpContextFilter {
+
     private final HttpContextFilter delegate;
 
     protected AbstractHttpContextFilter(HttpContextFilter delegate) {
@@ -49,4 +50,5 @@ public abstract class AbstractHttpContextFilter implements HttpContextFilter {
 
         return false;
     }
+
 }

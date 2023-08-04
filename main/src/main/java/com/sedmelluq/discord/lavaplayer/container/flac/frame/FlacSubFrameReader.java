@@ -9,6 +9,7 @@ import java.io.IOException;
  * Contains methods for reading a FLAC subframe
  */
 public class FlacSubFrameReader {
+
     private static final Encoding[] encodingMapping = new Encoding[]{
         Encoding.LPC, null, Encoding.FIXED, null, null, Encoding.VERBATIM, Encoding.CONSTANT
     };
@@ -47,8 +48,12 @@ public class FlacSubFrameReader {
         }
     }
 
-    private static void readSubFrameSamples(BitStreamReader reader, int subFrameDescriptor, int bitsPerSample, int[] sampleBuffer,
-                                            int sampleCount, int[] temporaryBuffer) throws IOException {
+    private static void readSubFrameSamples(BitStreamReader reader,
+                                            int subFrameDescriptor,
+                                            int bitsPerSample,
+                                            int[] sampleBuffer,
+                                            int sampleCount,
+                                            int[] temporaryBuffer) throws IOException {
 
         Encoding subframeEncoding = encodingMapping[Integer.numberOfLeadingZeros(subFrameDescriptor) - 26];
 
@@ -148,7 +153,11 @@ public class FlacSubFrameReader {
         }
     }
 
-    private static void readResidual(BitStreamReader reader, int order, int[] buffer, int startOffset, int endOffset) throws IOException {
+    private static void readResidual(BitStreamReader reader,
+                                     int order,
+                                     int[] buffer,
+                                     int startOffset,
+                                     int endOffset) throws IOException {
         int method = reader.asInteger(2);
 
         if (method > 1) {
@@ -181,7 +190,11 @@ public class FlacSubFrameReader {
         }
     }
 
-    private static void readResidualBlock(BitStreamReader reader, int[] buffer, int offset, int endOffset, int parameter) throws IOException {
+    private static void readResidualBlock(BitStreamReader reader,
+                                          int[] buffer,
+                                          int offset,
+                                          int endOffset,
+                                          int parameter) throws IOException {
         for (int i = offset; i < endOffset; i++) {
             int lowOrderSigned = (reader.readAllZeroes() << parameter) | reader.asInteger(parameter);
             buffer[i] = (lowOrderSigned & 1) == 0 ? lowOrderSigned >> 1 : -(lowOrderSigned >> 1) - 1;
@@ -194,4 +207,5 @@ public class FlacSubFrameReader {
         FIXED,
         LPC
     }
+
 }

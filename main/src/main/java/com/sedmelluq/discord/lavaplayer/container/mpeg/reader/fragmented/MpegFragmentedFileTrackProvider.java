@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Track provider for fragmented MP4 file format.
  */
 public class MpegFragmentedFileTrackProvider implements MpegFileTrackProvider {
+
     private final MpegReader reader;
     private final MpegSectionInfo root;
 
@@ -187,7 +188,8 @@ public class MpegFragmentedFileTrackProvider implements MpegFileTrackProvider {
         return header.get();
     }
 
-    private void parseTrackFragmentHeader(MpegVersionedSectionInfo tfhd, MpegTrackFragmentHeader.Builder builder) throws IOException {
+    private void parseTrackFragmentHeader(MpegVersionedSectionInfo tfhd,
+                                          MpegTrackFragmentHeader.Builder builder) throws IOException {
         builder.setTrackId(reader.data.readInt());
 
         if ((tfhd.flags & 0x000010) != 0) {
@@ -211,7 +213,8 @@ public class MpegFragmentedFileTrackProvider implements MpegFileTrackProvider {
         }
     }
 
-    private void parseTrackRunInfo(MpegVersionedSectionInfo trun, MpegTrackFragmentHeader.Builder builder) throws IOException {
+    private void parseTrackRunInfo(MpegVersionedSectionInfo trun,
+                                   MpegTrackFragmentHeader.Builder builder) throws IOException {
         int sampleCount = reader.data.readInt();
         builder.setDataOffset(((trun.flags & 0x01) != 0) ? reader.data.readInt() : -1);
 
@@ -239,4 +242,5 @@ public class MpegFragmentedFileTrackProvider implements MpegFileTrackProvider {
             }
         }
     }
+
 }

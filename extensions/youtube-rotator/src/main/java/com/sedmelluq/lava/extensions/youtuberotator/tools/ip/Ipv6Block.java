@@ -17,8 +17,7 @@ import java.util.regex.Pattern;
 public class Ipv6Block extends IpBlock<Inet6Address> {
 
     public static boolean isIpv6CidrBlock(String cidr) {
-        if (!cidr.contains("/"))
-            cidr += "/128";
+        if (!cidr.contains("/")) {cidr += "/128";}
         return CIDR_REGEX.matcher(cidr).matches();
     }
 
@@ -36,8 +35,7 @@ public class Ipv6Block extends IpBlock<Inet6Address> {
     private static final Logger log = LoggerFactory.getLogger(Ipv6Block.class);
 
     public Ipv6Block(String cidr) {
-        if (!cidr.contains("/"))
-            cidr += "/128";
+        if (!cidr.contains("/")) {cidr += "/128";}
         this.cidr = cidr.toLowerCase();
         Matcher matcher = CIDR_REGEX.matcher(this.cidr);
         if (!matcher.find()) {
@@ -63,7 +61,7 @@ public class Ipv6Block extends IpBlock<Inet6Address> {
      */
     @Override
     public Inet6Address getRandomAddress() {
-        if (maskBits == IPV6_BIT_SIZE) return longToAddress(prefix);
+        if (maskBits == IPV6_BIT_SIZE) {return longToAddress(prefix);}
 
         final BigInteger randomAddressOffset = random.nextBigInt(IPV6_BIT_SIZE - (maskBits + 1)).abs();
         Inet6Address inetAddress = longToAddress(prefix.add(randomAddressOffset));
@@ -78,8 +76,9 @@ public class Ipv6Block extends IpBlock<Inet6Address> {
 
     @Override
     public Inet6Address getAddressAtIndex(final BigInteger index) {
-        if (index.compareTo(getSize()) > 0)
+        if (index.compareTo(getSize()) > 0) {
             throw new IllegalArgumentException("Index out of bounds for provided CIDR Block");
+        }
         return longToAddress(prefix.add(index));
     }
 
@@ -107,10 +106,7 @@ public class Ipv6Block extends IpBlock<Inet6Address> {
         final int start = (b.length - 1) * 8;
         for (int i = 0; i < b.length; i++) {
             int shift = start - i * 8;
-            if (shift > 0)
-                b[i] = l.shiftRight(start - i * 8).byteValue();
-            else
-                b[i] = l.byteValue();
+            if (shift > 0) {b[i] = l.shiftRight(start - i * 8).byteValue();} else {b[i] = l.byteValue();}
         }
         try {
             return (Inet6Address) Inet6Address.getByAddress(b);
@@ -129,10 +125,9 @@ public class Ipv6Block extends IpBlock<Inet6Address> {
         value = value.or(BigInteger.valueOf(b[0]).shiftLeft(start));
         for (int i = 1; i < b.length; i++) {
             final int shift = start - i * 8;
-            if (shift > 0)
-                value = value.or(BigInteger.valueOf(b[i] & 0xff).shiftLeft(shift));
-            else
+            if (shift > 0) {value = value.or(BigInteger.valueOf(b[i] & 0xff).shiftLeft(shift));} else {
                 value = value.or(BigInteger.valueOf(b[i] & 0xff));
+            }
         }
         return value;
     }

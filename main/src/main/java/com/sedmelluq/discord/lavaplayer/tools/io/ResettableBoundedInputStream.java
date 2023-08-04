@@ -9,6 +9,7 @@ import static org.apache.commons.io.IOUtils.EOF;
  * Bounded input stream where the limit can be set dynamically.
  */
 public class ResettableBoundedInputStream extends InputStream {
+
     private final InputStream delegate;
 
     private long limit;
@@ -86,4 +87,5 @@ public class ResettableBoundedInputStream extends InputStream {
     public boolean markSupported() {
         return false;
     }
+
 }

@@ -14,6 +14,7 @@ import java.util.List;
  * absolutely necessary, as the stream may be a network connection, in which case each seek may require a new connection.
  */
 public class MatroskaStreamingFile {
+
     private final MatroskaFileReader reader;
 
     private long timecodeScale = 1000000;
@@ -147,7 +148,8 @@ public class MatroskaStreamingFile {
 
         while ((child = reader.readNextElement(seekElement)) != null) {
             if (child.is(MatroskaElementType.SeekId)) {
-                isCueElement = ByteBuffer.wrap(reader.asBytes(child)).equals(ByteBuffer.wrap(MatroskaElementType.Cues.bytes));
+                isCueElement = ByteBuffer.wrap(reader.asBytes(child))
+                    .equals(ByteBuffer.wrap(MatroskaElementType.Cues.bytes));
             } else if (child.is(MatroskaElementType.SeekPosition) && isCueElement) {
                 cueElementPosition = reader.asLong(child);
             }
@@ -306,7 +308,8 @@ public class MatroskaStreamingFile {
         }
     }
 
-    private void parseNextCluster(MatroskaElement clusterElement, MatroskaTrackConsumer consumer) throws InterruptedException, IOException {
+    private void parseNextCluster(MatroskaElement clusterElement,
+                                  MatroskaTrackConsumer consumer) throws InterruptedException, IOException {
         MatroskaElement child;
         long clusterTimecode = 0;
 
@@ -323,7 +326,9 @@ public class MatroskaStreamingFile {
         }
     }
 
-    private void parseClusterSimpleBlock(MatroskaElement simpleBlock, MatroskaTrackConsumer consumer, long clusterTimecode)
+    private void parseClusterSimpleBlock(MatroskaElement simpleBlock,
+                                         MatroskaTrackConsumer consumer,
+                                         long clusterTimecode)
         throws InterruptedException, IOException {
 
         MatroskaBlock block = reader.readBlockHeader(simpleBlock, consumer.getTrack().index);
@@ -333,7 +338,9 @@ public class MatroskaStreamingFile {
         }
     }
 
-    private void parseClusterBlockGroup(MatroskaElement blockGroup, MatroskaTrackConsumer consumer, long clusterTimecode)
+    private void parseClusterBlockGroup(MatroskaElement blockGroup,
+                                        MatroskaTrackConsumer consumer,
+                                        long clusterTimecode)
         throws InterruptedException, IOException {
 
         MatroskaElement child;
@@ -395,4 +402,5 @@ public class MatroskaStreamingFile {
             reader.skip(child);
         }
     }
+
 }

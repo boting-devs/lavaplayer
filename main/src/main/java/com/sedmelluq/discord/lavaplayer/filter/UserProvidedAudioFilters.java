@@ -12,6 +12,7 @@ import java.util.List;
  * whenever the filter factory is changed.
  */
 public class UserProvidedAudioFilters extends CompositeAudioFilter {
+
     private final AudioProcessingContext context;
     private final UniversalPcmAudioFilter nextFilter;
     private final boolean hotSwapEnabled;
@@ -90,4 +91,5 @@ public class UserProvidedAudioFilters extends CompositeAudioFilter {
             chain = buildFragment(context, nextFilter);
         }
     }
+
 }

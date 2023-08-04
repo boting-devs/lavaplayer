@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * Abstract base for all audio tracks with an executor
  */
 public abstract class BaseAudioTrack implements InternalAudioTrack {
+
     private final PrimordialAudioTrackExecutor initialExecutor;
     private final AtomicBoolean executorAssigned;
     private volatile AudioTrackExecutor activeExecutor;
@@ -167,4 +168,5 @@ public abstract class BaseAudioTrack implements InternalAudioTrack {
     protected AudioTrack makeShallowClone() {
         throw new UnsupportedOperationException();
     }
+
 }

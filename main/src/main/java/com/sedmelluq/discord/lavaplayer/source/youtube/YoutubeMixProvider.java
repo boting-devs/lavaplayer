@@ -27,6 +27,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Handles loading of YouTube mixes.
  */
 public class YoutubeMixProvider implements YoutubeMixLoader {
+
     /**
      * Loads tracks from mix in parallel into a playlist entry.
      *
@@ -114,4 +115,5 @@ public class YoutubeMixProvider implements YoutubeMixLoader {
 
         return null;
     }
+
 }

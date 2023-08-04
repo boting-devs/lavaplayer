@@ -13,6 +13,7 @@ import java.nio.ByteBuffer;
  * OGG stream handler for Opus codec.
  */
 public class OggOpusTrackHandler implements OggTrackHandler {
+
     private final OggPacketInputStream packetInputStream;
     private final DirectBufferStreamBroker broker;
     private final int channelCount;
@@ -25,7 +26,9 @@ public class OggOpusTrackHandler implements OggTrackHandler {
      * @param channelCount      Number of channels in the track.
      * @param sampleRate        Sample rate of the track.
      */
-    public OggOpusTrackHandler(OggPacketInputStream packetInputStream, DirectBufferStreamBroker broker, int channelCount,
+    public OggOpusTrackHandler(OggPacketInputStream packetInputStream,
+                               DirectBufferStreamBroker broker,
+                               int channelCount,
                                int sampleRate) {
 
         this.packetInputStream = packetInputStream;
@@ -72,4 +75,5 @@ public class OggOpusTrackHandler implements OggTrackHandler {
             opusPacketRouter.close();
         }
     }
+
 }

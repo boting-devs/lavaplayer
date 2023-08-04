@@ -16,6 +16,7 @@ import static com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSo
  * Audio track that handles processing Twitch tracks.
  */
 public class TwitchStreamAudioTrack extends MpegTsM3uStreamAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(TwitchStreamAudioTrack.class);
 
     private final TwitchStreamAudioSourceManager sourceManager;
@@ -65,4 +66,5 @@ public class TwitchStreamAudioTrack extends MpegTsM3uStreamAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

@@ -27,6 +27,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Probe for PLS playlist.
  */
 public class PlsPlaylistContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(PlsPlaylistContainerProbe.class);
 
     private static final int[] PLS_HEADER = new int[]{'[', -1, 'l', 'a', 'y', 'l', 'i', 's', 't', ']'};
@@ -45,7 +46,8 @@ public class PlsPlaylistContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!checkNextBytes(inputStream, PLS_HEADER)) {
             return null;
         }
@@ -84,4 +86,5 @@ public class PlsPlaylistContainerProbe implements MediaContainerProbe {
     public AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream) {
         throw new UnsupportedOperationException();
     }
+
 }

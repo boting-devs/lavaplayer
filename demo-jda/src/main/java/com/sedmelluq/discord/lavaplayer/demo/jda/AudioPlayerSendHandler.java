@@ -15,6 +15,7 @@ import java.nio.ByteBuffer;
  * provide20MsAudio().
  */
 public class AudioPlayerSendHandler implements AudioSendHandler {
+
     private final AudioPlayer audioPlayer;
     private final ByteBuffer buffer;
     private final MutableAudioFrame frame;
@@ -46,4 +47,5 @@ public class AudioPlayerSendHandler implements AudioSendHandler {
     public boolean isOpus() {
         return true;
     }
+
 }

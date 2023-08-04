@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.filter;
  * A filter for audio samples
  */
 public interface AudioFilter {
+
     /**
      * Indicates that the next samples are not a continuation from the previous ones and gives the timecode for the
      * next incoming sample.
@@ -24,4 +25,5 @@ public interface AudioFilter {
      * Free all resources. No more input is expected.
      */
     void close();
+
 }

@@ -18,6 +18,7 @@ import static java.nio.file.attribute.PosixFilePermissions.fromString;
  * Loads native libraries by name. Libraries are expected to be in classpath /natives/[arch]/[prefix]name[suffix]
  */
 public class NativeLibraryLoader {
+
     private static final Logger log = LoggerFactory.getLogger(NativeLibraryLoader.class);
 
     private static final String DEFAULT_PROPERTY_PREFIX = "lava.native.";
@@ -30,7 +31,9 @@ public class NativeLibraryLoader {
     private final Object lock;
     private volatile LoadResult previousResult;
 
-    public NativeLibraryLoader(String libraryName, Predicate<SystemType> systemFilter, NativeLibraryProperties properties,
+    public NativeLibraryLoader(String libraryName,
+                               Predicate<SystemType> systemFilter,
+                               NativeLibraryProperties properties,
                                NativeLibraryBinaryProvider binaryProvider) {
 
         this.libraryName = libraryName;
@@ -102,7 +105,8 @@ public class NativeLibraryLoader {
                 if (explicitDirectory != null) {
                     log.debug("Native library {}: explicit directory provided {}", libraryName, explicitDirectory);
 
-                    loadFromFile(Paths.get(explicitDirectory, systemType.formatLibraryName(libraryName)).toAbsolutePath());
+                    loadFromFile(Paths.get(explicitDirectory, systemType.formatLibraryName(libraryName))
+                        .toAbsolutePath());
                 } else {
                     loadFromFile(extractLibraryFromResources(systemType));
                 }
@@ -206,6 +210,7 @@ public class NativeLibraryLoader {
     }
 
     private static class LoadResult {
+
         public final boolean success;
         public final RuntimeException exception;
 
@@ -213,5 +218,7 @@ public class NativeLibraryLoader {
             this.success = success;
             this.exception = exception;
         }
+
     }
+
 }

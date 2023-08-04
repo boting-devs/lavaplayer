@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Thread factory for daemon threads.
  */
 public class DaemonThreadFactory implements ThreadFactory {
+
     private static final Logger log = LoggerFactory.getLogger(DaemonThreadFactory.class);
 
     private static final AtomicInteger poolNumber = new AtomicInteger(1);
@@ -54,6 +55,7 @@ public class DaemonThreadFactory implements ThreadFactory {
     }
 
     private class ExitCallbackRunnable implements Runnable {
+
         private final Runnable original;
 
         private ExitCallbackRunnable(Runnable original) {
@@ -84,5 +86,7 @@ public class DaemonThreadFactory implements ThreadFactory {
                 }
             }
         }
+
     }
+
 }

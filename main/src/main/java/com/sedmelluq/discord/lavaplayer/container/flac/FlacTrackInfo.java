@@ -6,6 +6,7 @@ import java.util.Map;
  * All relevant information about a FLAC track from its metadata.
  */
 public class FlacTrackInfo {
+
     /**
      * FLAC stream information.
      */
@@ -39,7 +40,10 @@ public class FlacTrackInfo {
      * @param tags               The map of tag values from comment metadata block.
      * @param firstFramePosition The position in the stream where the first frame starts.
      */
-    public FlacTrackInfo(FlacStreamInfo stream, FlacSeekPoint[] seekPoints, int seekPointCount, Map<String, String> tags,
+    public FlacTrackInfo(FlacStreamInfo stream,
+                         FlacSeekPoint[] seekPoints,
+                         int seekPointCount,
+                         Map<String, String> tags,
                          long firstFramePosition) {
 
         this.stream = stream;
@@ -49,4 +53,5 @@ public class FlacTrackInfo {
         this.firstFramePosition = firstFramePosition;
         this.duration = stream.sampleCount * 1000L / stream.sampleRate;
     }
+
 }

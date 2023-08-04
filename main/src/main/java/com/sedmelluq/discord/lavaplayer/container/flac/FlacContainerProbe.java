@@ -20,6 +20,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Container detection probe for MP3 format.
  */
 public class FlacContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(FlacContainerProbe.class);
 
     private static final String TITLE_TAG = "TITLE";
@@ -36,7 +37,8 @@ public class FlacContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!checkNextBytes(inputStream, FlacFileLoader.FLAC_CC)) {
             return null;
         }
@@ -58,4 +60,5 @@ public class FlacContainerProbe implements MediaContainerProbe {
     public AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream) {
         return new FlacAudioTrack(trackInfo, inputStream);
     }
+
 }

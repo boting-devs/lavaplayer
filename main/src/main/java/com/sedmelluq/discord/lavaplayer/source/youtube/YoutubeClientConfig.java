@@ -8,6 +8,7 @@ import static com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeHttpContext
 import static com.sedmelluq.discord.lavaplayer.source.youtube.YoutubePayloadHelper.putOnceAndJoin;
 
 public class YoutubeClientConfig extends JSONObject {
+
     public static final AndroidVersion DEFAULT_ANDROID_VERSION = AndroidVersion.ANDROID_11;
 
     public static YoutubeClientConfig ANDROID = new YoutubeClientConfig()
@@ -128,8 +129,7 @@ public class YoutubeClientConfig extends JSONObject {
     }
 
     public YoutubeClientConfig setAttribute(HttpInterface httpInterface) {
-        if (userAgent != null)
-            httpInterface.getContext().setAttribute(ATTRIBUTE_USER_AGENT_SPECIFIED, userAgent);
+        if (userAgent != null) {httpInterface.getContext().setAttribute(ATTRIBUTE_USER_AGENT_SPECIFIED, userAgent);}
         return this;
     }
 
@@ -157,4 +157,5 @@ public class YoutubeClientConfig extends JSONObject {
             return sdkVersion;
         }
     }
+
 }

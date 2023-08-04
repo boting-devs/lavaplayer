@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.SUSPICIOUS;
 
 public class DefaultSoundCloudPlaylistLoader implements SoundCloudPlaylistLoader {
+
     private static final Logger log = LoggerFactory.getLogger(DefaultSoundCloudPlaylistLoader.class);
 
     protected static final String PLAYLIST_URL_REGEX = "^(?:http://|https://|)(?:www\\.|)(?:m\\.|)soundcloud\\.com/([a-zA-Z0-9-_:]+)/sets/([a-zA-Z0-9-_:]+)/?([a-zA-Z0-9-_:]+)?(?:\\?.*|)$";
@@ -163,4 +164,5 @@ public class DefaultSoundCloudPlaylistLoader implements SoundCloudPlaylistLoader
             positions.getOrDefault(dataReader.readTrackId(trackData), Integer.MAX_VALUE)
         ));
     }
+
 }

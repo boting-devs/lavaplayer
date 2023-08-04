@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
  * Event that is fired when a track starts playing.
  */
 public class TrackStartEvent extends AudioEvent {
+
     /**
      * Audio track that started
      */
@@ -20,4 +21,5 @@ public class TrackStartEvent extends AudioEvent {
         super(player);
         this.track = track;
     }
+
 }

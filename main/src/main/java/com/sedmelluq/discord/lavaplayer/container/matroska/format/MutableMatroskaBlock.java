@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
  * a block with more than twice as many frames as seen before, or a frame more than twice as long as before.
  */
 public class MutableMatroskaBlock implements MatroskaBlock {
+
     private int timecode;
     private int trackNumber;
     private boolean keyFrame;
@@ -158,4 +159,5 @@ public class MutableMatroskaBlock implements MatroskaBlock {
 
         frameSizes[frameCount - 1] = (int) element.getRemaining(reader.getPosition()) - sizeTotal;
     }
+
 }

@@ -7,6 +7,7 @@ import java.io.OutputStream;
  * Helper for writing a specific number of bits at a time to a stream.
  */
 public class BitStreamWriter {
+
     private final OutputStream stream;
     private int currentByte;
     private int bitsUnused;
@@ -61,4 +62,5 @@ public class BitStreamWriter {
         bitsUnused = 8;
         currentByte = 0;
     }
+
 }

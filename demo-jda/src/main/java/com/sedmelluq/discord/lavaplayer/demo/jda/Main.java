@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main extends ListenerAdapter {
+
     public static void main(String[] args) throws Exception {
         new JDABuilder(AccountType.BOT)
             .setToken(System.getProperty("botToken"))
@@ -84,7 +85,8 @@ public class Main extends ListenerAdapter {
                     firstTrack = playlist.getTracks().get(0);
                 }
 
-                channel.sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
+                channel.sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")")
+                    .queue();
 
                 play(channel.getGuild(), musicManager, firstTrack);
             }
@@ -122,4 +124,5 @@ public class Main extends ListenerAdapter {
             }
         }
     }
+
 }

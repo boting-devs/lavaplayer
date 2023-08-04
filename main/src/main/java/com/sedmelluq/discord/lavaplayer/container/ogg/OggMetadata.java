@@ -10,6 +10,7 @@ import java.util.Map;
  * Audio track info provider based on OGG metadata map.
  */
 public class OggMetadata implements AudioTrackInfoProvider {
+
     public static final OggMetadata EMPTY = new OggMetadata(Collections.emptyMap(), Units.DURATION_MS_UNKNOWN);
 
     private static final String TITLE_FIELD = "TITLE";
@@ -60,4 +61,5 @@ public class OggMetadata implements AudioTrackInfoProvider {
     public String getISRC() {
         return null;
     }
+
 }

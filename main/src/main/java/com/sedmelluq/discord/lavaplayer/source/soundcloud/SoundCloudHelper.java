@@ -21,6 +21,7 @@ import java.util.List;
 import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.SUSPICIOUS;
 
 public class SoundCloudHelper {
+
     public static String nonMobileUrl(String url) {
         if (url.startsWith("https://m.")) {
             return "https://" + url.substring("https://m.".length());
@@ -70,4 +71,5 @@ public class SoundCloudHelper {
             throw ExceptionTools.wrapUnfriendlyExceptions(e);
         }
     }
+
 }

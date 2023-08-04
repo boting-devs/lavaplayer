@@ -22,6 +22,7 @@ import java.nio.ShortBuffer;
  * pipeline of the output if necessary.
  */
 public class OpusPacketRouter {
+
     private static final Logger log = LoggerFactory.getLogger(OpusPacketRouter.class);
 
     private final AudioProcessingContext context;
@@ -153,7 +154,9 @@ public class OpusPacketRouter {
         }
 
         if (frameBuffer == null || frameBuffer.capacity() < frameSize * inputChannels) {
-            frameBuffer = ByteBuffer.allocateDirect(frameSize * inputChannels * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
+            frameBuffer = ByteBuffer.allocateDirect(frameSize * inputChannels * 2)
+                .order(ByteOrder.nativeOrder())
+                .asShortBuffer();
         }
 
         frameBuffer.clear();
@@ -220,4 +223,5 @@ public class OpusPacketRouter {
         directInput = null;
         frameBuffer = null;
     }
+
 }

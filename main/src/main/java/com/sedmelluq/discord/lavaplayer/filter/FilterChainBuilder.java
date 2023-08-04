@@ -11,6 +11,7 @@ import java.util.List;
  * Builder for audio filter chains.
  */
 public class FilterChainBuilder {
+
     private final List<AudioFilter> filters = new ArrayList<>();
 
     /**
@@ -83,4 +84,5 @@ public class FilterChainBuilder {
         addFirst(universalInput);
         return universalInput;
     }
+
 }

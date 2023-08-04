@@ -1,6 +1,7 @@
 package com.sedmelluq.discord.lavaplayer.container.ogg;
 
 public class OggSeekPoint {
+
     private final long position;
     private final long granulePosition;
     private final long timecode;
@@ -46,4 +47,5 @@ public class OggSeekPoint {
     public long getPageSequence() {
         return pageSequence;
     }
+
 }

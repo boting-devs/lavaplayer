@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
  * A byte buffer exposed as an input stream.
  */
 public class ByteBufferInputStream extends InputStream {
+
     private final ByteBuffer buffer;
 
     /**
@@ -41,4 +42,5 @@ public class ByteBufferInputStream extends InputStream {
     public int available() throws IOException {
         return buffer.remaining();
     }
+
 }

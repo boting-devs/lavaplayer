@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class NonSeekableInputStream extends SeekableInputStream {
+
     private final CountingInputStream delegate;
 
     public NonSeekableInputStream(InputStream delegate) {
@@ -51,4 +52,5 @@ public class NonSeekableInputStream extends SeekableInputStream {
     public void close() throws IOException {
         delegate.close();
     }
+
 }

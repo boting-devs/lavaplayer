@@ -15,6 +15,7 @@ import java.util.List;
  * Handles reading parts of an MP4 file
  */
 public class MpegReader {
+
     /**
      * The input as a DataInput
      */
@@ -147,7 +148,8 @@ public class MpegReader {
         return parseFlagsForSection(data, section);
     }
 
-    private static MpegVersionedSectionInfo parseFlagsForSection(DataInput in, MpegSectionInfo section) throws IOException {
+    private static MpegVersionedSectionInfo parseFlagsForSection(DataInput in,
+                                                                 MpegSectionInfo section) throws IOException {
         int versionAndFlags = in.readInt();
         return new MpegVersionedSectionInfo(section, versionAndFlags >>> 24, versionAndFlags & 0xffffff);
     }
@@ -178,6 +180,7 @@ public class MpegReader {
      * Child element processing helper class.
      */
     public static class Chain {
+
         private final MpegSectionInfo parent;
         private final List<Handler> handlers;
         private final MpegReader reader;
@@ -282,9 +285,11 @@ public class MpegReader {
 
             return !handler.terminator;
         }
+
     }
 
     private static class Handler {
+
         private final String type;
         private final boolean terminator;
         private final Object sectionHandler;
@@ -294,5 +299,7 @@ public class MpegReader {
             this.terminator = terminator;
             this.sectionHandler = sectionHandler;
         }
+
     }
+
 }

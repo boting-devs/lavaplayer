@@ -17,6 +17,7 @@ import java.nio.ShortBuffer;
  * A frame rebuilder to apply a specific volume level to the frames.
  */
 public class AudioFrameVolumeChanger implements AudioFrameRebuilder {
+
     private final AudioConfiguration configuration;
     private final AudioDataFormat format;
     private final int newVolume;
@@ -103,4 +104,5 @@ public class AudioFrameVolumeChanger implements AudioFrameRebuilder {
             volumeChanger.clearLibraries();
         }
     }
+
 }

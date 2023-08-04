@@ -10,6 +10,7 @@ import java.util.List;
  * intended for. Not thread-safe.
  */
 public class CopyOnUpdateIdentityList<T> {
+
     public List<T> items = Collections.emptyList();
 
     public void add(T item) {
@@ -37,4 +38,5 @@ public class CopyOnUpdateIdentityList<T> {
 
         items = updated;
     }
+
 }

@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
  * Audio track that handles a FLAC stream
  */
 public class FlacAudioTrack extends BaseAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(FlacAudioTrack.class);
 
     private final SeekableInputStream inputStream;
@@ -37,4 +38,5 @@ public class FlacAudioTrack extends BaseAudioTrack {
             trackProvider.close();
         }
     }
+
 }

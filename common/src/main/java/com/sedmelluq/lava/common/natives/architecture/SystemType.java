@@ -5,6 +5,7 @@ import com.sedmelluq.lava.common.natives.NativeLibraryProperties;
 import java.util.Optional;
 
 public class SystemType {
+
     public final ArchitectureType architectureType;
     public final OperatingSystemType osType;
 
@@ -52,6 +53,7 @@ public class SystemType {
     }
 
     private static class UnknownOperatingSystem implements OperatingSystemType {
+
         private final String libraryFilePrefix;
         private final String libraryFileSuffix;
 
@@ -74,5 +76,7 @@ public class SystemType {
         public String libraryFileSuffix() {
             return libraryFileSuffix;
         }
+
     }
+
 }

@@ -15,6 +15,7 @@ import java.util.Map;
 import static com.sedmelluq.discord.lavaplayer.tools.DataFormatTools.decodeUrlEncodedItems;
 
 public class LegacyStreamMapFormatsExtractor implements OfflineYoutubeTrackFormatExtractor {
+
     private static final Logger log = LoggerFactory.getLogger(LegacyStreamMapFormatsExtractor.class);
 
     @Override
@@ -85,4 +86,5 @@ public class LegacyStreamMapFormatsExtractor implements OfflineYoutubeTrackForma
             return -1;
         }
     }
+
 }

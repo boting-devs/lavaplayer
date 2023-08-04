@@ -19,6 +19,7 @@ import java.net.URI;
  * Audio track that handles processing SoundCloud tracks.
  */
 public class SoundCloudAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(SoundCloudAudioTrack.class);
 
     private final SoundCloudAudioSourceManager sourceManager;
@@ -93,4 +94,5 @@ public class SoundCloudAudioTrack extends DelegatedAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

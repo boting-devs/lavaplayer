@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Factory for audio frame buffers.
  */
 public interface AudioFrameBufferFactory {
+
     /**
      * @param bufferDuration Maximum duration of the buffer. The buffer may actually hold less in case the average size of
      *                       frames exceeds {@link AudioDataFormat#expectedChunkSize()}.
@@ -16,4 +17,5 @@ public interface AudioFrameBufferFactory {
      * @return A new frame buffer instance.
      */
     AudioFrameBuffer create(int bufferDuration, AudioDataFormat format, AtomicBoolean stopping);
+
 }

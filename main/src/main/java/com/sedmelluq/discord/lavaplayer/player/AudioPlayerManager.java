@@ -113,7 +113,9 @@ public interface AudioPlayerManager {
      * @return A future for this operation
      * @see #loadItemOrdered(Object, AudioReference, AudioLoadResultHandler)
      */
-    default Future<Void> loadItemOrdered(Object orderingKey, final String identifier, final AudioLoadResultHandler resultHandler) {
+    default Future<Void> loadItemOrdered(Object orderingKey,
+                                         final String identifier,
+                                         final AudioLoadResultHandler resultHandler) {
         return loadItemOrdered(orderingKey, new AudioReference(identifier, null), resultHandler);
     }
 
@@ -129,7 +131,9 @@ public interface AudioPlayerManager {
      * @return A future for this operation
      * @see #loadItemOrdered(Object, String, AudioLoadResultHandler)
      */
-    Future<Void> loadItemOrdered(Object orderingKey, final AudioReference reference, final AudioLoadResultHandler resultHandler);
+    Future<Void> loadItemOrdered(Object orderingKey,
+                                 final AudioReference reference,
+                                 final AudioLoadResultHandler resultHandler);
 
     /**
      * Encode a track into an output stream. If the decoder is not supposed to know the number of tracks in advance, then
@@ -223,4 +227,5 @@ public interface AudioPlayerManager {
      *                     used.
      */
     void setHttpBuilderConfigurator(Consumer<HttpClientBuilder> configurator);
+
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class YoutubeIpRotatorSetup {
+
     private static final int DEFAULT_RETRY_LIMIT = 10;
     private static final YoutubeHttpContextFilter DEFAULT_DELEGATE = new YoutubeHttpContextFilter();
     private static final YoutubeIpRotatorRetryHandler RETRY_HANDLER = new YoutubeIpRotatorRetryHandler();
@@ -96,4 +97,5 @@ public class YoutubeIpRotatorSetup {
             configurable.setHttpContextFilter(filter);
         }
     }
+
 }

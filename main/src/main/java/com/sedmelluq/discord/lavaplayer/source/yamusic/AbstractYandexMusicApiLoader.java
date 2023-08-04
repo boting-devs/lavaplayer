@@ -62,6 +62,9 @@ public abstract class AbstractYandexMusicApiLoader implements YandexMusicApiLoad
     }
 
     protected interface ApiExtractor<T> {
+
         T extract(HttpInterface httpInterface, JsonBrowser result) throws Exception;
+
     }
+
 }

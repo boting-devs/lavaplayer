@@ -15,6 +15,7 @@ import static com.sedmelluq.discord.lavaplayer.container.flac.FlacMetadataHeader
  * Handles reading one FLAC metadata blocks.
  */
 public class FlacMetadataReader {
+
     private static final Charset CHARSET = StandardCharsets.UTF_8;
 
     /**
@@ -51,7 +52,9 @@ public class FlacMetadataReader {
      * @return True if there are more metadata blocks available
      * @throws IOException On read error
      */
-    public static boolean readMetadataBlock(DataInput dataInput, InputStream inputStream, FlacTrackInfoBuilder trackInfoBuilder) throws IOException {
+    public static boolean readMetadataBlock(DataInput dataInput,
+                                            InputStream inputStream,
+                                            FlacTrackInfoBuilder trackInfoBuilder) throws IOException {
         FlacMetadataHeader header = readMetadataHeader(dataInput);
 
         if (header.blockType == BLOCK_SEEKTABLE) {
@@ -65,7 +68,9 @@ public class FlacMetadataReader {
         return !header.isLastBlock;
     }
 
-    private static void readCommentBlock(DataInput dataInput, InputStream inputStream, FlacTrackInfoBuilder trackInfoBuilder) throws IOException {
+    private static void readCommentBlock(DataInput dataInput,
+                                         InputStream inputStream,
+                                         FlacTrackInfoBuilder trackInfoBuilder) throws IOException {
         int vendorLength = Integer.reverseBytes(dataInput.readInt());
         IOUtils.skipFully(inputStream, vendorLength);
 
@@ -86,7 +91,9 @@ public class FlacMetadataReader {
         }
     }
 
-    private static void readSeekTableBlock(DataInput dataInput, FlacTrackInfoBuilder trackInfoBuilder, int length) throws IOException {
+    private static void readSeekTableBlock(DataInput dataInput,
+                                           FlacTrackInfoBuilder trackInfoBuilder,
+                                           int length) throws IOException {
         FlacSeekPoint[] seekPoints = new FlacSeekPoint[length / FlacSeekPoint.LENGTH];
         int seekPointCount = 0;
 
@@ -104,4 +111,5 @@ public class FlacMetadataReader {
 
         trackInfoBuilder.setSeekPoints(seekPoints, seekPointCount);
     }
+
 }

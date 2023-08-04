@@ -27,6 +27,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.io.HttpClientTools.isSucces
  * and using a closed stream will just reopen the connection.
  */
 public class PersistentHttpStream extends SeekableInputStream implements AutoCloseable {
+
     private static final Logger log = LoggerFactory.getLogger(PersistentHttpStream.class);
 
     private static final long MAX_SKIP_DISTANCE = 512L * 1024L;
@@ -307,4 +308,5 @@ public class PersistentHttpStream extends SeekableInputStream implements AutoClo
 
         return builder;
     }
+
 }

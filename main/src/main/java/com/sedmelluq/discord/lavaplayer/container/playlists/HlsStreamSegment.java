@@ -1,6 +1,7 @@
 package com.sedmelluq.discord.lavaplayer.container.playlists;
 
 public class HlsStreamSegment {
+
     /**
      * URL of the segment.
      */
@@ -19,4 +20,5 @@ public class HlsStreamSegment {
         this.duration = duration;
         this.name = name;
     }
+
 }

@@ -20,6 +20,7 @@ import java.util.List;
  * Builder for a trust manager with custom certificates.
  */
 public class TrustManagerBuilder {
+
     private static final Logger log = LoggerFactory.getLogger(TrustManagerBuilder.class);
 
     private final List<Certificate> certificates = new ArrayList<>();
@@ -136,4 +137,5 @@ public class TrustManagerBuilder {
             }
         }
     }
+
 }

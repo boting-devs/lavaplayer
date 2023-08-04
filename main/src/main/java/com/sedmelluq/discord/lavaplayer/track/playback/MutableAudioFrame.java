@@ -6,6 +6,7 @@ import java.nio.ByteBuffer;
  * A mutable audio frame.
  */
 public class MutableAudioFrame extends AbstractMutableAudioFrame {
+
     private ByteBuffer frameBuffer;
     private int framePosition;
     private int frameLength;
@@ -54,4 +55,5 @@ public class MutableAudioFrame extends AbstractMutableAudioFrame {
         frameBuffer.get(buffer, offset, frameLength);
         frameBuffer.position(previous);
     }
+
 }

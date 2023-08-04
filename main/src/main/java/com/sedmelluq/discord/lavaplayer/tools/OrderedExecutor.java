@@ -6,6 +6,7 @@ import java.util.concurrent.*;
  * Wrapper for executor services which ensures that tasks with the same key are processed in order.
  */
 public class OrderedExecutor {
+
     private final ExecutorService delegateService;
     private final ConcurrentMap<Object, BlockingQueue<Runnable>> states;
 
@@ -65,6 +66,7 @@ public class OrderedExecutor {
     }
 
     private class ChannelRunnable implements Runnable {
+
         private final Object key;
 
         private ChannelRunnable(Object key) {
@@ -98,5 +100,7 @@ public class OrderedExecutor {
 
             states.remove(key, queue);
         }
+
     }
+
 }

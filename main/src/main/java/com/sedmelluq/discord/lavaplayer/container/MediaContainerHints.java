@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container;
  * Optional meta-information about a stream which may narrow down the list of possible containers.
  */
 public class MediaContainerHints {
+
     private static final MediaContainerHints NO_INFORMATION = new MediaContainerHints(null, null);
 
     /**
@@ -39,4 +40,5 @@ public class MediaContainerHints {
             return new MediaContainerHints(mimeType, fileExtension);
         }
     }
+
 }

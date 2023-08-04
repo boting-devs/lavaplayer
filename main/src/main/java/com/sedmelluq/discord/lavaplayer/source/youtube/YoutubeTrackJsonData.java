@@ -10,6 +10,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.ExceptionTools.throwWithDeb
 import static com.sedmelluq.discord.lavaplayer.tools.JsonBrowser.NULL_BROWSER;
 
 public class YoutubeTrackJsonData {
+
     private static final Logger log = LoggerFactory.getLogger(DefaultYoutubeTrackDetailsLoader.class);
 
     public final JsonBrowser playerResponse;
@@ -85,4 +86,5 @@ public class YoutubeTrackJsonData {
             throw throwWithDebugInfo(log, e, "Failed to parse player_response", "value", playerResponseText);
         }
     }
+
 }

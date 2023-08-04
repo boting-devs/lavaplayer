@@ -3,6 +3,7 @@ package com.sedmelluq.discord.lavaplayer.tools.http;
 import org.apache.http.client.protocol.HttpClientContext;
 
 public class HttpContextRetryCounter {
+
     private final String attributeName;
 
     public HttpContextRetryCounter(String attributeName) {
@@ -34,6 +35,9 @@ public class HttpContextRetryCounter {
     }
 
     private static class RetryCount {
+
         private int value;
+
     }
+
 }

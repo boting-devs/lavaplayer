@@ -6,6 +6,7 @@ import com.sedmelluq.lava.common.natives.NativeResourceHolder;
  * Sample rate converter backed by libsamplerate
  */
 public class SampleRateConverter extends NativeResourceHolder {
+
     private final SampleRateLibrary library;
     private final double ratio;
     private final long instance;
@@ -45,7 +46,14 @@ public class SampleRateConverter extends NativeResourceHolder {
      * @param endOfInput   If this is the last piece of input
      * @param progress     Instance that is filled with the progress
      */
-    public void process(float[] input, int inputOffset, int inputLength, float[] output, int outputOffset, int outputLength, boolean endOfInput, Progress progress) {
+    public void process(float[] input,
+                        int inputOffset,
+                        int inputLength,
+                        float[] output,
+                        int outputOffset,
+                        int outputLength,
+                        boolean endOfInput,
+                        Progress progress) {
         checkNotReleased();
 
         int error = library.process(instance, input, inputOffset, inputLength, output, outputOffset, outputLength, endOfInput, ratio, progress.fields);
@@ -64,6 +72,7 @@ public class SampleRateConverter extends NativeResourceHolder {
      * Progress of converting one piece of data
      */
     public static class Progress {
+
         private final int[] fields = new int[2];
 
         /**
@@ -79,6 +88,7 @@ public class SampleRateConverter extends NativeResourceHolder {
         public int getOutputGenerated() {
             return fields[1];
         }
+
     }
 
     /**
@@ -91,4 +101,5 @@ public class SampleRateConverter extends NativeResourceHolder {
         ZERO_ORDER_HOLD,
         LINEAR
     }
+
 }

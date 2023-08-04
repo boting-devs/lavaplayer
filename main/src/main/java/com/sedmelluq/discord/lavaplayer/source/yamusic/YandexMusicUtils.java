@@ -8,6 +8,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class YandexMusicUtils {
+
     private static final String TRACK_URL_FORMAT = "https://music.yandex.ru/album/%s/track/%s";
 
     public static AudioTrack extractTrack(JsonBrowser trackInfo, Function<AudioTrackInfo, AudioTrack> trackFactory) {
@@ -54,4 +55,5 @@ public class YandexMusicUtils {
             null
         ));
     }
+
 }

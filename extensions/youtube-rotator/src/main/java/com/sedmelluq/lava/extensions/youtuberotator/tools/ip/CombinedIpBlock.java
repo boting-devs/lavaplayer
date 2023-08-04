@@ -19,11 +19,11 @@ public final class CombinedIpBlock extends IpBlock {
     private final ReentrantLock lock;
 
     public CombinedIpBlock(final List<IpBlock> ipBlocks) {
-        if (ipBlocks.size() == 0)
-            throw new IllegalArgumentException("Ip Blocks list size must be greater than zero");
+        if (ipBlocks.size() == 0) {throw new IllegalArgumentException("Ip Blocks list size must be greater than zero");}
         this.type = ipBlocks.get(0).getType();
-        if (ipBlocks.stream().anyMatch(block -> !block.getType().equals(type)))
+        if (ipBlocks.stream().anyMatch(block -> !block.getType().equals(type))) {
             throw new IllegalArgumentException("All Ip Blocks must have the same type for a combined block");
+        }
         this.ipBlocks = ipBlocks;
         this.hitProbability = new int[this.ipBlocks.size()];
 
@@ -50,8 +50,7 @@ public final class CombinedIpBlock extends IpBlock {
 
     @Override
     public InetAddress getRandomAddress() {
-        if (ipBlocks.size() == 1)
-            return ipBlocks.get(0).getRandomAddress();
+        if (ipBlocks.size() == 1) {return ipBlocks.get(0).getRandomAddress();}
         final int probability = random.nextInt(Integer.MAX_VALUE);
         int probabilitySum = 0;
         int matchIndex = 0;
@@ -69,11 +68,9 @@ public final class CombinedIpBlock extends IpBlock {
     public InetAddress getAddressAtIndex(BigInteger index) {
         int blockIndex = 0;
         while (index.compareTo(BigInteger.ZERO) > 0) {
-            if (ipBlocks.size() <= blockIndex)
-                break;
+            if (ipBlocks.size() <= blockIndex) {break;}
             final IpBlock ipBlock = ipBlocks.get(blockIndex);
-            if (ipBlock.getSize().compareTo(index) > 0)
-                return ipBlock.getAddressAtIndex(index);
+            if (ipBlock.getSize().compareTo(index) > 0) {return ipBlock.getAddressAtIndex(index);}
             index = index.subtract(ipBlock.getSize());
             blockIndex++;
         }
@@ -113,12 +110,12 @@ public final class CombinedIpBlock extends IpBlock {
                 final int nextSize = bitsAtIndex / 2;
                 bits[i] = bitsAtIndex - nextSize * 2;
                 bits[i - 1] = bits[i - 1] + nextSize;
-                if (bits[i - 1] > 0)
-                    maskBits = i;
+                if (bits[i - 1] > 0) {maskBits = i;}
             }
             return maskBits;
         } catch (final InterruptedException ex) {
             throw new RuntimeException("Could not acquire lock", ex);
         }
     }
+
 }

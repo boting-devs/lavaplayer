@@ -7,6 +7,7 @@ import java.io.*;
  * decoder does not recognize some of the messages, it can skip over the message since it knows its size in advance.
  */
 public class MessageOutput {
+
     private final OutputStream outputStream;
     private final DataOutputStream dataOutputStream;
     private final ByteArrayOutputStream messageByteOutput;
@@ -59,4 +60,5 @@ public class MessageOutput {
     public void finish() throws IOException {
         dataOutputStream.writeInt(0);
     }
+
 }

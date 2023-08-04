@@ -3,6 +3,7 @@ package com.sedmelluq.discord.lavaplayer.natives.statistics;
 import com.sedmelluq.discord.lavaplayer.natives.ConnectorNativeLibLoader;
 
 class CpuStatisticsLibrary {
+
     private CpuStatisticsLibrary() {
 
     }
@@ -25,4 +26,5 @@ class CpuStatisticsLibrary {
             return ordinal();
         }
     }
+
 }

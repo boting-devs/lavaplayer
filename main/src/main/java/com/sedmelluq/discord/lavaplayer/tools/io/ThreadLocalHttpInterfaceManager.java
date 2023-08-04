@@ -13,6 +13,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
  * client instance used is created lazily.
  */
 public class ThreadLocalHttpInterfaceManager extends AbstractHttpInterfaceManager {
+
     private final ThreadLocal<HttpInterface> httpInterfaces;
     private final SettableHttpRequestFilter filter;
 
@@ -52,4 +53,5 @@ public class ThreadLocalHttpInterfaceManager extends AbstractHttpInterfaceManage
     public void setHttpContextFilter(HttpContextFilter modifier) {
         filter.set(modifier);
     }
+
 }

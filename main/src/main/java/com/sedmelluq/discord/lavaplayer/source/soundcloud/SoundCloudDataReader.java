@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import java.util.List;
 
 public interface SoundCloudDataReader {
+
     JsonBrowser findTrackData(JsonBrowser rootData);
 
     String readTrackId(JsonBrowser trackData);
@@ -23,4 +24,5 @@ public interface SoundCloudDataReader {
     String readPlaylistIdentifier(JsonBrowser playlistData);
 
     List<JsonBrowser> readPlaylistTracks(JsonBrowser playlistData);
+
 }

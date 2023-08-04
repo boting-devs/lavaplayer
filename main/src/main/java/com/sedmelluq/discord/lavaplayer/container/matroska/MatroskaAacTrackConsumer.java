@@ -15,6 +15,7 @@ import java.nio.ByteBuffer;
  * Consumes AAC track data from a matroska file.
  */
 public class MatroskaAacTrackConsumer implements MatroskaTrackConsumer {
+
     private static final Logger log = LoggerFactory.getLogger(MpegAacTrackConsumer.class);
 
     private final MatroskaFileTrack track;
@@ -100,4 +101,5 @@ public class MatroskaAacTrackConsumer implements MatroskaTrackConsumer {
     private boolean configureDecoder(AacDecoder decoder) {
         return (decoder.configure(track.codecPrivate) == 0);
     }
+
 }

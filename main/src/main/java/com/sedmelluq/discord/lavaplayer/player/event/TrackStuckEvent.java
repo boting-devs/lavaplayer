@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
  * by the threshold set via AudioPlayerManager.setTrackStuckThreshold().
  */
 public class TrackStuckEvent extends AudioEvent {
+
     /**
      * Audio track where the exception occurred
      */
@@ -30,4 +31,5 @@ public class TrackStuckEvent extends AudioEvent {
         this.thresholdMs = thresholdMs;
         this.stackTrace = stackTrace;
     }
+
 }

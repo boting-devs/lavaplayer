@@ -1,6 +1,7 @@
 package com.sedmelluq.discord.lavaplayer.tools;
 
 public class Units {
+
     /**
      * Not a negative number, so that we would not need to test for it separately when comparing.
      */
@@ -21,4 +22,5 @@ public class Units {
             return seconds * 1000;
         }
     }
+
 }

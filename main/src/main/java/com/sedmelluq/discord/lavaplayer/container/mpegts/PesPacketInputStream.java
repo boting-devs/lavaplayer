@@ -11,6 +11,7 @@ import java.nio.ByteBuffer;
  * upstream.
  */
 public class PesPacketInputStream extends InputStream {
+
     private static final byte[] SYNC_BYTES = new byte[]{0x00, 0x00, 0x01};
 
     private final InputStream inputStream;
@@ -103,4 +104,5 @@ public class PesPacketInputStream extends InputStream {
     public int available() throws IOException {
         return packetBytesLeft;
     }
+
 }

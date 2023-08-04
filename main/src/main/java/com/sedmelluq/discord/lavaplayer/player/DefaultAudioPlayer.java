@@ -25,6 +25,7 @@ import static com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason.*;
  * An audio player that is capable of playing audio tracks and provides audio frames from the currently playing track.
  */
 public class DefaultAudioPlayer implements AudioPlayer, TrackStateListener {
+
     private static final Logger log = LoggerFactory.getLogger(AudioPlayer.class);
 
     private volatile InternalAudioTrack activeTrack;
@@ -243,7 +244,8 @@ public class DefaultAudioPlayer implements AudioPlayer, TrackStateListener {
             if (activeTrack == track) {
                 activeTrack = null;
 
-                dispatchEvent(new TrackEndEvent(this, track, track.getActiveExecutor().failedBeforeLoad() ? LOAD_FAILED : FINISHED));
+                dispatchEvent(new TrackEndEvent(this, track, track.getActiveExecutor()
+                    .failedBeforeLoad() ? LOAD_FAILED : FINISHED));
             }
         }
     }
@@ -382,4 +384,5 @@ public class DefaultAudioPlayer implements AudioPlayer, TrackStateListener {
             stopWithReason(CLEANUP);
         }
     }
+
 }

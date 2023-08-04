@@ -34,6 +34,7 @@ import java.util.stream.Stream;
  * Handles parsing and caching of signature ciphers
  */
 public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeSignatureCipherManager.class);
 
     private static final String VARIABLE_PART = "[a-zA-Z_\\$][a-zA-Z_0-9]*";
@@ -105,7 +106,9 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
      * @throws IOException On network IO error
      */
     @Override
-    public URI resolveFormatUrl(HttpInterface httpInterface, String playerScript, YoutubeTrackFormat format) throws IOException {
+    public URI resolveFormatUrl(HttpInterface httpInterface,
+                                String playerScript,
+                                YoutubeTrackFormat format) throws IOException {
         String signature = format.getSignature();
         String nParameter = format.getNParameter();
         URI initialUrl = format.getUrl();
@@ -154,7 +157,8 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
     }
 
     @Override
-    public YoutubeSignatureCipher getExtractedScript(HttpInterface httpInterface, String cipherScriptUrl) throws IOException {
+    public YoutubeSignatureCipher getExtractedScript(HttpInterface httpInterface,
+                                                     String cipherScriptUrl) throws IOException {
         YoutubeSignatureCipher cipherKey = cipherCache.get(cipherScriptUrl);
 
         if (cipherKey == null) {
@@ -164,7 +168,8 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
                 try (CloseableHttpResponse response = httpInterface.execute(new HttpGet(parseTokenScriptUrl(cipherScriptUrl)))) {
                     validateResponseCode(cipherScriptUrl, response);
 
-                    cipherKey = extractFromScript(IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8), cipherScriptUrl);
+                    cipherKey = extractFromScript(IOUtils.toString(response.getEntity()
+                        .getContent(), StandardCharsets.UTF_8), cipherScriptUrl);
                     cipherCache.put(cipherScriptUrl, cipherKey);
                 }
             }
@@ -296,4 +301,5 @@ public class YoutubeSignatureCipherManager implements YoutubeSignatureResolver {
             throw new RuntimeException(e);
         }
     }
+
 }

@@ -11,6 +11,7 @@ import java.io.IOException;
  * Track information probe for one media container type and factory for tracks for that container.
  */
 public interface MediaContainerProbe {
+
     /**
      * @return The name of this container
      */
@@ -45,4 +46,5 @@ public interface MediaContainerProbe {
      * @return A new audio track
      */
     AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream);
+
 }

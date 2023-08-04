@@ -3,6 +3,7 @@ package com.sedmelluq.discord.lavaplayer.source.soundcloud;
 import java.util.List;
 
 public class DefaultSoundCloudFormatHandler implements SoundCloudFormatHandler {
+
     private static final FormatType[] TYPES = FormatType.values();
 
     @Override
@@ -78,4 +79,5 @@ public class DefaultSoundCloudFormatHandler implements SoundCloudFormatHandler {
             return protocol.equals(format.getProtocol()) && format.getMimeType().contains(mimeType);
         }
     }
+
 }

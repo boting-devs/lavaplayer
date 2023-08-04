@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.ogg;
  * Describes the size information of an OGG stream.
  */
 public class OggStreamSizeInfo {
+
     /**
      * Total number of bytes in the stream.
      */
@@ -48,4 +49,5 @@ public class OggStreamSizeInfo {
     public long getDuration() {
         return totalSamples * 1000 / sampleRate;
     }
+
 }

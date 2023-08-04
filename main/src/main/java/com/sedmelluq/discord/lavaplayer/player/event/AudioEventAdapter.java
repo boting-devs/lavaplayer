@@ -9,6 +9,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
  * Adapter for different event handlers as method overrides
  */
 public abstract class AudioEventAdapter implements AudioEventListener {
+
     /**
      * @param player Audio player
      */
@@ -79,4 +80,5 @@ public abstract class AudioEventAdapter implements AudioEventListener {
             onTrackStuck(event.player, stuck.track, stuck.thresholdMs, stuck.stackTrace);
         }
     }
+
 }

@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.track.info.AudioTrackInfoProvider;
  * which means that the item referred to in it is loaded instead.
  */
 public class AudioReference implements AudioItem, AudioTrackInfoProvider {
+
     public static final AudioReference NO_TRACK = new AudioReference(null, null, null);
 
     /**
@@ -75,4 +76,5 @@ public class AudioReference implements AudioItem, AudioTrackInfoProvider {
     public String getISRC() {
         return null;
     }
+
 }

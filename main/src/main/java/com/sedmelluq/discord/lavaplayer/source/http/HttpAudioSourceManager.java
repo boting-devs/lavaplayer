@@ -32,6 +32,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.io.HttpClientTools.getHeade
  * Audio source manager which implements finding audio files from HTTP addresses.
  */
 public class HttpAudioSourceManager extends ProbingAudioSourceManager implements HttpConfigurable {
+
     private final HttpInterfaceManager httpInterfaceManager;
 
     /**
@@ -68,7 +69,8 @@ public class HttpAudioSourceManager extends ProbingAudioSourceManager implements
         }
 
         if (httpReference.containerDescriptor != null) {
-            return createTrack(AudioTrackInfoBuilder.create(reference, null).build(), httpReference.containerDescriptor);
+            return createTrack(AudioTrackInfoBuilder.create(reference, null)
+                .build(), httpReference.containerDescriptor);
         } else {
             return handleLoadResult(detectContainer(httpReference));
         }
@@ -117,7 +119,8 @@ public class HttpAudioSourceManager extends ProbingAudioSourceManager implements
         return result;
     }
 
-    private MediaContainerDetectionResult detectContainerWithClient(HttpInterface httpInterface, AudioReference reference) throws IOException {
+    private MediaContainerDetectionResult detectContainerWithClient(HttpInterface httpInterface,
+                                                                    AudioReference reference) throws IOException {
         try (PersistentHttpStream inputStream = new PersistentHttpStream(httpInterface, new URI(reference.identifier), Units.CONTENT_LENGTH_UNKNOWN)) {
             int statusCode = inputStream.checkStatusCode();
             String redirectUrl = HttpClientTools.getRedirectLocation(reference.identifier, inputStream.getCurrentResponse());
@@ -162,4 +165,5 @@ public class HttpAudioSourceManager extends ProbingAudioSourceManager implements
     public void shutdown() {
         // Nothing to shut down
     }
+
 }

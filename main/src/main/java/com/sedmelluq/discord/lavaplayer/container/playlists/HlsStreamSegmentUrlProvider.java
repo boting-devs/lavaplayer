@@ -13,6 +13,7 @@ import java.util.List;
 import static com.sedmelluq.discord.lavaplayer.tools.io.HttpClientTools.fetchResponseLines;
 
 public class HlsStreamSegmentUrlProvider extends M3uStreamSegmentUrlProvider {
+
     private static final Logger log = LoggerFactory.getLogger(HlsStreamSegmentUrlProvider.class);
 
     private final String streamListUrl;
@@ -60,4 +61,5 @@ public class HlsStreamSegmentUrlProvider extends M3uStreamSegmentUrlProvider {
 
         return streams.isEmpty() ? null : streams.get(0).url;
     }
+
 }

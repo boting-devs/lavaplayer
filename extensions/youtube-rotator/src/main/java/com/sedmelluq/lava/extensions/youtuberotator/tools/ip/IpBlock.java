@@ -20,4 +20,5 @@ public abstract class IpBlock<I extends InetAddress> {
     public abstract BigInteger getSize();
 
     public abstract int getMaskBits();
+
 }

@@ -9,6 +9,7 @@ import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrameBufferFactory;
  * Configuration for audio processing.
  */
 public class AudioConfiguration {
+
     public static final int OPUS_QUALITY_MAX = 10;
 
     private volatile ResamplingQuality resamplingQuality;
@@ -89,4 +90,5 @@ public class AudioConfiguration {
         MEDIUM,
         LOW
     }
+
 }

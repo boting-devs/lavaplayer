@@ -29,6 +29,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractRoutePlanner implements HttpRoutePlanner {
+
     private static final String CHOSEN_IP_ATTRIBUTE = "yt-route-ip";
 
     private static final long FAILING_TIME = TimeUnit.DAYS.toMillis(7);
@@ -98,7 +99,9 @@ public abstract class AbstractRoutePlanner implements HttpRoutePlanner {
     }
 
     @Override
-    public HttpRoute determineRoute(final HttpHost host, final HttpRequest request, final HttpContext context) throws HttpException {
+    public HttpRoute determineRoute(final HttpHost host,
+                                    final HttpRequest request,
+                                    final HttpContext context) throws HttpException {
         Args.notNull(request, "Request");
         if (host == null) {
             throw new ProtocolException("Target host is not specified");
@@ -112,8 +115,7 @@ public abstract class AbstractRoutePlanner implements HttpRoutePlanner {
             } catch (final UnsupportedSchemeException e) {
                 throw new HttpException(e.getMessage());
             }
-        } else
-            remotePort = host.getPort();
+        } else {remotePort = host.getPort();}
 
         final Tuple<Inet4Address, Inet6Address> remoteAddresses = IpAddressTools.getRandomAddressesFromHost(host);
         final Tuple<InetAddress, InetAddress> addresses = determineAddressPair(remoteAddresses);
@@ -156,4 +158,5 @@ public abstract class AbstractRoutePlanner implements HttpRoutePlanner {
      * @throws HttpException when no route can be determined
      */
     protected abstract Tuple<InetAddress, InetAddress> determineAddressPair(final Tuple<Inet4Address, Inet6Address> remoteAddresses) throws HttpException;
+
 }

@@ -17,6 +17,7 @@ import java.net.URI;
  * Audio track that handles processing Yandex Music tracks.
  */
 public class YandexMusicAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(YandexMusicAudioTrack.class);
 
     private final YandexMusicAudioSourceManager sourceManager;
@@ -50,4 +51,5 @@ public class YandexMusicAudioTrack extends DelegatedAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.filter.equalizer;
  * Holder of equalizer configuration.
  */
 public class EqualizerConfiguration {
+
     protected final float[] bandMultipliers;
 
     /**
@@ -41,4 +42,5 @@ public class EqualizerConfiguration {
     private boolean isValidBand(int band) {
         return band >= 0 && band < bandMultipliers.length;
     }
+
 }

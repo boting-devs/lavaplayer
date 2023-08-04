@@ -6,6 +6,7 @@ import java.io.IOException;
  * Describes one track in a matroska file.
  */
 public class MatroskaFileTrack {
+
     /**
      * Track index/number.
      */
@@ -44,7 +45,13 @@ public class MatroskaFileTrack {
      * @param codecPrivate Custom data for the codec (header).
      * @param audio        Information specific to audio tracks (null for non-audio tracks).
      */
-    public MatroskaFileTrack(int index, Type type, long trackUid, String name, String codecId, byte[] codecPrivate, AudioDetails audio) {
+    public MatroskaFileTrack(int index,
+                             Type type,
+                             long trackUid,
+                             String name,
+                             String codecId,
+                             byte[] codecPrivate,
+                             AudioDetails audio) {
         this.index = index;
         this.type = type;
         this.trackUid = trackUid;
@@ -94,6 +101,7 @@ public class MatroskaFileTrack {
      * Fields specific to an audio track.
      */
     public static class AudioDetails {
+
         /**
          * Sampling frequency in Hz.
          */
@@ -123,6 +131,7 @@ public class MatroskaFileTrack {
             this.channels = channels;
             this.bitDepth = bitDepth;
         }
+
     }
 
     /**
@@ -159,7 +168,8 @@ public class MatroskaFileTrack {
         return builder.build();
     }
 
-    private static AudioDetails parseAudioElement(MatroskaElement audioElement, MatroskaFileReader reader) throws IOException {
+    private static AudioDetails parseAudioElement(MatroskaElement audioElement,
+                                                  MatroskaFileReader reader) throws IOException {
         AudioBuilder builder = new AudioBuilder();
         MatroskaElement child;
 
@@ -181,6 +191,7 @@ public class MatroskaFileTrack {
     }
 
     private static class Builder {
+
         private int index;
         private Type type;
         private long trackUid;
@@ -192,9 +203,11 @@ public class MatroskaFileTrack {
         private MatroskaFileTrack build() {
             return new MatroskaFileTrack(index, type, trackUid, name, codecId, codecPrivate, audio);
         }
+
     }
 
     private static class AudioBuilder {
+
         private float samplingFrequency;
         private float outputSamplingFrequency;
         private int channels;
@@ -203,5 +216,7 @@ public class MatroskaFileTrack {
         private AudioDetails build() {
             return new AudioDetails(samplingFrequency, outputSamplingFrequency, channels, bitDepth);
         }
+
     }
+
 }

@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.source.AudioSourceManager;
  * A playable audio track
  */
 public interface AudioTrack extends AudioItem {
+
     /**
      * @return Track meta information
      */
@@ -82,4 +83,5 @@ public interface AudioTrack extends AudioItem {
      * but with a different type, null is returned.
      */
     <T> T getUserData(Class<T> klass);
+
 }

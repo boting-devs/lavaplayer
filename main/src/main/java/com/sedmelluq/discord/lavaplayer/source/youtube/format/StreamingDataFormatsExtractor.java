@@ -18,6 +18,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.DataFormatTools.decodeUrlEn
 import static com.sedmelluq.discord.lavaplayer.tools.Units.CONTENT_LENGTH_UNKNOWN;
 
 public class StreamingDataFormatsExtractor implements OfflineYoutubeTrackFormatExtractor {
+
     private static final Logger log = LoggerFactory.getLogger(StreamingDataFormatsExtractor.class);
 
     @Override
@@ -30,7 +31,9 @@ public class StreamingDataFormatsExtractor implements OfflineYoutubeTrackFormatE
 
         JsonBrowser playabilityStatus = data.playerResponse.get("playabilityStatus");
         boolean isLive = data.playerResponse.get("videoDetails").get("isLive").asBoolean(false);
-        if ("OK".equals(playabilityStatus.get("status").text()) && playabilityStatus.get("reason").safeText().contains("This live event has ended")) {
+        if ("OK".equals(playabilityStatus.get("status").text()) && playabilityStatus.get("reason")
+            .safeText()
+            .contains("This live event has ended")) {
             // Long videos after ending of stream don't contain contentLength field because is not yet processed by YouTube
             // This reason disappear after video being processed
             isLive = true;
@@ -95,4 +98,5 @@ public class StreamingDataFormatsExtractor implements OfflineYoutubeTrackFormatE
 
         return tracks;
     }
+
 }

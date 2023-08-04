@@ -13,6 +13,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Loads either FLAC header information or a FLAC track object from a stream.
  */
 public class FlacFileLoader {
+
     static final int[] FLAC_CC = new int[]{0x66, 0x4C, 0x61, 0x43};
 
     private final SeekableInputStream inputStream;
@@ -61,4 +62,5 @@ public class FlacFileLoader {
             hasMoreBlocks = FlacMetadataReader.readMetadataBlock(dataInput, inputStream, trackInfoBuilder);
         }
     }
+
 }

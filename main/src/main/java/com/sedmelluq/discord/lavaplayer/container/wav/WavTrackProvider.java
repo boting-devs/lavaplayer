@@ -18,6 +18,7 @@ import static java.nio.ByteOrder.LITTLE_ENDIAN;
  * A provider of audio frames from a WAV track.
  */
 public class WavTrackProvider {
+
     private static final int BLOCKS_IN_BUFFER = 4096;
 
     private final SeekableInputStream inputStream;
@@ -144,4 +145,5 @@ public class WavTrackProvider {
         long endOffset = info.startOffset + info.blockAlign * info.blockCount;
         return (int) Math.min((endOffset - inputStream.getPosition()) / info.blockAlign, BLOCKS_IN_BUFFER);
     }
+
 }

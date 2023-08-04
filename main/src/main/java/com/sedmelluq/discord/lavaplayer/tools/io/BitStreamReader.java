@@ -8,6 +8,7 @@ import java.io.InputStream;
  * Helper for reading a specific number of bits at a time from a stream.
  */
 public class BitStreamReader {
+
     private final InputStream stream;
     private int currentByte;
     private int bitsLeft;
@@ -127,4 +128,5 @@ public class BitStreamReader {
     protected int readByte() throws IOException {
         return stream.read();
     }
+
 }

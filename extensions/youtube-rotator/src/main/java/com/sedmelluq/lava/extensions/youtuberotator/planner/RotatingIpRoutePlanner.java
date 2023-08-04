@@ -47,7 +47,9 @@ public final class RotatingIpRoutePlanner extends AbstractRoutePlanner {
      * @param ipFilter            function to filter out certain IP addresses picked from the IP block, causing another random to be chosen.
      * @param handleSearchFailure whether a search 429 should trigger the ip as failing
      */
-    public RotatingIpRoutePlanner(final List<IpBlock> ipBlocks, final Predicate<InetAddress> ipFilter, final boolean handleSearchFailure) {
+    public RotatingIpRoutePlanner(final List<IpBlock> ipBlocks,
+                                  final Predicate<InetAddress> ipFilter,
+                                  final boolean handleSearchFailure) {
         super(ipBlocks, handleSearchFailure);
         this.ipFilter = ipFilter;
         this.next = new AtomicBoolean(false);
@@ -64,8 +66,7 @@ public final class RotatingIpRoutePlanner extends AbstractRoutePlanner {
     }
 
     public InetAddress getCurrentAddress() {
-        if (index.get().compareTo(BigInteger.ZERO) == 0)
-            return null;
+        if (index.get().compareTo(BigInteger.ZERO) == 0) {return null;}
         return ipBlock.getAddressAtIndex(index.get().subtract(BigInteger.ONE));
     }
 
@@ -108,8 +109,9 @@ public final class RotatingIpRoutePlanner extends AbstractRoutePlanner {
             throw new HttpException("Unknown IpBlock type: " + ipBlock.getType().getCanonicalName());
         }
 
-        if (currentAddress == null && index.get().compareTo(BigInteger.ZERO) > 0)
+        if (currentAddress == null && index.get().compareTo(BigInteger.ZERO) > 0) {
             currentAddress = ipBlock.getAddressAtIndex(index.get().subtract(BigInteger.ONE));
+        }
         next.set(false);
         return new Tuple<>(currentAddress, remoteAddress);
     }
@@ -132,10 +134,9 @@ public final class RotatingIpRoutePlanner extends AbstractRoutePlanner {
             if (ipBlock.getSize().multiply(BigInteger.valueOf(2)).compareTo(it) < 0) {
                 throw new RuntimeException("Can't find a free ip");
             }
-            if (ipBlock.getSize().compareTo(BigInteger.valueOf(128)) > 0)
+            if (ipBlock.getSize().compareTo(BigInteger.valueOf(128)) > 0) {
                 index.accumulateAndGet(BigInteger.valueOf(random.nextInt(10) + 10), BigInteger::add);
-            else
-                index.accumulateAndGet(BigInteger.ONE, BigInteger::add);
+            } else {index.accumulateAndGet(BigInteger.ONE, BigInteger::add);}
             it = it.add(BigInteger.ONE);
             triesSinceBlockSkip++;
             if (ipBlock.getSize().compareTo(Ipv6Block.BLOCK64_IPS) > 0 && triesSinceBlockSkip > 128) {
@@ -151,4 +152,5 @@ public final class RotatingIpRoutePlanner extends AbstractRoutePlanner {
         } while (localAddress == null || !ipFilter.test(localAddress) || !isValidAddress(localAddress));
         return localAddress;
     }
+
 }

@@ -18,6 +18,7 @@ import java.util.concurrent.TimeoutException;
  * Provides an audio player as an input stream. When nothing is playing, it returns silence instead of blocking.
  */
 public class AudioPlayerInputStream extends InputStream {
+
     private final AudioPlayer player;
     private final AudioDataFormat format;
     private final long timeout;
@@ -81,7 +82,10 @@ public class AudioPlayerInputStream extends InputStream {
      *                       track frames times out.
      * @return An audio input stream usable with JDK sound system
      */
-    public static AudioInputStream createStream(AudioPlayer player, AudioDataFormat format, long stuckTimeout, boolean provideSilence) {
+    public static AudioInputStream createStream(AudioPlayer player,
+                                                AudioDataFormat format,
+                                                long stuckTimeout,
+                                                boolean provideSilence) {
         AudioFormat jdkFormat = AudioDataFormatTools.toAudioFormat(format);
         return new AudioInputStream(new AudioPlayerInputStream(format, player, stuckTimeout, provideSilence), jdkFormat, -1);
     }
@@ -127,4 +131,5 @@ public class AudioPlayerInputStream extends InputStream {
             ((TrackStateListener) player).onTrackStuck(player.getPlayingTrack(), timeout);
         }
     }
+
 }

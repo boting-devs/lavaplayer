@@ -10,6 +10,7 @@ import java.util.function.Consumer;
  * Helper class for creating an audio result handler using only methods that can be passed as lambdas.
  */
 public class FunctionalResultHandler implements AudioLoadResultHandler {
+
     private final Consumer<AudioTrack> trackConsumer;
     private final Consumer<AudioPlaylist> playlistConsumer;
     private final Runnable emptyResultHandler;
@@ -59,4 +60,5 @@ public class FunctionalResultHandler implements AudioLoadResultHandler {
             exceptionConsumer.accept(exception);
         }
     }
+
 }

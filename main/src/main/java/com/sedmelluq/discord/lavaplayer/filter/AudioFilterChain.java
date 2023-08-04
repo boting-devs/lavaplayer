@@ -6,6 +6,7 @@ import java.util.List;
  * A chain of audio filters.
  */
 public class AudioFilterChain {
+
     /**
      * The first filter in the stream. Separate field as unlike other filters, this must be an instance of
      * {@link UniversalPcmAudioFilter} as the input data may be in any representation.
@@ -32,4 +33,5 @@ public class AudioFilterChain {
         this.filters = filters;
         this.context = context;
     }
+
 }

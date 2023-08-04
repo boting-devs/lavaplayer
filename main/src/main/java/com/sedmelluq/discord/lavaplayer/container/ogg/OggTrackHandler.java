@@ -9,6 +9,7 @@ import java.io.IOException;
  * A handler for a specific codec for an OGG stream.
  */
 public interface OggTrackHandler extends Closeable {
+
     /**
      * Initialises the track stream.
      *
@@ -30,4 +31,5 @@ public interface OggTrackHandler extends Closeable {
      * @param timecode The timecode in milliseconds
      */
     void seekToTimecode(long timecode);
+
 }

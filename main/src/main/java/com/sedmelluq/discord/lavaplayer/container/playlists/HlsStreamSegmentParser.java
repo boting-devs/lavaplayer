@@ -10,6 +10,7 @@ import java.util.List;
 import static com.sedmelluq.discord.lavaplayer.tools.io.HttpClientTools.fetchResponseLines;
 
 public class HlsStreamSegmentParser {
+
     public static List<HlsStreamSegment> parseFromUrl(HttpInterface httpInterface, String url) throws IOException {
         return parseFromLines(fetchResponseLines(httpInterface, new HttpGet(url), "stream segments list"));
     }
@@ -46,4 +47,5 @@ public class HlsStreamSegmentParser {
             return null;
         }
     }
+
 }

@@ -15,6 +15,7 @@ import static com.sedmelluq.discord.lavaplayer.container.flac.frame.FlacFrameInf
  * Contains methods for reading a frame header.
  */
 public class FlacFrameHeaderReader {
+
     private static final int VALUE_INVALID = Integer.MIN_VALUE;
     private static final int VALUE_INHERITED = -1024;
 
@@ -136,4 +137,5 @@ public class FlacFrameHeaderReader {
 
         return value;
     }
+
 }

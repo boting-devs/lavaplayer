@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class HttpStreamTools {
+
     public static InputStream streamContent(HttpInterface httpInterface, HttpUriRequest request) {
         CloseableHttpResponse response = null;
         boolean success = false;
@@ -32,4 +33,5 @@ public class HttpStreamTools {
             }
         }
     }
+
 }

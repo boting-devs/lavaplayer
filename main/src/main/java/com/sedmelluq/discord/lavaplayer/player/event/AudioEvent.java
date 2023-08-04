@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
  * An event related to an audio player.
  */
 public abstract class AudioEvent {
+
     /**
      * The related audio player.
      */
@@ -17,4 +18,5 @@ public abstract class AudioEvent {
     public AudioEvent(AudioPlayer player) {
         this.player = player;
     }
+
 }

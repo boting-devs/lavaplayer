@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.matroska.format;
  * Matroska file cue point. Provides the offsets at a specific timecode for each track
  */
 public class MatroskaCuePoint {
+
     /**
      * Timecode using the file timescale
      */
@@ -21,4 +22,5 @@ public class MatroskaCuePoint {
         this.timecode = timecode;
         this.trackClusterOffsets = trackClusterOffsets;
     }
+
 }

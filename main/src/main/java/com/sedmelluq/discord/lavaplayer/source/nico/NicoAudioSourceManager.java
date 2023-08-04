@@ -43,6 +43,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio source manager that implements finding NicoNico tracks based on URL.
  */
 public class NicoAudioSourceManager implements AudioSourceManager, HttpConfigurable {
+
     private static final String TRACK_URL_REGEX = "^(?:http://|https://|)(?:www\\.|)nicovideo\\.jp/watch/(sm[0-9]+)(?:\\?.*|)$";
 
     private static final Pattern trackUrlPattern = Pattern.compile(TRACK_URL_REGEX);
@@ -89,7 +90,8 @@ public class NicoAudioSourceManager implements AudioSourceManager, HttpConfigura
                     throw new IOException("Unexpected response code from video info: " + statusCode);
                 }
 
-                Document document = Jsoup.parse(response.getEntity().getContent(), StandardCharsets.UTF_8.name(), "", Parser.xmlParser());
+                Document document = Jsoup.parse(response.getEntity()
+                    .getContent(), StandardCharsets.UTF_8.name(), "", Parser.xmlParser());
                 return extractTrackFromXml(videoId, document);
             }
         } catch (IOException e) {
@@ -193,4 +195,5 @@ public class NicoAudioSourceManager implements AudioSourceManager, HttpConfigura
     private static String getWatchUrl(String videoId) {
         return "http://www.nicovideo.jp/watch/" + videoId;
     }
+
 }

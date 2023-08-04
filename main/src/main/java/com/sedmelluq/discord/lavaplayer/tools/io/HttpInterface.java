@@ -18,6 +18,7 @@ import java.util.List;
  * should be called in each thread separately.
  */
 public class HttpInterface implements Closeable {
+
     private final CloseableHttpClient client;
     private final HttpClientContext context;
     private final boolean ownedClient;
@@ -134,4 +135,5 @@ public class HttpInterface implements Closeable {
             client.close();
         }
     }
+
 }

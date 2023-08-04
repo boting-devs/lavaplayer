@@ -5,6 +5,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 
 public interface HttpContextFilter {
+
     void onContextOpen(HttpClientContext context);
 
     void onContextClose(HttpClientContext context);
@@ -14,4 +15,5 @@ public interface HttpContextFilter {
     boolean onRequestResponse(HttpClientContext context, HttpUriRequest request, HttpResponse response);
 
     boolean onRequestException(HttpClientContext context, HttpUriRequest request, Throwable error);
+
 }

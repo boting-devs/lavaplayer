@@ -12,6 +12,7 @@ import java.nio.ByteBuffer;
  * to the numbers 0-15 in the minimum blocksize and maximum blocksize fields are invalid.
  */
 public class FlacStreamInfo {
+
     public static final int LENGTH = 34;
 
     /**
@@ -80,4 +81,5 @@ public class FlacStreamInfo {
 
         this.hasMetadataBlocks = hasMetadataBlocks;
     }
+
 }

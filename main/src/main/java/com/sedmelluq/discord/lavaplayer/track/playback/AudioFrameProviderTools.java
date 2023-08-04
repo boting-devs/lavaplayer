@@ -9,6 +9,7 @@ import java.util.concurrent.TimeoutException;
  * Encapsulates common behavior shared by different audio frame providers.
  */
 public class AudioFrameProviderTools {
+
     /**
      * @param provider Delegates a call to frame provide without timeout to the timed version of it.
      * @return The audio frame from provide method.
@@ -21,4 +22,5 @@ public class AudioFrameProviderTools {
             throw new RuntimeException(e);
         }
     }
+
 }

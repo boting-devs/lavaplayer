@@ -19,6 +19,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * The base class for audio sources which use probing to detect container type.
  */
 public abstract class ProbingAudioSourceManager implements AudioSourceManager {
+
     private static final char PARAMETERS_SEPARATOR = '|';
 
     protected final MediaContainerRegistry containerRegistry;
@@ -66,4 +67,5 @@ public abstract class ProbingAudioSourceManager implements AudioSourceManager {
 
         return null;
     }
+
 }

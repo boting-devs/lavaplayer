@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Mutable options of an audio player which may be applied in real-time.
  */
 public class AudioPlayerOptions {
+
     /**
      * Volume level of the audio, see {@link AudioPlayer#setVolume(int)}. Applied in real-time.
      */
@@ -31,4 +32,5 @@ public class AudioPlayerOptions {
         this.filterFactory = new AtomicReference<>();
         this.frameBufferDuration = new AtomicReference<>();
     }
+
 }

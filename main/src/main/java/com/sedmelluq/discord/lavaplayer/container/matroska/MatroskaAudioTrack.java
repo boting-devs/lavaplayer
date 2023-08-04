@@ -16,6 +16,7 @@ import java.io.IOException;
  * Audio track that handles the processing of MKV and WEBM formats
  */
 public class MatroskaAudioTrack extends BaseAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(MatroskaAudioTrack.class);
 
     private final SeekableInputStream inputStream;
@@ -100,4 +101,5 @@ public class MatroskaAudioTrack extends BaseAudioTrack {
 
         return trackConsumer;
     }
+
 }

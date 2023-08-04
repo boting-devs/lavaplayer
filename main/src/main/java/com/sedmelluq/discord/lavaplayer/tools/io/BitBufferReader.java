@@ -7,6 +7,7 @@ import java.nio.ByteBuffer;
  * Helper for reading a specific number of bits at a time from a byte buffer.
  */
 public class BitBufferReader extends BitStreamReader {
+
     private final ByteBuffer buffer;
 
     /**
@@ -40,4 +41,5 @@ public class BitBufferReader extends BitStreamReader {
     protected int readByte() throws IOException {
         return buffer.get() & 0xFF;
     }
+
 }

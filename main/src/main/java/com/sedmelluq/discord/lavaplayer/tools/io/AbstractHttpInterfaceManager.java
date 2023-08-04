@@ -14,6 +14,7 @@ import java.util.function.Function;
  * Base class for an HTTP interface manager with lazily initialized http client instance.
  */
 public abstract class AbstractHttpInterfaceManager implements HttpInterfaceManager {
+
     private static final Logger log = LoggerFactory.getLogger(AbstractHttpInterfaceManager.class);
 
     private final HttpClientBuilder clientBuilder;
@@ -87,4 +88,5 @@ public abstract class AbstractHttpInterfaceManager implements HttpInterfaceManag
             return sharedClient;
         }
     }
+
 }

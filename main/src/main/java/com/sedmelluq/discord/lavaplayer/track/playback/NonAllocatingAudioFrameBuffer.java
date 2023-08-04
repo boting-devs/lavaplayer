@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * frames are preallocated, and for the data there is one byte buffer which is used as a ring buffer for the frame data.
  */
 public class NonAllocatingAudioFrameBuffer extends AbstractAudioFrameBuffer {
+
     private static final Logger log = LoggerFactory.getLogger(NonAllocatingAudioFrameBuffer.class);
 
     private final int worstCaseFrameCount;
@@ -317,4 +318,5 @@ public class NonAllocatingAudioFrameBuffer extends AbstractAudioFrameBuffer {
             synchronizer.notifyAll();
         }
     }
+
 }

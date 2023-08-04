@@ -21,6 +21,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class SoundCloudM3uAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(SoundCloudM3uAudioTrack.class);
 
     private static final long SEGMENT_UPDATE_INTERVAL = TimeUnit.MINUTES.toMillis(10);
@@ -60,6 +61,7 @@ public class SoundCloudM3uAudioTrack extends DelegatedAudioTrack {
     }
 
     private class SegmentTracker implements AutoCloseable {
+
         private final List<HlsStreamSegment> segments;
         private long desiredPosition = 0;
         private long streamStartPosition = 0;
@@ -180,5 +182,7 @@ public class SoundCloudM3uAudioTrack extends DelegatedAudioTrack {
         public void close() throws Exception {
             decoder.resetStream();
         }
+
     }
+
 }

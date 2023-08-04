@@ -35,6 +35,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Tools for working with HttpClient
  */
 public class HttpClientTools {
+
     private static final Logger log = LoggerFactory.getLogger(HttpClientTools.class);
 
     public static final RequestConfig DEFAULT_REQUEST_CONFIG = RequestConfig.custom()
@@ -81,6 +82,7 @@ public class HttpClientTools {
      * A redirect strategy which does not follow any redirects.
      */
     public static class NoRedirectsStrategy implements RedirectStrategy {
+
         @Override
         public boolean isRedirected(HttpRequest request, HttpResponse response, HttpContext context) {
             return false;
@@ -90,6 +92,7 @@ public class HttpClientTools {
         public HttpUriRequest getRedirect(HttpRequest request, HttpResponse response, HttpContext context) {
             return null;
         }
+
     }
 
     /**
@@ -244,7 +247,8 @@ public class HttpClientTools {
      * @return Response as a JsonBrowser instance. null in case of 404.
      * @throws IOException On network error or for non-200 response code.
      */
-    public static JsonBrowser fetchResponseAsJson(HttpInterface httpInterface, HttpUriRequest request) throws IOException {
+    public static JsonBrowser fetchResponseAsJson(HttpInterface httpInterface,
+                                                  HttpUriRequest request) throws IOException {
         try (CloseableHttpResponse response = httpInterface.execute(request)) {
             int statusCode = response.getStatusLine().getStatusCode();
 
@@ -268,7 +272,9 @@ public class HttpClientTools {
      * @return Array of lines from the response
      * @throws IOException On network error or for non-200 response code.
      */
-    public static String[] fetchResponseLines(HttpInterface httpInterface, HttpUriRequest request, String name) throws IOException {
+    public static String[] fetchResponseLines(HttpInterface httpInterface,
+                                              HttpUriRequest request,
+                                              String name) throws IOException {
         try (CloseableHttpResponse response = httpInterface.execute(request)) {
             int statusCode = response.getStatusLine().getStatusCode();
             if (!isSuccessWithContent(statusCode)) {
@@ -290,6 +296,7 @@ public class HttpClientTools {
     }
 
     private static class NoResponseRetryHandler extends DefaultHttpRequestRetryHandler {
+
         private static final NoResponseRetryHandler RETRY_INSTANCE = new NoResponseRetryHandler();
 
         @Override
@@ -302,5 +309,7 @@ public class HttpClientTools {
                 return retry;
             }
         }
+
     }
+
 }

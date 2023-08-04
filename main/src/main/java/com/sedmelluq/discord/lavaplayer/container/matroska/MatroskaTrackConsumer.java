@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
  * Consumer for the file frames of a specific matroska file track
  */
 public interface MatroskaTrackConsumer extends AutoCloseable {
+
     /**
      * @return The associated matroska file track
      */
@@ -46,4 +47,5 @@ public interface MatroskaTrackConsumer extends AutoCloseable {
      */
     @Override
     void close() throws Exception;
+
 }

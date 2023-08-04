@@ -25,6 +25,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Probe for a playlist containing the raw link without any format.
  */
 public class PlainPlaylistContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(PlainPlaylistContainerProbe.class);
 
     private static final Pattern linkPattern = Pattern.compile("^(?:https?|icy)://.*");
@@ -40,7 +41,8 @@ public class PlainPlaylistContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!matchNextBytesAsRegex(inputStream, STREAM_SCAN_DISTANCE, linkPattern, StandardCharsets.UTF_8)) {
             return null;
         }
@@ -65,4 +67,5 @@ public class PlainPlaylistContainerProbe implements MediaContainerProbe {
     public AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream) {
         throw new UnsupportedOperationException();
     }
+
 }

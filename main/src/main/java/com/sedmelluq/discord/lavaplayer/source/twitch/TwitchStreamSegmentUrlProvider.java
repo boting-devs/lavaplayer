@@ -20,6 +20,7 @@ import java.util.List;
  * Provider for Twitch segment URLs from a channel.
  */
 public class TwitchStreamSegmentUrlProvider extends M3uStreamSegmentUrlProvider {
+
     private static final String TOKEN_PARAMETER = "token";
 
     private static final Logger log = LoggerFactory.getLogger(TwitchStreamSegmentUrlProvider.class);
@@ -95,7 +96,8 @@ public class TwitchStreamSegmentUrlProvider extends M3uStreamSegmentUrlProvider 
         return buildChannelStreamsInfo(twitchInfoLine, streams);
     }
 
-    private ChannelStreams buildChannelStreamsInfo(ExtendedM3uParser.Line twitchInfoLine, List<ChannelStreamInfo> streams) {
+    private ChannelStreams buildChannelStreamsInfo(ExtendedM3uParser.Line twitchInfoLine,
+                                                   List<ChannelStreamInfo> streams) {
         String serverTimeValue = twitchInfoLine != null ? twitchInfoLine.directiveArguments.get("SERVER-TIME") : null;
 
         if (serverTimeValue == null) {
@@ -125,6 +127,7 @@ public class TwitchStreamSegmentUrlProvider extends M3uStreamSegmentUrlProvider 
     }
 
     private static class ChannelStreams {
+
         private final long serverTime;
         private final List<ChannelStreamInfo> entries;
 
@@ -132,9 +135,11 @@ public class TwitchStreamSegmentUrlProvider extends M3uStreamSegmentUrlProvider 
             this.serverTime = serverTime;
             this.entries = entries;
         }
+
     }
 
     private static class AccessToken {
+
         private final JsonBrowser value;
         private final String signature;
 
@@ -142,5 +147,7 @@ public class TwitchStreamSegmentUrlProvider extends M3uStreamSegmentUrlProvider 
             this.value = value;
             this.signature = signature;
         }
+
     }
+
 }

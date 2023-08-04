@@ -11,6 +11,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.Units.DURATION_MS_UNKNOWN;
  * Builder for {@link AudioTrackInfo}.
  */
 public class AudioTrackInfoBuilder implements AudioTrackInfoProvider {
+
     private static final String UNKNOWN_TITLE = "Unknown title";
     private static final String UNKNOWN_ARTIST = "Unknown artist";
 
@@ -168,4 +169,5 @@ public class AudioTrackInfoBuilder implements AudioTrackInfoProvider {
     public static AudioTrackInfoBuilder empty() {
         return new AudioTrackInfoBuilder();
     }
+
 }

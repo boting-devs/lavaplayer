@@ -18,6 +18,7 @@ import java.nio.ShortBuffer;
  * Provides the frames of an ADTS stream track to the frame consumer.
  */
 public class AdtsStreamProvider {
+
     private final AudioProcessingContext context;
     private final AdtsStreamReader streamReader;
     private final AacDecoder decoder;
@@ -141,4 +142,5 @@ public class AdtsStreamProvider {
             decoder.close();
         }
     }
+
 }

@@ -23,6 +23,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.DataFormatTools.defaultOnNu
  * Container detection probe for WAV format.
  */
 public class WavContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(WavContainerProbe.class);
 
     @Override
@@ -36,7 +37,8 @@ public class WavContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!checkNextBytes(inputStream, WAV_RIFF_HEADER)) {
             return null;
         }
@@ -61,4 +63,5 @@ public class WavContainerProbe implements MediaContainerProbe {
     public AudioTrack createTrack(String parameters, AudioTrackInfo trackInfo, SeekableInputStream inputStream) {
         return new WavAudioTrack(trackInfo, inputStream);
     }
+
 }

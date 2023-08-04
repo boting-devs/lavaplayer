@@ -10,6 +10,7 @@ import java.util.Arrays;
  * externally or using {@link #setGain(int, float)}).
  */
 public class Equalizer extends EqualizerConfiguration implements FloatPcmAudioFilter {
+
     /**
      * Number of bands in the equalizer.
      */
@@ -103,6 +104,7 @@ public class Equalizer extends EqualizerConfiguration implements FloatPcmAudioFi
     }
 
     private static class ChannelProcessor {
+
         private final float[] history;
         private final float[] bandMultipliers;
 
@@ -158,9 +160,11 @@ public class Equalizer extends EqualizerConfiguration implements FloatPcmAudioFi
         private void reset() {
             Arrays.fill(history, 0.0f);
         }
+
     }
 
     private static class Coefficients {
+
         private final float beta;
         private final float alpha;
         private final float gamma;
@@ -170,5 +174,7 @@ public class Equalizer extends EqualizerConfiguration implements FloatPcmAudioFi
             this.alpha = alpha;
             this.gamma = gamma;
         }
+
     }
+
 }

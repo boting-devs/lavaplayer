@@ -30,6 +30,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * Handles processing YouTube Music searches.
  */
 public class YoutubeSearchMusicProvider implements YoutubeSearchMusicResultLoader {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeSearchMusicProvider.class);
 
     private final HttpInterfaceManager httpInterfaceManager;
@@ -90,7 +91,8 @@ public class YoutubeSearchMusicProvider implements YoutubeSearchMusicResultLoade
         }
     }
 
-    private List<AudioTrack> extractMusicSearchPage(JsonBrowser jsonBrowser, Function<AudioTrackInfo, AudioTrack> trackFactory) throws IOException {
+    private List<AudioTrack> extractMusicSearchPage(JsonBrowser jsonBrowser,
+                                                    Function<AudioTrackInfo, AudioTrack> trackFactory) throws IOException {
         ArrayList<AudioTrack> list = new ArrayList<>();
         JsonBrowser tracks = jsonBrowser.get("contents")
             .get("tabbedSearchResultsRenderer")
@@ -118,13 +120,15 @@ public class YoutubeSearchMusicProvider implements YoutubeSearchMusicResultLoade
         }
         tracks.values().forEach(jsonTrack -> {
             AudioTrack track = extractMusicTrack(jsonTrack, trackFactory);
-            if (track != null) list.add(track);
+            if (track != null) {list.add(track);}
         });
         return list;
     }
 
     private AudioTrack extractMusicTrack(JsonBrowser jsonBrowser, Function<AudioTrackInfo, AudioTrack> trackFactory) {
-        JsonBrowser thumbnail = jsonBrowser.get("musicResponsiveListItemRenderer").get("thumbnail").get("musicThumbnailRenderer");
+        JsonBrowser thumbnail = jsonBrowser.get("musicResponsiveListItemRenderer")
+            .get("thumbnail")
+            .get("musicThumbnailRenderer");
         JsonBrowser columns = jsonBrowser.get("musicResponsiveListItemRenderer").get("flexColumns");
         if (columns.isNull()) {
             // Somehow don't get track info, ignore
@@ -163,4 +167,5 @@ public class YoutubeSearchMusicProvider implements YoutubeSearchMusicResultLoade
 
         return trackFactory.apply(info);
     }
+
 }

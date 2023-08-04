@@ -14,6 +14,7 @@ import java.io.IOException;
  * Manager for a source of audio items.
  */
 public interface AudioSourceManager {
+
     /**
      * Every source manager implementation should have its unique name as it is used to determine which source manager
      * should be able to decode a serialized audio track.
@@ -69,4 +70,5 @@ public interface AudioSourceManager {
      * terminating the tracks that it has created.
      */
     void shutdown();
+
 }

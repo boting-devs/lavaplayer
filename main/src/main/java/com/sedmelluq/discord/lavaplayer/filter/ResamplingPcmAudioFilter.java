@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioConfiguration;
  * Filter which resamples audio to the specified sample rate
  */
 public class ResamplingPcmAudioFilter implements FloatPcmAudioFilter {
+
     private static final int BUFFER_SIZE = 4096;
 
     private final FloatPcmAudioFilter downstream;
@@ -82,4 +83,5 @@ public class ResamplingPcmAudioFilter implements FloatPcmAudioFilter {
                 return SampleRateConverter.ResamplingType.LINEAR;
         }
     }
+
 }

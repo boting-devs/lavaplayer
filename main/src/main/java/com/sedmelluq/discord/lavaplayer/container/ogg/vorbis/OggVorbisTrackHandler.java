@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
  * OGG stream handler for Vorbis codec.
  */
 public class OggVorbisTrackHandler implements OggTrackHandler {
+
     private static final int PCM_BUFFER_SIZE = 4096;
 
     private final byte[] infoPacket;
@@ -111,4 +112,5 @@ public class OggVorbisTrackHandler implements OggTrackHandler {
 
         decoder.close();
     }
+
 }

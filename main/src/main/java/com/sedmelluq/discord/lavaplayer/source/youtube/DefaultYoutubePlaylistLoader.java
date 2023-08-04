@@ -26,6 +26,7 @@ import static com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeConstants.W
 import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.COMMON;
 
 public class DefaultYoutubePlaylistLoader implements YoutubePlaylistLoader {
+
     private volatile int playlistPageCount = 6;
 
     @Override
@@ -154,7 +155,7 @@ public class DefaultYoutubePlaylistLoader implements YoutubePlaylistLoader {
     private String extractPlaylistTracks(JsonBrowser playlistVideoList, List<AudioTrack> tracks,
                                          Function<AudioTrackInfo, AudioTrack> trackFactory) {
         JsonBrowser contents = playlistVideoList.get("contents");
-        if (contents.isNull()) return null;
+        if (contents.isNull()) {return null;}
 
         final List<JsonBrowser> playlistTrackEntries = contents.values();
         for (JsonBrowser track : playlistTrackEntries) {
@@ -191,4 +192,5 @@ public class DefaultYoutubePlaylistLoader implements YoutubePlaylistLoader {
 
         return null;
     }
+
 }

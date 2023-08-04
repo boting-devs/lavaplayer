@@ -26,12 +26,16 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class DefaultYoutubeTrackDetailsLoader implements YoutubeTrackDetailsLoader {
+
     private static final Logger log = LoggerFactory.getLogger(DefaultYoutubeTrackDetailsLoader.class);
 
     private volatile CachedPlayerScript cachedPlayerScript = null;
 
     @Override
-    public YoutubeTrackDetails loadDetails(HttpInterface httpInterface, String videoId, boolean requireFormats, YoutubeAudioSourceManager sourceManager) {
+    public YoutubeTrackDetails loadDetails(HttpInterface httpInterface,
+                                           String videoId,
+                                           boolean requireFormats,
+                                           YoutubeAudioSourceManager sourceManager) {
         try {
             return load(httpInterface, videoId, requireFormats, sourceManager);
         } catch (IOException e) {
@@ -199,7 +203,7 @@ public class DefaultYoutubeTrackDetailsLoader implements YoutubeTrackDetailsLoad
         YoutubeAudioSourceManager sourceManager,
         InfoStatus infoStatus
     ) throws IOException {
-        if (cachedPlayerScript == null) fetchScript(videoId, httpInterface);
+        if (cachedPlayerScript == null) {fetchScript(videoId, httpInterface);}
 
         YoutubeSignatureCipher playerScriptTimestamp = sourceManager.getSignatureResolver().getExtractedScript(
             httpInterface,
@@ -297,6 +301,7 @@ public class DefaultYoutubeTrackDetailsLoader implements YoutubeTrackDetailsLoad
     }
 
     protected static class CachedPlayerScript {
+
         public final String playerScriptUrl;
         public final long timestamp;
 
@@ -304,5 +309,7 @@ public class DefaultYoutubeTrackDetailsLoader implements YoutubeTrackDetailsLoad
             this.playerScriptUrl = playerScriptUrl;
             this.timestamp = timestamp;
         }
+
     }
+
 }

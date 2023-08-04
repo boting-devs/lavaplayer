@@ -6,6 +6,7 @@ import java.nio.ShortBuffer;
  * Class used to apply a volume level to short PCM buffers
  */
 public class PcmVolumeProcessor {
+
     private int currentVolume = -1;
     private int integerMultiplier;
 
@@ -83,4 +84,5 @@ public class PcmVolumeProcessor {
             buffer.put(i, (short) Math.max(-32767, Math.min(32767, value)));
         }
     }
+
 }

@@ -29,6 +29,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Probe for M3U playlist.
  */
 public class M3uPlaylistContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(M3uPlaylistContainerProbe.class);
 
     private static final String TYPE_HLS_OUTER = "hls-outer";
@@ -55,7 +56,8 @@ public class M3uPlaylistContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!checkNextBytes(inputStream, M3U_HEADER_TAG) && !checkNextBytes(inputStream, M3U_ENTRY_TAG)) {
             return null;
         }
@@ -70,7 +72,8 @@ public class M3uPlaylistContainerProbe implements MediaContainerProbe {
             AudioReference httpReference = HttpAudioSourceManager.getAsHttpReference(reference);
 
             if (httpReference != null) {
-                return supportedFormat(this, TYPE_HLS_OUTER, infoBuilder.setIdentifier(httpReference.identifier).build());
+                return supportedFormat(this, TYPE_HLS_OUTER, infoBuilder.setIdentifier(httpReference.identifier)
+                    .build());
             } else {
                 return refer(this, new AudioReference(hlsStreamUrl, infoBuilder.getTitle(),
                     new MediaContainerDescriptor(this, TYPE_HLS_INNER)));
@@ -118,4 +121,5 @@ public class M3uPlaylistContainerProbe implements MediaContainerProbe {
             throw new IllegalArgumentException("Unsupported parameters: " + parameters);
         }
     }
+
 }

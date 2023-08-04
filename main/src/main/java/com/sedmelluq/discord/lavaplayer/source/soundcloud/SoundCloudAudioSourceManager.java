@@ -39,6 +39,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio source manager that implements finding SoundCloud tracks based on URL.
  */
 public class SoundCloudAudioSourceManager implements AudioSourceManager, HttpConfigurable {
+
     private static final int DEFAULT_SEARCH_RESULTS = 10;
     private static final int MAXIMUM_SEARCH_RESULTS = 200;
 
@@ -256,7 +257,8 @@ public class SoundCloudAudioSourceManager implements AudioSourceManager, HttpCon
                 throw new IOException("Invalid status code for track list response: " + statusCode);
             }
 
-            Matcher matcher = likedUserUrnPattern.matcher(IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8));
+            Matcher matcher = likedUserUrnPattern.matcher(IOUtils.toString(response.getEntity()
+                .getContent(), StandardCharsets.UTF_8));
             return matcher.find() ? new UserInfo(matcher.group(1), matcher.group(2)) : null;
         }
     }
@@ -285,6 +287,7 @@ public class SoundCloudAudioSourceManager implements AudioSourceManager, HttpCon
     }
 
     private static class UserInfo {
+
         private final String id;
         private final String name;
 
@@ -292,12 +295,14 @@ public class SoundCloudAudioSourceManager implements AudioSourceManager, HttpCon
             this.id = id;
             this.name = name;
         }
+
     }
 
     private AudioItem processAsSearchQuery(AudioReference reference) {
         if (reference.identifier.startsWith(SEARCH_PREFIX)) {
             if (reference.identifier.startsWith(SEARCH_PREFIX_DEFAULT)) {
-                return loadSearchResult(reference.identifier.substring(SEARCH_PREFIX_DEFAULT.length()).trim(), 0, DEFAULT_SEARCH_RESULTS);
+                return loadSearchResult(reference.identifier.substring(SEARCH_PREFIX_DEFAULT.length())
+                    .trim(), 0, DEFAULT_SEARCH_RESULTS);
             }
 
             Matcher searchMatcher = searchPattern.matcher(reference.identifier);
@@ -357,6 +362,7 @@ public class SoundCloudAudioSourceManager implements AudioSourceManager, HttpCon
     }
 
     public static class Builder {
+
         private boolean allowSearch = true;
         private SoundCloudDataReader dataReader;
         private SoundCloudDataLoader dataLoader;
@@ -438,11 +444,15 @@ public class SoundCloudAudioSourceManager implements AudioSourceManager, HttpCon
 
         @FunctionalInterface
         interface PlaylistLoaderFactory {
+
             SoundCloudPlaylistLoader create(
                 SoundCloudDataReader dataReader,
                 SoundCloudDataLoader dataLoader,
                 SoundCloudFormatHandler formatHandler
             );
+
         }
+
     }
+
 }

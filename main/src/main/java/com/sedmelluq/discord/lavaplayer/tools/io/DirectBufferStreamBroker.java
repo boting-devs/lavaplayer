@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
  * repeated several times, as it supports resetting.
  */
 public class DirectBufferStreamBroker {
+
     private final byte[] copyBuffer;
     private final int initialSize;
     private int readByteCount;
@@ -74,7 +75,9 @@ public class DirectBufferStreamBroker {
      * stream.
      * @throws IOException On read error
      */
-    public boolean consumeNext(InputStream inputStream, int maximumSavedBytes, int maximumReadBytes) throws IOException {
+    public boolean consumeNext(InputStream inputStream,
+                               int maximumSavedBytes,
+                               int maximumReadBytes) throws IOException {
         currentBuffer.clear();
         readByteCount = 0;
 
@@ -108,4 +111,5 @@ public class DirectBufferStreamBroker {
             currentBuffer = newBuffer;
         }
     }
+
 }

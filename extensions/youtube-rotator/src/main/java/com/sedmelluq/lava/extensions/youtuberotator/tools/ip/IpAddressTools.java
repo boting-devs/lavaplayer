@@ -26,19 +26,17 @@ public final class IpAddressTools {
 
         Collections.reverse(ipList);
         for (final InetAddress ip : ipList) {
-            if (ip instanceof Inet6Address)
-                ip6.add((Inet6Address) ip);
-            else if (ip instanceof Inet4Address)
+            if (ip instanceof Inet6Address) {ip6.add((Inet6Address) ip);} else if (ip instanceof Inet4Address) {
                 ip4.add((Inet4Address) ip);
+            }
         }
         return new Tuple<>(getRandomFromList(ip4), getRandomFromList(ip6));
     }
 
     public static <T> T getRandomFromList(final List<T> list) {
-        if (list.isEmpty())
-            return null;
-        if (list.size() == 1)
-            return list.get(0);
+        if (list.isEmpty()) {return null;}
+        if (list.size() == 1) {return list.get(0);}
         return list.get(RANDOM.nextInt(list.size()));
     }
+
 }

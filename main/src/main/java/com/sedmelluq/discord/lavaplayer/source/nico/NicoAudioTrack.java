@@ -27,6 +27,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.DataFormatTools.convertToMa
  * Audio track that handles processing NicoNico tracks.
  */
 public class NicoAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(NicoAudioTrack.class);
 
     private final NicoAudioSourceManager sourceManager;
@@ -95,4 +96,5 @@ public class NicoAudioTrack extends DelegatedAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

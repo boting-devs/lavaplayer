@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat;
  * Base class for mutable audio frames.
  */
 public abstract class AbstractMutableAudioFrame implements AudioFrame {
+
     private long timecode;
     private int volume;
     private AudioDataFormat format;
@@ -53,4 +54,5 @@ public abstract class AbstractMutableAudioFrame implements AudioFrame {
     public ImmutableAudioFrame freeze() {
         return new ImmutableAudioFrame(timecode, getData(), volume, format);
     }
+
 }

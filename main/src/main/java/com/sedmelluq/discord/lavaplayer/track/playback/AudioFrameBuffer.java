@@ -60,4 +60,5 @@ public interface AudioFrameBuffer extends AudioFrameProvider, AudioFrameConsumer
      * receiving the next frame.
      */
     Long getLastInputTimecode();
+
 }

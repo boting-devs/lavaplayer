@@ -5,6 +5,7 @@ package com.sedmelluq.discord.lavaplayer.tools;
  * of this class and contain the original class name and message as fields and as the message.
  */
 public class DecodedException extends Exception {
+
     /**
      * Original exception class name
      */
@@ -25,4 +26,5 @@ public class DecodedException extends Exception {
         this.className = className;
         this.originalMessage = originalMessage;
     }
+
 }

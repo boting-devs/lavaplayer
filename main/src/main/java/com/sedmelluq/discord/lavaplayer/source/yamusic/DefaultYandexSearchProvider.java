@@ -23,7 +23,9 @@ public class DefaultYandexSearchProvider extends AbstractYandexMusicApiLoader im
     private static final Pattern SEARCH_PATTERN = Pattern.compile("ymsearch(:([a-zA-Z]+))?(:([0-9]+))?:([^:]+)");
 
     @Override
-    public AudioItem loadSearchResult(String query, YandexMusicPlaylistLoader playlistLoader, Function<AudioTrackInfo, AudioTrack> trackFactory) {
+    public AudioItem loadSearchResult(String query,
+                                      YandexMusicPlaylistLoader playlistLoader,
+                                      Function<AudioTrackInfo, AudioTrack> trackFactory) {
         if (query == null || !query.startsWith(SEARCH_PREFIX)) {
             return null;
         }
@@ -52,7 +54,9 @@ public class DefaultYandexSearchProvider extends AbstractYandexMusicApiLoader im
         }
     }
 
-    private AudioItem loadTracks(List<JsonBrowser> results, int limit, Function<AudioTrackInfo, AudioTrack> trackFactory) {
+    private AudioItem loadTracks(List<JsonBrowser> results,
+                                 int limit,
+                                 Function<AudioTrackInfo, AudioTrack> trackFactory) {
         List<AudioTrack> tracks = new ArrayList<>(limit);
         for (JsonBrowser entry : results) {
             tracks.add(YandexMusicUtils.extractTrack(entry, trackFactory));
@@ -125,4 +129,5 @@ public class DefaultYandexSearchProvider extends AbstractYandexMusicApiLoader im
         }
         return DEFAULT_LIMIT;
     }
+
 }

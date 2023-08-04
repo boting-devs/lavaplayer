@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
  * Event that is fired when an exception occurs in an audio track that causes it to halt or not start.
  */
 public class TrackExceptionEvent extends AudioEvent {
+
     /**
      * Audio track where the exception occurred
      */
@@ -27,4 +28,5 @@ public class TrackExceptionEvent extends AudioEvent {
         this.track = track;
         this.exception = exception;
     }
+
 }

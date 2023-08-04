@@ -17,6 +17,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio track which handles an OGG stream.
  */
 public class OggAudioTrack extends BaseAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(OggAudioTrack.class);
 
     private final SeekableInputStream inputStream;
@@ -52,11 +53,15 @@ public class OggAudioTrack extends BaseAudioTrack {
         }, handler::seekToTimecode, true);
     }
 
-    private void processTrackLoop(OggPacketInputStream packetInputStream, AudioProcessingContext context, OggTrackHandler handler, OggTrackBlueprint blueprint) throws IOException, InterruptedException {
+    private void processTrackLoop(OggPacketInputStream packetInputStream,
+                                  AudioProcessingContext context,
+                                  OggTrackHandler handler,
+                                  OggTrackBlueprint blueprint) throws IOException, InterruptedException {
         while (blueprint != null) {
             handler.initialise(context, 0, 0);
             handler.provideFrames();
             blueprint = OggTrackLoader.loadTrackBlueprint(packetInputStream);
         }
     }
+
 }

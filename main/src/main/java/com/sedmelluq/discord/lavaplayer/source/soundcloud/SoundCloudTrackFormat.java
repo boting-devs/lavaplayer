@@ -1,6 +1,7 @@
 package com.sedmelluq.discord.lavaplayer.source.soundcloud;
 
 public interface SoundCloudTrackFormat {
+
     String getTrackId();
 
     String getProtocol();
@@ -8,4 +9,5 @@ public interface SoundCloudTrackFormat {
     String getMimeType();
 
     String getLookupUrl();
+
 }

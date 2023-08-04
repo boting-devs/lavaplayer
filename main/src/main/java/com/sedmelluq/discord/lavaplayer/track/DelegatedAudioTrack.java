@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.track.playback.LocalAudioTrackExecutor;
  * track is created, but is passed when processDelegate() is called.
  */
 public abstract class DelegatedAudioTrack extends BaseAudioTrack {
+
     private InternalAudioTrack delegate;
 
     /**
@@ -69,4 +70,5 @@ public abstract class DelegatedAudioTrack extends BaseAudioTrack {
             }
         }
     }
+
 }

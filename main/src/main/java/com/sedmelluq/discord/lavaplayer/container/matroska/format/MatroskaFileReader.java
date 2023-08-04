@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
  * Handles reading of elements and their content from an MKV file.
  */
 public class MatroskaFileReader {
+
     private final SeekableInputStream inputStream;
     private final DataInput dataInput;
     private final MutableMatroskaElement[] levels;
@@ -213,4 +214,5 @@ public class MatroskaFileReader {
     public DataInput getDataInput() {
         return dataInput;
     }
+
 }

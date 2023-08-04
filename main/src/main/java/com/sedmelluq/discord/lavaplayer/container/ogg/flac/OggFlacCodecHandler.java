@@ -13,6 +13,7 @@ import java.nio.ByteBuffer;
  * Loader for an OGG FLAC track from an OGG packet stream.
  */
 public class OggFlacCodecHandler implements OggCodecHandler {
+
     private static final int FLAC_IDENTIFIER = ByteBuffer.wrap(new byte[]{0x7F, 'F', 'L', 'A'}).getInt();
 
     private static final int NATIVE_FLAC_HEADER_OFFSET = 9;
@@ -29,7 +30,8 @@ public class OggFlacCodecHandler implements OggCodecHandler {
     }
 
     @Override
-    public OggTrackBlueprint loadBlueprint(OggPacketInputStream stream, DirectBufferStreamBroker broker) throws IOException {
+    public OggTrackBlueprint loadBlueprint(OggPacketInputStream stream,
+                                           DirectBufferStreamBroker broker) throws IOException {
         FlacTrackInfo info = load(stream, broker);
         stream.setSeekPoints(stream.createSeekTable(info.stream.sampleRate));
         return new Blueprint(info);
@@ -65,7 +67,8 @@ public class OggFlacCodecHandler implements OggCodecHandler {
         return sizeInfo != null ? sizeInfo.getDuration() : null;
     }
 
-    private FlacTrackInfo readHeaders(ByteBuffer firstPacketBuffer, OggPacketInputStream packetInputStream) throws IOException {
+    private FlacTrackInfo readHeaders(ByteBuffer firstPacketBuffer,
+                                      OggPacketInputStream packetInputStream) throws IOException {
         FlacStreamInfo streamInfo = FlacMetadataReader.readStreamInfoBlock(new DataInputStream(new ByteBufferInputStream(firstPacketBuffer)));
         FlacTrackInfoBuilder trackInfoBuilder = new FlacTrackInfoBuilder(streamInfo);
 
@@ -85,6 +88,7 @@ public class OggFlacCodecHandler implements OggCodecHandler {
     }
 
     private static class Blueprint implements OggTrackBlueprint {
+
         private final FlacTrackInfo info;
 
         private Blueprint(FlacTrackInfo info) {
@@ -100,5 +104,7 @@ public class OggFlacCodecHandler implements OggCodecHandler {
         public int getSampleRate() {
             return info.stream.sampleRate;
         }
+
     }
+
 }

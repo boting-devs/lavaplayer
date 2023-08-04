@@ -6,6 +6,7 @@ package com.sedmelluq.discord.lavaplayer.track;
  * its handler will always be called.
  */
 public class TrackMarker {
+
     /**
      * The position of the track in milliseconds when this marker should trigger.
      */
@@ -24,4 +25,5 @@ public class TrackMarker {
         this.timecode = timecode;
         this.handler = handler;
     }
+
 }

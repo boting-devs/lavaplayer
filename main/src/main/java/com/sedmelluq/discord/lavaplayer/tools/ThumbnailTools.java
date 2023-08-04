@@ -38,4 +38,5 @@ public class ThumbnailTools {
         JsonBrowser avatar = trackData.get("user").get("avatar_url");
         return avatar.text().replace("large.jpg", "original.jpg");
     }
+
 }

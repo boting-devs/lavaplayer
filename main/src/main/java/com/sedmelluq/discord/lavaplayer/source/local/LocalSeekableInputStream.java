@@ -18,6 +18,7 @@ import java.util.List;
  * Seekable input stream implementation for local files.
  */
 public class LocalSeekableInputStream extends SeekableInputStream {
+
     private static final Logger log = LoggerFactory.getLogger(LocalSeekableInputStream.class);
 
     private final FileInputStream inputStream;
@@ -109,4 +110,5 @@ public class LocalSeekableInputStream extends SeekableInputStream {
         this.position = position;
         bufferedStream.discardBuffer();
     }
+
 }

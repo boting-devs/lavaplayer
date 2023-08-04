@@ -14,6 +14,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * with startNewTrack() when the previous one has ended (startNewPacket() has returned false).
  */
 public class OggPacketInputStream extends InputStream {
+
     static final int[] OGG_PAGE_HEADER = new int[]{0x4F, 0x67, 0x67, 0x53};
 
     private static final int SHORT_SCAN = 10240;
@@ -407,4 +408,5 @@ public class OggPacketInputStream extends InputStream {
         PACKET_READ,
         TERMINATED
     }
+
 }

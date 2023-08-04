@@ -1,6 +1,7 @@
 package com.sedmelluq.discord.lavaplayer.source.soundcloud;
 
 public class SoundCloudM3uInfo {
+
     public final String lookupUrl;
     public final SoundCloudSegmentDecoder.Factory decoderFactory;
 
@@ -8,4 +9,5 @@ public class SoundCloudM3uInfo {
         this.lookupUrl = lookupUrl;
         this.decoderFactory = decoderFactory;
     }
+
 }

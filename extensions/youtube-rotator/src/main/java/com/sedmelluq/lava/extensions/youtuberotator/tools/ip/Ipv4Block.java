@@ -13,8 +13,7 @@ import java.util.regex.Pattern;
 public final class Ipv4Block extends IpBlock<Inet4Address> {
 
     public static boolean isIpv4CidrBlock(String cidr) {
-        if (!cidr.contains("/"))
-            cidr += "/32";
+        if (!cidr.contains("/")) {cidr += "/32";}
         return CIDR_REGEX.matcher(cidr).matches();
     }
 
@@ -43,20 +42,18 @@ public final class Ipv4Block extends IpBlock<Inet4Address> {
     private final int address;
 
     public Ipv4Block(String cidr) {
-        if (!cidr.contains("/"))
-            cidr += "/32";
+        if (!cidr.contains("/")) {cidr += "/32";}
         final Matcher matcher = CIDR_REGEX.matcher(cidr);
         if (matcher.matches()) {
             this.address = matchAddress(matcher);
             this.maskBits = Integer.parseInt(matcher.group(5));
-        } else
-            throw new IllegalArgumentException("Could not parse [" + cidr + "]");
+        } else {throw new IllegalArgumentException("Could not parse [" + cidr + "]");}
         log.info("Using Ipv4Block with {} addresses", getSize());
     }
 
     @Override
     public Inet4Address getRandomAddress() {
-        if (maskBits == NBITS) return intToAddress(address);
+        if (maskBits == NBITS) {return intToAddress(address);}
 
         final int randMask = Integer.MAX_VALUE >> maskBits - 1;
         final int maskedRandom = random.nextInt() & randMask;
@@ -68,8 +65,9 @@ public final class Ipv4Block extends IpBlock<Inet4Address> {
 
     @Override
     public Inet4Address getAddressAtIndex(final long index) {
-        if (index > Math.pow(2, NBITS - maskBits))
+        if (index > Math.pow(2, NBITS - maskBits)) {
             throw new IllegalArgumentException("Index out of bounds for provided CIDR Block");
+        }
         return intToAddress(address + (int) index);
     }
 

@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Abstract instance of a class which holds native resources that must be freed.
  */
 public abstract class NativeResourceHolder {
+
     private static final Logger log = LoggerFactory.getLogger(NativeResourceHolder.class);
 
     private final AtomicBoolean released = new AtomicBoolean();
@@ -49,4 +50,5 @@ public abstract class NativeResourceHolder {
         super.finalize();
         closeInternal(true);
     }
+
 }

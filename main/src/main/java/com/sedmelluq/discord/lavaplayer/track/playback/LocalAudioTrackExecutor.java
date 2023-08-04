@@ -26,6 +26,7 @@ import static com.sedmelluq.discord.lavaplayer.track.TrackMarkerHandler.MarkerSt
  * Handles the execution and output buffering of an audio track.
  */
 public class LocalAudioTrackExecutor implements AudioTrackExecutor {
+
     private static final Logger log = LoggerFactory.getLogger(LocalAudioTrackExecutor.class);
 
     private final InternalAudioTrack audioTrack;
@@ -355,7 +356,8 @@ public class LocalAudioTrackExecutor implements AudioTrackExecutor {
         if (exception == null) {
             InterruptedIOException ioException = findDeepException(throwable, InterruptedIOException.class);
 
-            if (ioException != null && (ioException.getMessage() == null || !ioException.getMessage().contains("timed out"))) {
+            if (ioException != null && (ioException.getMessage() == null || !ioException.getMessage()
+                .contains("timed out"))) {
                 exception = new InterruptedException(ioException.getMessage());
             }
         }
@@ -471,24 +473,28 @@ public class LocalAudioTrackExecutor implements AudioTrackExecutor {
      * Read executor, see method description
      */
     public interface ReadExecutor {
+
         /**
          * Reads until interrupted or EOF.
          *
          * @throws InterruptedException When interrupted externally (or for seek/stop).
          */
         void performRead() throws Exception;
+
     }
 
     /**
      * Seek executor, see method description
      */
     public interface SeekExecutor {
+
         /**
          * Perform a seek to the specified position
          *
          * @param position Position in milliseconds
          */
         void performSeek(long position) throws Exception;
+
     }
 
     private enum SeekResult {
@@ -496,4 +502,5 @@ public class LocalAudioTrackExecutor implements AudioTrackExecutor {
         INTERNAL_SEEK,
         EXTERNAL_SEEK
     }
+
 }

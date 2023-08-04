@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.io.InputStream;
 
 public class ResourceNativeLibraryBinaryProvider implements NativeLibraryBinaryProvider {
+
     private static final Logger log = LoggerFactory.getLogger(ResourceNativeLibraryBinaryProvider.class);
 
     private final Class<?> classLoaderSample;
@@ -26,4 +27,5 @@ public class ResourceNativeLibraryBinaryProvider implements NativeLibraryBinaryP
 
         return classLoaderSample.getResourceAsStream(resourcePath);
     }
+
 }

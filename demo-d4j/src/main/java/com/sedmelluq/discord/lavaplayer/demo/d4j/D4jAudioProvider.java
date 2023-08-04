@@ -13,6 +13,7 @@ import java.nio.ByteBuffer;
  * provide().
  */
 public class D4jAudioProvider extends AudioProvider {
+
     private final MutableAudioFrame frame = new MutableAudioFrame();
     private final AudioPlayer player;
 
@@ -25,7 +26,8 @@ public class D4jAudioProvider extends AudioProvider {
     @Override
     public boolean provide() {
         boolean didProvide = player.provide(frame);
-        if (didProvide) getBuffer().flip();
+        if (didProvide) {getBuffer().flip();}
         return didProvide;
     }
+
 }

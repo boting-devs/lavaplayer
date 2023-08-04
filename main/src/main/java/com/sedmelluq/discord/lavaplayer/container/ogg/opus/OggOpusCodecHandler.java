@@ -13,6 +13,7 @@ import java.util.Map;
  * Loader for Opus track providers from an OGG stream.
  */
 public class OggOpusCodecHandler implements OggCodecHandler {
+
     private static final int OPUS_IDENTIFIER = ByteBuffer.wrap(new byte[]{'O', 'p', 'u', 's'}).getInt();
     private static final int HEAD_TAG_HALF = ByteBuffer.wrap(new byte[]{'H', 'e', 'a', 'd'}).getInt();
 
@@ -33,7 +34,8 @@ public class OggOpusCodecHandler implements OggCodecHandler {
     }
 
     @Override
-    public OggTrackBlueprint loadBlueprint(OggPacketInputStream stream, DirectBufferStreamBroker broker) throws IOException {
+    public OggTrackBlueprint loadBlueprint(OggPacketInputStream stream,
+                                           DirectBufferStreamBroker broker) throws IOException {
         ByteBuffer firstPacket = broker.getBuffer();
         int sampleRate = getSampleRate(firstPacket);
         verifyFirstPacket(firstPacket);
@@ -97,6 +99,7 @@ public class OggOpusCodecHandler implements OggCodecHandler {
     }
 
     private static class Blueprint implements OggTrackBlueprint {
+
         private final DirectBufferStreamBroker broker;
         private final int channelCount;
         private final int sampleRate;
@@ -117,5 +120,7 @@ public class OggOpusCodecHandler implements OggCodecHandler {
         public int getSampleRate() {
             return sampleRate;
         }
+
     }
+
 }

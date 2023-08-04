@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  * #SOMETHING:FOO="thing",BAR=4
  */
 public class ExtendedM3uParser {
+
     private static final Pattern directiveArgumentPattern = Pattern.compile("([A-Z-]+)=(?:\"([^\"]*)\"|([^,]*))(?:,|\\z)");
 
     /**
@@ -55,6 +56,7 @@ public class ExtendedM3uParser {
      * or a data line.
      */
     public static class Line {
+
         private static final Line EMPTY_LINE = new Line(null, null, null, null);
 
         /**
@@ -94,5 +96,7 @@ public class ExtendedM3uParser {
         public boolean isData() {
             return lineData != null;
         }
+
     }
+
 }

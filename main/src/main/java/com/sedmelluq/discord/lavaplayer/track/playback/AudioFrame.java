@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat;
  * Represents an audio frame.
  */
 public interface AudioFrame {
+
     /**
      * @return Absolute timecode of the frame in milliseconds.
      */
@@ -45,4 +46,5 @@ public interface AudioFrame {
      * <code>true</code> in any frames received by the user.
      */
     boolean isTerminator();
+
 }

@@ -24,6 +24,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.Units.CONTENT_LENGTH_UNKNOW
  * Audio track that handles processing Youtube videos as audio tracks.
  */
 public class YoutubeAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeAudioTrack.class);
 
     private final YoutubeAudioSourceManager sourceManager;
@@ -58,7 +59,9 @@ public class YoutubeAudioTrack extends DelegatedAudioTrack {
         return true;
     }
 
-    private void processStatic(LocalAudioTrackExecutor localExecutor, HttpInterface httpInterface, FormatWithUrl format) throws Exception {
+    private void processStatic(LocalAudioTrackExecutor localExecutor,
+                               HttpInterface httpInterface,
+                               FormatWithUrl format) throws Exception {
         try (YoutubePersistentHttpStream stream = new YoutubePersistentHttpStream(httpInterface, format.signedUrl, format.details.getContentLength())) {
             if (format.details.getType().getMimeType().endsWith("/webm")) {
                 processDelegate(new MatroskaAudioTrack(trackInfo, stream), localExecutor);
@@ -147,6 +150,7 @@ public class YoutubeAudioTrack extends DelegatedAudioTrack {
     }
 
     private static class FormatWithUrl {
+
         private final YoutubeTrackFormat details;
         private final URI signedUrl;
 
@@ -154,5 +158,7 @@ public class YoutubeAudioTrack extends DelegatedAudioTrack {
             this.details = details;
             this.signedUrl = signedUrl;
         }
+
     }
+
 }

@@ -13,6 +13,7 @@ import java.io.InputStream;
  * An input for messages with their size known so unknown messages can be skipped.
  */
 public class MessageInput {
+
     private final CountingInputStream countingInputStream;
     private final DataInputStream dataInputStream;
     private int messageSize;
@@ -67,4 +68,5 @@ public class MessageInput {
 
         messageSize = 0;
     }
+
 }

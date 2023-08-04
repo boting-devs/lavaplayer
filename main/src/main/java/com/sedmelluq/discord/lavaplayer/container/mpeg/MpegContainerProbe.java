@@ -22,6 +22,7 @@ import static com.sedmelluq.discord.lavaplayer.container.MediaContainerDetection
  * Container detection probe for MP4 format.
  */
 public class MpegContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(MpegContainerProbe.class);
 
     private static final int[] ISO_TAG = new int[]{0x00, 0x00, 0x00, -1, 0x66, 0x74, 0x79, 0x70};
@@ -37,7 +38,8 @@ public class MpegContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream inputStream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream inputStream) throws IOException {
         if (!checkNextBytes(inputStream, ISO_TAG)) {
             return null;
         }
@@ -83,4 +85,5 @@ public class MpegContainerProbe implements MediaContainerProbe {
 
         return null;
     }
+
 }

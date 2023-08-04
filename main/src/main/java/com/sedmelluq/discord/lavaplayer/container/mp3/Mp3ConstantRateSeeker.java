@@ -13,6 +13,7 @@ import static com.sedmelluq.discord.lavaplayer.natives.mp3.Mp3Decoder.MPEG1_SAMP
  * supported. In case the file is not actually CBR, this being used as a fallback may cause inaccurate seeking.
  */
 public class Mp3ConstantRateSeeker implements Mp3Seeker {
+
     private static final int META_TAG_OFFSET = 36;
     private static final byte[][] META_TAGS = new byte[][]{
         new byte[]{'I', 'n', 'f', 'o'},
@@ -24,7 +25,10 @@ public class Mp3ConstantRateSeeker implements Mp3Seeker {
     private final long firstFramePosition;
     private final long contentLength;
 
-    private Mp3ConstantRateSeeker(double averageFrameSize, int sampleRate, long firstFramePosition, long contentLength) {
+    private Mp3ConstantRateSeeker(double averageFrameSize,
+                                  int sampleRate,
+                                  long firstFramePosition,
+                                  long contentLength) {
         this.averageFrameSize = averageFrameSize;
         this.sampleRate = sampleRate;
         this.firstFramePosition = firstFramePosition;
@@ -37,7 +41,9 @@ public class Mp3ConstantRateSeeker implements Mp3Seeker {
      * @param frameBuffer        Buffer of the first frame
      * @return Constant rate seeker, will always succeed, never null.
      */
-    public static Mp3ConstantRateSeeker createFromFrame(long firstFramePosition, long contentLength, byte[] frameBuffer) {
+    public static Mp3ConstantRateSeeker createFromFrame(long firstFramePosition,
+                                                        long contentLength,
+                                                        byte[] frameBuffer) {
         int sampleRate = Mp3Decoder.getFrameSampleRate(frameBuffer, 0);
         double averageFrameSize = Mp3Decoder.getAverageFrameSize(frameBuffer, 0);
 
@@ -80,4 +86,5 @@ public class Mp3ConstantRateSeeker implements Mp3Seeker {
     private long getMaximumFrameCount() {
         return (long) ((contentLength - firstFramePosition + 8) / averageFrameSize);
     }
+
 }

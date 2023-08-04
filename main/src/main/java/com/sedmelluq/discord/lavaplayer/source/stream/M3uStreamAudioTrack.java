@@ -12,6 +12,7 @@ import java.io.InputStream;
  * Audio track that handles processing M3U segment streams which using MPEG-TS wrapped ADTS codec.
  */
 public abstract class M3uStreamAudioTrack extends DelegatedAudioTrack {
+
     /**
      * @param trackInfo Track info
      */
@@ -36,4 +37,5 @@ public abstract class M3uStreamAudioTrack extends DelegatedAudioTrack {
             }
         }
     }
+
 }

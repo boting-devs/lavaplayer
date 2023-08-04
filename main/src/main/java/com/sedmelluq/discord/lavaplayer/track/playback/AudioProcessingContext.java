@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerOptions;
  * Context for processing audio. Contains configuration for encoding and the output where the frames go to.
  */
 public class AudioProcessingContext {
+
     /**
      * Audio encoding or filtering related configuration
      */
@@ -44,4 +45,5 @@ public class AudioProcessingContext {
         this.outputFormat = outputFormat;
         this.filterHotSwapEnabled = configuration.isFilterHotSwapEnabled();
     }
+
 }

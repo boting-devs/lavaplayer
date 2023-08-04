@@ -9,6 +9,7 @@ import java.nio.ShortBuffer;
  * A wrapper around the native methods of OpusEncoderLibrary.
  */
 public class OpusEncoder extends NativeResourceHolder {
+
     private final OpusEncoderLibrary library;
     private final long instance;
 
@@ -58,4 +59,5 @@ public class OpusEncoder extends NativeResourceHolder {
     protected void freeResources() {
         library.destroy(instance);
     }
+
 }

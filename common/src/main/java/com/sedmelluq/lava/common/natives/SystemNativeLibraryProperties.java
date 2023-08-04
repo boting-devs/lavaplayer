@@ -1,6 +1,7 @@
 package com.sedmelluq.lava.common.natives;
 
 public class SystemNativeLibraryProperties implements NativeLibraryProperties {
+
     private final String libraryName;
     private final String propertyPrefix;
 
@@ -50,4 +51,5 @@ public class SystemNativeLibraryProperties implements NativeLibraryProperties {
             System.getProperty(propertyPrefix + property)
         );
     }
+
 }

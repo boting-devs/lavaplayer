@@ -33,6 +33,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * The default implementation of audio player manager.
  */
 public class DefaultAudioPlayerManager implements AudioPlayerManager {
+
     private static final int TRACK_INFO_VERSIONED = 1;
     private static final int TRACK_INFO_VERSION = 3;
 
@@ -181,7 +182,9 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
     }
 
     @Override
-    public Future<Void> loadItemOrdered(Object orderingKey, final AudioReference reference, final AudioLoadResultHandler resultHandler) {
+    public Future<Void> loadItemOrdered(Object orderingKey,
+                                        final AudioReference reference,
+                                        final AudioLoadResultHandler resultHandler) {
         try {
             return orderedInfoExecutor.submit(orderingKey, () -> {
                 loadItemSync(reference, resultHandler);
@@ -192,7 +195,9 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
         }
     }
 
-    private Future<Void> handleLoadRejected(String identifier, AudioLoadResultHandler resultHandler, RejectedExecutionException e) {
+    private Future<Void> handleLoadRejected(String identifier,
+                                            AudioLoadResultHandler resultHandler,
+                                            RejectedExecutionException e) {
         FriendlyException exception = new FriendlyException("Cannot queue loading a track, queue is full.", SUSPICIOUS, e);
         ExceptionTools.log(log, exception, "queueing item " + identifier);
 
@@ -337,7 +342,8 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
         if (customExecutor != null) {
             return customExecutor;
         } else {
-            int bufferDuration = Optional.ofNullable(playerOptions.frameBufferDuration.get()).orElse(frameBufferDuration);
+            int bufferDuration = Optional.ofNullable(playerOptions.frameBufferDuration.get())
+                .orElse(frameBufferDuration);
             return new LocalAudioTrackExecutor(track, configuration, playerOptions, useSeekGhosting, bufferDuration);
 
         }
@@ -387,7 +393,9 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
         trackInfoExecutorService.setMaximumPoolSize(poolSize);
     }
 
-    private boolean checkSourcesForItem(AudioReference reference, AudioLoadResultHandler resultHandler, boolean[] reported) {
+    private boolean checkSourcesForItem(AudioReference reference,
+                                        AudioLoadResultHandler resultHandler,
+                                        boolean[] reported) {
         AudioReference currentReference = reference;
 
         for (int redirects = 0; redirects < MAXIMUM_LOAD_REDIRECTS && currentReference.identifier != null; redirects++) {
@@ -403,7 +411,9 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
         return false;
     }
 
-    private AudioItem checkSourcesForItemOnce(AudioReference reference, AudioLoadResultHandler resultHandler, boolean[] reported) {
+    private AudioItem checkSourcesForItemOnce(AudioReference reference,
+                                              AudioLoadResultHandler resultHandler,
+                                              boolean[] reported) {
         for (AudioSourceManager sourceManager : sourceManagers) {
             if (reference.containerDescriptor != null && !(sourceManager instanceof ProbingAudioSourceManager)) {
                 continue;
@@ -413,11 +423,13 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
 
             if (item != null) {
                 if (item instanceof AudioTrack) {
-                    log.debug("Loaded a track with identifier {} using {}.", reference.identifier, sourceManager.getClass().getSimpleName());
+                    log.debug("Loaded a track with identifier {} using {}.", reference.identifier, sourceManager.getClass()
+                        .getSimpleName());
                     reported[0] = true;
                     resultHandler.trackLoaded((AudioTrack) item);
                 } else if (item instanceof AudioPlaylist) {
-                    log.debug("Loaded a playlist with identifier {} using {}.", reference.identifier, sourceManager.getClass().getSimpleName());
+                    log.debug("Loaded a playlist with identifier {} using {}.", reference.identifier, sourceManager.getClass()
+                        .getSimpleName());
                     reported[0] = true;
                     resultHandler.playlistLoaded((AudioPlaylist) item);
                 }
@@ -469,4 +481,5 @@ public class DefaultAudioPlayerManager implements AudioPlayerManager {
             }
         }
     }
+
 }

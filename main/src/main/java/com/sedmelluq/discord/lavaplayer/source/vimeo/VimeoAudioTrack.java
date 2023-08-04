@@ -27,6 +27,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio track that handles processing Vimeo tracks.
  */
 public class VimeoAudioTrack extends DelegatedAudioTrack {
+
     private static final Logger log = LoggerFactory.getLogger(VimeoAudioTrack.class);
 
     private final VimeoAudioSourceManager sourceManager;
@@ -75,7 +76,8 @@ public class VimeoAudioTrack extends DelegatedAudioTrack {
                     new IllegalStateException("Response code for player config is " + statusCode));
             }
 
-            return sourceManager.loadConfigJsonFromPageContent(IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8));
+            return sourceManager.loadConfigJsonFromPageContent(IOUtils.toString(response.getEntity()
+                .getContent(), StandardCharsets.UTF_8));
         }
     }
 
@@ -101,4 +103,5 @@ public class VimeoAudioTrack extends DelegatedAudioTrack {
     public AudioSourceManager getSourceManager() {
         return sourceManager;
     }
+
 }

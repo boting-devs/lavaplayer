@@ -14,6 +14,7 @@ import java.io.IOException;
  * A provider of audio frames from a FLAC track.
  */
 public class FlacTrackProvider {
+
     private final FlacTrackInfo info;
     private final SeekableInputStream inputStream;
     private final AudioPipeline downstream;
@@ -111,4 +112,5 @@ public class FlacTrackProvider {
     public void close() {
         downstream.close();
     }
+
 }

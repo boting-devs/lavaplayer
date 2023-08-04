@@ -42,7 +42,9 @@ public class BalancingIpRoutePlanner extends AbstractRoutePlanner {
      * @param ipFilter            function to filter out certain IP addresses picked from the IP block, causing another random to be chosen.
      * @param handleSearchFailure whether a search 429 should trigger the ip as failing
      */
-    public BalancingIpRoutePlanner(List<IpBlock> ipBlocks, Predicate<InetAddress> ipFilter, boolean handleSearchFailure) {
+    public BalancingIpRoutePlanner(List<IpBlock> ipBlocks,
+                                   Predicate<InetAddress> ipFilter,
+                                   boolean handleSearchFailure) {
         super(ipBlocks, handleSearchFailure);
         this.ipFilter = ipFilter;
     }
@@ -87,4 +89,5 @@ public class BalancingIpRoutePlanner extends AbstractRoutePlanner {
         } while (localAddress == null || !ipFilter.test(localAddress) || !isValidAddress(localAddress));
         return localAddress;
     }
+
 }

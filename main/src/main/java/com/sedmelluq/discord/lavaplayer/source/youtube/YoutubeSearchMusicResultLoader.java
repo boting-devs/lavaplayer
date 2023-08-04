@@ -8,7 +8,9 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import java.util.function.Function;
 
 public interface YoutubeSearchMusicResultLoader {
+
     AudioItem loadSearchMusicResult(String query, Function<AudioTrackInfo, AudioTrack> trackFactory);
 
     ExtendedHttpConfigurable getHttpConfiguration();
+
 }

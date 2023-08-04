@@ -12,6 +12,7 @@ import java.util.Collection;
  * Factory for audio pipelines. Contains helper methods to determine whether an audio pipeline is even required.
  */
 public class AudioPipelineFactory {
+
     /**
      * @param context     Audio processing context to check output format from
      * @param inputFormat Input format of the audio
@@ -63,4 +64,5 @@ public class AudioPipelineFactory {
             new BufferingPostProcessor(context, chunkEncoder)
         );
     }
+
 }

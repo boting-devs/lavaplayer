@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
  * Consumes OPUS track data from a matroska file.
  */
 public class MatroskaOpusTrackConsumer implements MatroskaTrackConsumer {
+
     private final MatroskaFileTrack track;
     private final OpusPacketRouter opusPacketRouter;
 
@@ -51,4 +52,5 @@ public class MatroskaOpusTrackConsumer implements MatroskaTrackConsumer {
     public void close() {
         opusPacketRouter.close();
     }
+
 }

@@ -8,6 +8,7 @@ import java.io.IOException;
  * Track provider for a type of MP4 file.
  */
 public interface MpegFileTrackProvider {
+
     /**
      * @param trackConsumer Track consumer which defines the track this will provide and the consumer for packets.
      * @return Returns true if it had enough information for initialisation.
@@ -35,4 +36,5 @@ public interface MpegFileTrackProvider {
      * @param timecode The timecode to seek to in milliseconds
      */
     void seekToTimecode(long timecode);
+
 }

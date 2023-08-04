@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.track;
  * A track marker handler.
  */
 public interface TrackMarkerHandler {
+
     /**
      * @param state The state of the marker when it is triggered.
      */
@@ -43,4 +44,5 @@ public interface TrackMarkerHandler {
          */
         ENDED
     }
+
 }

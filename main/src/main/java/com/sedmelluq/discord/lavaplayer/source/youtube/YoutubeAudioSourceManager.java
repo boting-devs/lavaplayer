@@ -39,6 +39,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio source manager that implements finding Youtube videos or playlists based on an URL or ID.
  */
 public class YoutubeAudioSourceManager implements AudioSourceManager, HttpConfigurable {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeAudioSourceManager.class);
 
     private final YoutubeSignatureResolver signatureResolver;
@@ -325,5 +326,7 @@ public class YoutubeAudioSourceManager implements AudioSourceManager, HttpConfig
         public AudioItem none() {
             return AudioReference.NO_TRACK;
         }
+
     }
+
 }

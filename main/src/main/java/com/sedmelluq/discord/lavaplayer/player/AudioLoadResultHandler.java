@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
  * Handles the result of loading an item from an audio player manager.
  */
 public interface AudioLoadResultHandler {
+
     /**
      * Called when the requested item is a track and it was successfully loaded.
      *
@@ -33,4 +34,5 @@ public interface AudioLoadResultHandler {
      * @param exception The exception that was thrown
      */
     void loadFailed(FriendlyException exception);
+
 }

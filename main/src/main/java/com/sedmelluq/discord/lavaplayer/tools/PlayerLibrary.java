@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
  * Contains constants with metadata about the library.
  */
 public class PlayerLibrary {
+
     /**
      * The currently loaded version of the library.
      */
@@ -27,4 +28,5 @@ public class PlayerLibrary {
 
         return "UNKNOWN";
     }
+
 }

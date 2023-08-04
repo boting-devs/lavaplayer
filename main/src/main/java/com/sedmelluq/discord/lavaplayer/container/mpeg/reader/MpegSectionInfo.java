@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.mpeg.reader;
  * Information for one MP4 section (aka box)
  */
 public class MpegSectionInfo {
+
     /**
      * Absolute offset of the section
      */
@@ -27,4 +28,5 @@ public class MpegSectionInfo {
         this.length = length;
         this.type = type;
     }
+
 }

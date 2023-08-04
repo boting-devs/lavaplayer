@@ -9,6 +9,7 @@ import ibxm.Module;
 import java.io.IOException;
 
 public class XmFileLoader {
+
     private final SeekableInputStream inputStream;
 
     public XmFileLoader(SeekableInputStream inputStream) {
@@ -21,4 +22,5 @@ public class XmFileLoader {
         ibxm.setInterpolation(Channel.SINC);
         return new XmTrackProvider(context, ibxm);
     }
+
 }

@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterfaceManager;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 
 public class HlsStreamTrack extends MpegTsM3uStreamAudioTrack {
+
     private final HlsStreamSegmentUrlProvider segmentUrlProvider;
     private final HttpInterfaceManager httpInterfaceManager;
 
@@ -35,4 +36,5 @@ public class HlsStreamTrack extends MpegTsM3uStreamAudioTrack {
     protected HttpInterface getHttpInterface() {
         return httpInterfaceManager.getInterface();
     }
+
 }

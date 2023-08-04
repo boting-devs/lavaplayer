@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.filter.UniversalPcmAudioFilter;
  * Base class for converter filters which have no internal state.
  */
 public abstract class ConverterAudioFilter implements UniversalPcmAudioFilter {
+
     protected static final int BUFFER_SIZE = 4096;
 
     @Override
@@ -26,4 +27,5 @@ public abstract class ConverterAudioFilter implements UniversalPcmAudioFilter {
     protected static short floatToShort(float value) {
         return (short) (value * 32768.0f);
     }
+
 }

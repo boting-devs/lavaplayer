@@ -33,14 +33,17 @@ public final class RotatingNanoIpRoutePlanner extends AbstractRoutePlanner {
         this(ipBlocks, ipFilter, true);
     }
 
-    public RotatingNanoIpRoutePlanner(final List<IpBlock> ipBlocks, final Predicate<InetAddress> ipFilter, final boolean handleSearchFailure) {
+    public RotatingNanoIpRoutePlanner(final List<IpBlock> ipBlocks,
+                                      final Predicate<InetAddress> ipFilter,
+                                      final boolean handleSearchFailure) {
         super(ipBlocks, handleSearchFailure);
         this.ipFilter = ipFilter;
         this.currentBlock = new AtomicReference<>(BigInteger.ZERO);
         this.blockNanoStart = new AtomicReference<>(BigInteger.valueOf(System.nanoTime()));
         this.next = new AtomicBoolean(false);
-        if (ipBlock.getType() != Inet6Address.class || ipBlock.getSize().compareTo(Ipv6Block.BLOCK64_IPS) < 0)
+        if (ipBlock.getType() != Inet6Address.class || ipBlock.getSize().compareTo(Ipv6Block.BLOCK64_IPS) < 0) {
             throw new IllegalArgumentException("Please use a bigger IPv6 Block!");
+        }
     }
 
     /**
@@ -114,4 +117,5 @@ public final class RotatingNanoIpRoutePlanner extends AbstractRoutePlanner {
         } while (localAddress == null || !ipFilter.test(localAddress) || !isValidAddress(localAddress));
         return localAddress;
     }
+
 }

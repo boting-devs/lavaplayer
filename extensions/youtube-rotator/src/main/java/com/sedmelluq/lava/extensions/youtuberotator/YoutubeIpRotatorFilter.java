@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.net.BindException;
 
 public class YoutubeIpRotatorFilter implements HttpContextFilter {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeIpRotatorFilter.class);
 
     private static final String RETRY_COUNT_ATTRIBUTE = "yt-retry-counter";
@@ -130,6 +131,9 @@ public class YoutubeIpRotatorFilter implements HttpContextFilter {
     }
 
     private static class RetryCount {
+
         private int value;
+
     }
+
 }

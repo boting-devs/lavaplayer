@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
  * Result of audio container detection.
  */
 public class MediaContainerDetectionResult {
+
     private static final MediaContainerDetectionResult UNKNOWN_FORMAT =
         new MediaContainerDetectionResult(null, null, null, null, null);
 
@@ -109,4 +110,5 @@ public class MediaContainerDetectionResult {
     public AudioReference getReference() {
         return reference;
     }
+
 }

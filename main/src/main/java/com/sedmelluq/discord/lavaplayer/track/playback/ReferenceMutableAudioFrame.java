@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.track.playback;
  * Mutable audio frame which contains no dedicated buffer, but refers to a segment in a specified byte buffer.
  */
 public class ReferenceMutableAudioFrame extends AbstractMutableAudioFrame {
+
     private byte[] frameBuffer;
     private int frameOffset;
     private int frameLength;
@@ -56,4 +57,5 @@ public class ReferenceMutableAudioFrame extends AbstractMutableAudioFrame {
         this.frameOffset = frameOffset;
         this.frameLength = frameLength;
     }
+
 }

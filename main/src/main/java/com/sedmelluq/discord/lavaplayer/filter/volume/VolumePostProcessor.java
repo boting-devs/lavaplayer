@@ -9,6 +9,7 @@ import java.nio.ShortBuffer;
  * Audio chunk post processor to apply selected volume.
  */
 public class VolumePostProcessor implements AudioPostProcessor {
+
     private final PcmVolumeProcessor volumeProcessor;
     private final AudioProcessingContext context;
 
@@ -40,4 +41,5 @@ public class VolumePostProcessor implements AudioPostProcessor {
     public void close() {
         // Nothing to close here
     }
+
 }

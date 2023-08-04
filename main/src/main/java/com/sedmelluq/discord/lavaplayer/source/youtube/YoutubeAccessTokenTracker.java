@@ -38,6 +38,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.ExceptionTools.throwWithDeb
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class YoutubeAccessTokenTracker {
+
     private static final Logger log = LoggerFactory.getLogger(YoutubeAccessTokenTracker.class);
 
     private static final String AUTH_SCRIPT_REGEX = "<script id=\"base-js\" src=\"(.*?)\" nonce=\".*?\"></script>";
@@ -85,7 +86,7 @@ public class YoutubeAccessTokenTracker {
                 return;
             }
 
-            if (loggedAgeRestrictionsWarning) return;
+            if (loggedAgeRestrictionsWarning) {return;}
 
             long now = System.currentTimeMillis();
             if (now - lastMasterTokenUpdate < MASTER_TOKEN_REFRESH_INTERVAL) {
@@ -258,7 +259,8 @@ public class YoutubeAccessTokenTracker {
                 loggedAgeRestrictionsWarning = true;
             }
 
-            HttpClientTools.assertSuccessWithContent(masterTokenResponse, "login account response [" + jsonBrowser.get("exception").safeText() + "]");
+            HttpClientTools.assertSuccessWithContent(masterTokenResponse, "login account response [" + jsonBrowser.get("exception")
+                .safeText() + "]");
 
             if (jsonBrowser.get("tv").asBoolean(false)) {
                 masterTokenFromTV = true;
@@ -278,7 +280,7 @@ public class YoutubeAccessTokenTracker {
 
     private String requestAccessToken(HttpInterface httpInterface) throws IOException {
         if (masterTokenFromTV) {
-            if (cachedAuthScript == null) fetchTVScript(httpInterface);
+            if (cachedAuthScript == null) {fetchTVScript(httpInterface);}
 
             HttpPost post = new HttpPost(TV_AUTH_TOKEN_URL);
             post.setEntity(new StringEntity(String.format(TV_AUTH_TOKEN_REFRESH_PAYLOAD,
@@ -293,7 +295,8 @@ public class YoutubeAccessTokenTracker {
                 String responseText = EntityUtils.toString(response.getEntity(), UTF_8);
                 JsonBrowser responseJson = JsonBrowser.parse(responseText);
 
-                accessTokenRefreshInterval = TimeUnit.SECONDS.toMillis(responseJson.get("expires_in").asLong(DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL));
+                accessTokenRefreshInterval = TimeUnit.SECONDS.toMillis(responseJson.get("expires_in")
+                    .asLong(DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL));
                 return responseJson.get("access_token").text();
             }
         } else {
@@ -316,7 +319,8 @@ public class YoutubeAccessTokenTracker {
     }
 
     private void createAndroidAccount(HttpInterface httpInterface, JsonBrowser jsonBrowser) throws IOException {
-        log.info("Account " + jsonBrowser.get("email").text() + " don't have Android or YouTube profile, creating new one...");
+        log.info("Account " + jsonBrowser.get("email")
+            .text() + " don't have Android or YouTube profile, creating new one...");
 
         HttpPost post = new HttpPost(CHECKIN_ACCOUNT_URL);
         StringEntity payload = new StringEntity(String.format(TOKEN_PAYLOAD, email, password));
@@ -328,10 +332,14 @@ public class YoutubeAccessTokenTracker {
     }
 
     private String continueUrl(HttpInterface httpInterface, JsonBrowser jsonBrowser) throws IOException {
-        log.warn("Not successful attempt to login into account " + jsonBrowser.get("email").text() + ", trying obtain oauth2 token through continue url...");
+        log.warn("Not successful attempt to login into account " + jsonBrowser.get("email")
+            .text() + ", trying obtain oauth2 token through continue url...");
 
         HttpPost post = new HttpPost(jsonBrowser.get("continueUrl").text());
-        RequestConfig config = RequestConfig.custom().setCookieSpec(CookieSpecs.NETSCAPE).setRedirectsEnabled(true).build();
+        RequestConfig config = RequestConfig.custom()
+            .setCookieSpec(CookieSpecs.NETSCAPE)
+            .setRedirectsEnabled(true)
+            .build();
         post.setConfig(config);
 
         try (CloseableHttpResponse response = httpInterface.execute(post)) {
@@ -418,7 +426,9 @@ public class YoutubeAccessTokenTracker {
         }
     }
 
-    private String waitForAuth(HttpInterface httpInterface, JsonBrowser json, CachedAuthScript script) throws IOException, InterruptedException {
+    private String waitForAuth(HttpInterface httpInterface,
+                               JsonBrowser json,
+                               CachedAuthScript script) throws IOException, InterruptedException {
         log.info("Open your browser, go to {} and enter code {}, this is required to complete auth in provided account," +
                 " usually this needed to be done once," +
                 " LavaPlayer will wait and check for auth completion every 5 seconds.",
@@ -468,7 +478,8 @@ public class YoutubeAccessTokenTracker {
                     HttpClientTools.assertSuccessWithContent(saveResponse, "auth save response");
 
                     accessToken = responseJson.get("access_token").text();
-                    accessTokenRefreshInterval = TimeUnit.SECONDS.toMillis(responseJson.get("expires_in").asLong(DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL));
+                    accessTokenRefreshInterval = TimeUnit.SECONDS.toMillis(responseJson.get("expires_in")
+                        .asLong(DEFAULT_ACCESS_TOKEN_REFRESH_INTERVAL));
                     lastAccessTokenUpdate = System.currentTimeMillis();
                     masterTokenFromTV = true;
                     log.info("Auth was successful and updating YouTube access token succeeded, new token is {}, next update will be after {} seconds.",
@@ -492,6 +503,7 @@ public class YoutubeAccessTokenTracker {
     }
 
     protected static class CachedAuthScript {
+
         public final String clientId;
         public final String clientSecret;
 
@@ -499,5 +511,7 @@ public class YoutubeAccessTokenTracker {
             this.clientId = clientId;
             this.clientSecret = clientSecret;
         }
+
     }
+
 }

@@ -6,6 +6,7 @@ import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat;
  * A single audio frame.
  */
 public class ImmutableAudioFrame implements AudioFrame {
+
     /**
      * Timecode of this frame in milliseconds.
      */
@@ -75,4 +76,5 @@ public class ImmutableAudioFrame implements AudioFrame {
     public boolean isTerminator() {
         return false;
     }
+
 }

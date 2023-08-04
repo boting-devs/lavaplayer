@@ -11,6 +11,7 @@ import java.util.List;
  * An input stream that is seekable.
  */
 public abstract class SeekableInputStream extends InputStream {
+
     protected long contentLength;
     private final long maxSkipDistance;
 
@@ -102,4 +103,5 @@ public abstract class SeekableInputStream extends InputStream {
     }
 
     public abstract List<AudioTrackInfoProvider> getTrackInfoProviders();
+
 }

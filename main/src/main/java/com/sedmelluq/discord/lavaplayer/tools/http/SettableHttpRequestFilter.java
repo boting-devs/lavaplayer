@@ -5,6 +5,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.protocol.HttpClientContext;
 
 public class SettableHttpRequestFilter implements HttpContextFilter {
+
     private HttpContextFilter filter;
 
     public HttpContextFilter get() {
@@ -63,4 +64,5 @@ public class SettableHttpRequestFilter implements HttpContextFilter {
             return false;
         }
     }
+
 }

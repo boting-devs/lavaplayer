@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.container.mpeg.reader;
  * Information for one MP4 section (aka box) including version and flags
  */
 public class MpegVersionedSectionInfo extends MpegSectionInfo {
+
     /**
      * Version of the section
      */
@@ -24,4 +25,5 @@ public class MpegVersionedSectionInfo extends MpegSectionInfo {
         this.version = version;
         this.flags = flags;
     }
+
 }

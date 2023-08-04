@@ -4,6 +4,7 @@ package com.sedmelluq.discord.lavaplayer.track;
  * Meta info for an audio track
  */
 public class AudioTrackInfo {
+
     /**
      * Track title
      */
@@ -47,7 +48,14 @@ public class AudioTrackInfo {
      * @param artworkUrl Thumbnail of the track
      * @param isrc       International Standard Recording Code
      */
-    public AudioTrackInfo(String title, String author, long length, String identifier, boolean isStream, String uri, String artworkUrl, String isrc) {
+    public AudioTrackInfo(String title,
+                          String author,
+                          long length,
+                          String identifier,
+                          boolean isStream,
+                          String uri,
+                          String artworkUrl,
+                          String isrc) {
         this.title = title;
         this.author = author;
         this.length = length;
@@ -69,4 +77,5 @@ public class AudioTrackInfo {
     public AudioTrackInfo(String title, String author, long length, String identifier, boolean isStream, String uri) {
         this(title, author, length, identifier, isStream, uri, null, null);
     }
+
 }

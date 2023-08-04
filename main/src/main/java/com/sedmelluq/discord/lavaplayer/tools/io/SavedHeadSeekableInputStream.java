@@ -10,6 +10,7 @@ import java.util.List;
  * saved beginning does not cause any IO to be done on the underlying input stream.
  */
 public class SavedHeadSeekableInputStream extends SeekableInputStream {
+
     private final SeekableInputStream delegate;
     private final byte[] savedHead;
     private boolean usingHead;
@@ -138,4 +139,5 @@ public class SavedHeadSeekableInputStream extends SeekableInputStream {
     public boolean markSupported() {
         return false;
     }
+
 }

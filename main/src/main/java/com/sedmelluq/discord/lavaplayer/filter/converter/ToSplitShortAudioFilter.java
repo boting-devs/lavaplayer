@@ -8,6 +8,7 @@ import java.nio.ShortBuffer;
  * Filter which takes in PCM data in any representation and outputs it as split short PCM.
  */
 public class ToSplitShortAudioFilter extends ConverterAudioFilter {
+
     private final SplitShortPcmAudioFilter downstream;
     private final int channelCount;
     private final short[][] buffers;
@@ -79,4 +80,5 @@ public class ToSplitShortAudioFilter extends ConverterAudioFilter {
     public void process(short[][] input, int offset, int length) throws InterruptedException {
         downstream.process(input, offset, length);
     }
+
 }

@@ -17,6 +17,7 @@ import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
  * A helper class for registering built-in source managers to a player manager.
  */
 public class AudioSourceManagers {
+
     /**
      * See {@link #registerRemoteSources(AudioPlayerManager, MediaContainerRegistry)}, but with default containers.
      */
@@ -31,7 +32,8 @@ public class AudioSourceManagers {
      * @param playerManager     Player manager to register the source managers to
      * @param containerRegistry Media container registry to be used by any probing sources.
      */
-    public static void registerRemoteSources(AudioPlayerManager playerManager, MediaContainerRegistry containerRegistry) {
+    public static void registerRemoteSources(AudioPlayerManager playerManager,
+                                             MediaContainerRegistry containerRegistry) {
         playerManager.registerSourceManager(new YoutubeAudioSourceManager(true, null, null));
         playerManager.registerSourceManager(new YandexMusicAudioSourceManager(true));
         playerManager.registerSourceManager(SoundCloudAudioSourceManager.createDefault());
@@ -61,4 +63,5 @@ public class AudioSourceManagers {
     public static void registerLocalSource(AudioPlayerManager playerManager, MediaContainerRegistry containerRegistry) {
         playerManager.registerSourceManager(new LocalAudioSourceManager(containerRegistry));
     }
+
 }

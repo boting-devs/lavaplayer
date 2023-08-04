@@ -11,6 +11,7 @@ package com.sedmelluq.discord.lavaplayer.container.flac;
  * of the table.
  */
 public class FlacSeekPoint {
+
     public static final int LENGTH = 18;
 
     /**
@@ -38,4 +39,5 @@ public class FlacSeekPoint {
         this.byteOffset = byteOffset;
         this.sampleCount = sampleCount;
     }
+
 }

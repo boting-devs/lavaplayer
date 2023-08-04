@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SoundCloudClientIdTracker {
+
     private static final Logger log = LoggerFactory.getLogger(SoundCloudClientIdTracker.class);
 
     private static final String ID_FETCH_CONTEXT_ATTRIBUTE = "sc-raw";
@@ -102,8 +103,7 @@ public class SoundCloudClientIdTracker {
 
     private String getLastMatchWithinLimit(Matcher m, int limit) {
         String lastMatch = null;
-        for (int i = 0; m.find() && i < limit; ++i)
-            lastMatch = m.group();
+        for (int i = 0; m.find() && i < limit; ++i) {lastMatch = m.group();}
         return lastMatch;
     }
 
@@ -124,4 +124,5 @@ public class SoundCloudClientIdTracker {
             }
         }
     }
+
 }

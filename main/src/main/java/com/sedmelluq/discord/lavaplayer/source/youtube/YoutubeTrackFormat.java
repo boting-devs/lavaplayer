@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
  * Describes an available media format for a track
  */
 public class YoutubeTrackFormat {
+
     private final YoutubeFormatInfo info;
     private final ContentType type;
     private final long bitrate;
@@ -126,4 +127,5 @@ public class YoutubeTrackFormat {
     public boolean isDefaultAudioTrack() {
         return defaultAudioTrack;
     }
+
 }

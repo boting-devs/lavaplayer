@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LegacyDashMpdFormatsExtractor implements YoutubeTrackFormatExtractor {
+
     private static final Logger log = LoggerFactory.getLogger(LegacyDashMpdFormatsExtractor.class);
 
     @Override
@@ -92,4 +93,5 @@ public class LegacyDashMpdFormatsExtractor implements YoutubeTrackFormatExtracto
 
         return tracks;
     }
+
 }

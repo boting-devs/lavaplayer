@@ -14,6 +14,7 @@ import static com.sedmelluq.discord.lavaplayer.natives.mp3.Mp3Decoder.MPEG1_SAMP
  * Seeking support for VBR files with Xing header.
  */
 public class Mp3XingSeeker implements Mp3Seeker {
+
     private static final Logger log = LoggerFactory.getLogger(Mp3XingSeeker.class);
 
     private static final int XING_OFFSET = 36;
@@ -27,7 +28,12 @@ public class Mp3XingSeeker implements Mp3Seeker {
     private final byte[] seekMapping;
     private final long duration;
 
-    private Mp3XingSeeker(int sampleRate, long firstFramePosition, long contentLength, long frameCount, long dataSize, byte[] seekMapping) {
+    private Mp3XingSeeker(int sampleRate,
+                          long firstFramePosition,
+                          long contentLength,
+                          long frameCount,
+                          long dataSize,
+                          byte[] seekMapping) {
         this.firstFramePosition = firstFramePosition;
         this.contentLength = contentLength;
         this.frameCount = frameCount;
@@ -83,4 +89,5 @@ public class Mp3XingSeeker implements Mp3Seeker {
 
         return frameIndex;
     }
+
 }

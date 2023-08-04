@@ -11,6 +11,7 @@ import java.nio.ShortBuffer;
  * Post processor which encodes audio chunks and passes them as audio frames to the frame buffer.
  */
 public class BufferingPostProcessor implements AudioPostProcessor {
+
     private final AudioProcessingContext context;
     private final AudioChunkEncoder encoder;
     private final MutableAudioFrame offeredFrame;
@@ -45,4 +46,5 @@ public class BufferingPostProcessor implements AudioPostProcessor {
     public void close() {
         encoder.close();
     }
+
 }

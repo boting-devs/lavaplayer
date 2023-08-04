@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OggVorbisCodecHandler implements OggCodecHandler {
+
     private static final int VORBIS_IDENTIFIER = ByteBuffer.wrap(new byte[]{0x01, 'v', 'o', 'r'}).getInt();
 
     // These are arbitrary - there is no limit specified in Vorbis specification, Opus limit used as reference.
@@ -29,13 +30,14 @@ public class OggVorbisCodecHandler implements OggCodecHandler {
     }
 
     @Override
-    public OggTrackBlueprint loadBlueprint(OggPacketInputStream stream, DirectBufferStreamBroker broker) throws IOException {
+    public OggTrackBlueprint loadBlueprint(OggPacketInputStream stream,
+                                           DirectBufferStreamBroker broker) throws IOException {
         byte[] infoPacket = broker.extractBytes();
         loadCommentsHeader(stream, broker, true);
         ByteBuffer infoBuffer = ByteBuffer.wrap(infoPacket);
         int sampleRate = Integer.reverseBytes(infoBuffer.getInt(12));
         List<OggSeekPoint> seekPointList = stream.createSeekTable(sampleRate);
-        if (seekPointList != null) stream.setSeekPoints(seekPointList);
+        if (seekPointList != null) {stream.setSeekPoints(seekPointList);}
         return new Blueprint(sampleRate, infoPacket, broker);
     }
 
@@ -75,6 +77,7 @@ public class OggVorbisCodecHandler implements OggCodecHandler {
     }
 
     private static class Blueprint implements OggTrackBlueprint {
+
         private final int sampleRate;
         private final byte[] infoPacket;
         private final DirectBufferStreamBroker broker;
@@ -94,5 +97,7 @@ public class OggVorbisCodecHandler implements OggCodecHandler {
         public int getSampleRate() {
             return sampleRate;
         }
+
     }
+
 }

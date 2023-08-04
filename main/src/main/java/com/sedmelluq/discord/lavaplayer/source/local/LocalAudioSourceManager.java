@@ -20,6 +20,7 @@ import static com.sedmelluq.discord.lavaplayer.tools.FriendlyException.Severity.
  * Audio source manager that implements finding audio files from the local file system.
  */
 public class LocalAudioSourceManager extends ProbingAudioSourceManager {
+
     public LocalAudioSourceManager() {
         this(MediaContainerRegistry.DEFAULT_REGISTRY);
     }
@@ -86,4 +87,5 @@ public class LocalAudioSourceManager extends ProbingAudioSourceManager {
     public void shutdown() {
         // Nothing to shut down
     }
+
 }

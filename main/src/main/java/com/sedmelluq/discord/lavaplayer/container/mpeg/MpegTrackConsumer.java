@@ -6,6 +6,7 @@ import java.nio.channels.ReadableByteChannel;
  * Consumer for the data of one MP4 track
  */
 public interface MpegTrackConsumer {
+
     /**
      * @return The associated MP4 track
      */
@@ -44,4 +45,5 @@ public interface MpegTrackConsumer {
      * Free all resources
      */
     void close();
+
 }

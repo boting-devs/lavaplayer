@@ -8,6 +8,7 @@ import java.nio.ShortBuffer;
  * Filter which takes in PCM data in any representation and outputs it as short PCM.
  */
 public class ToShortAudioFilter extends ConverterAudioFilter {
+
     private final ShortPcmAudioFilter downstream;
     private final int channelCount;
     private final short[] outputBuffer;
@@ -69,4 +70,5 @@ public class ToShortAudioFilter extends ConverterAudioFilter {
             downstream.process(outputBuffer, 0, chunkSize);
         }
     }
+
 }

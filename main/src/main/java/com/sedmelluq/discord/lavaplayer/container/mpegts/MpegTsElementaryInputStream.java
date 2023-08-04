@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
  * elementary data type.
  */
 public class MpegTsElementaryInputStream extends InputStream {
+
     private static final Logger log = LoggerFactory.getLogger(MpegTsElementaryInputStream.class);
 
     public static final int ADTS_ELEMENTARY_STREAM = 0x0F;
@@ -339,4 +340,5 @@ public class MpegTsElementaryInputStream extends InputStream {
 
         return identifier;
     }
+
 }

@@ -21,6 +21,7 @@ import static com.sedmelluq.discord.lavaplayer.container.ogg.OggPacketInputStrea
  * Container detection probe for OGG stream.
  */
 public class OggContainerProbe implements MediaContainerProbe {
+
     private static final Logger log = LoggerFactory.getLogger(OggContainerProbe.class);
 
     @Override
@@ -34,7 +35,8 @@ public class OggContainerProbe implements MediaContainerProbe {
     }
 
     @Override
-    public MediaContainerDetectionResult probe(AudioReference reference, SeekableInputStream stream) throws IOException {
+    public MediaContainerDetectionResult probe(AudioReference reference,
+                                               SeekableInputStream stream) throws IOException {
         if (!checkNextBytes(stream, OGG_PAGE_HEADER)) {
             return null;
         }
@@ -57,7 +59,8 @@ public class OggContainerProbe implements MediaContainerProbe {
         return new OggAudioTrack(trackInfo, inputStream);
     }
 
-    private void collectStreamInformation(SeekableInputStream stream, AudioTrackInfoBuilder infoBuilder) throws IOException {
+    private void collectStreamInformation(SeekableInputStream stream,
+                                          AudioTrackInfoBuilder infoBuilder) throws IOException {
         OggPacketInputStream packetInputStream = new OggPacketInputStream(stream, false);
         OggMetadata metadata = OggTrackLoader.loadMetadata(packetInputStream);
 
@@ -65,4 +68,5 @@ public class OggContainerProbe implements MediaContainerProbe {
             infoBuilder.apply(metadata);
         }
     }
+
 }

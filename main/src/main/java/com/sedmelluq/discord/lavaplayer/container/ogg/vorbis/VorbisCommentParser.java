@@ -7,6 +7,7 @@ import java.util.Map;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class VorbisCommentParser {
+
     public static Map<String, String> parse(ByteBuffer tagBuffer, boolean truncated) {
         Map<String, String> tags = new HashMap<>();
 
@@ -59,4 +60,5 @@ public class VorbisCommentParser {
             }
         }
     }
+
 }

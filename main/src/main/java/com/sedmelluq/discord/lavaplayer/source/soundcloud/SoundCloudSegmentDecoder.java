@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.function.Supplier;
 
 public interface SoundCloudSegmentDecoder extends AutoCloseable {
+
     void prepareStream(boolean beginning) throws IOException;
 
     void resetStream() throws IOException;
@@ -18,6 +19,9 @@ public interface SoundCloudSegmentDecoder extends AutoCloseable {
     ) throws InterruptedException, IOException;
 
     interface Factory {
+
         SoundCloudSegmentDecoder create(Supplier<SeekableInputStream> nextStreamProvider);
+
     }
+
 }

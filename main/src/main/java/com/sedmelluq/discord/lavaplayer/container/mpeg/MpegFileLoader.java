@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * absolutely necessary, as the stream may be a network connection, in which case each seek may require a new connection.
  */
 public class MpegFileLoader {
+
     private final List<MpegTrackInfo> tracks;
     private final MpegFragmentedFileTrackProvider fragmentedFileReader;
     private final MpegStandardFileTrackProvider standardFileReader;
@@ -302,4 +303,5 @@ public class MpegFileLoader {
         lastEventMessage = new byte[remaining];
         reader.data.readFully(lastEventMessage);
     }
+
 }

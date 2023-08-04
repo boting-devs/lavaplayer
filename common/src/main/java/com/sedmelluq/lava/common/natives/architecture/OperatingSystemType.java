@@ -1,6 +1,7 @@
 package com.sedmelluq.lava.common.natives.architecture;
 
 public interface OperatingSystemType {
+
     /**
      * @return Identifier used in directory names (combined with architecture) for this OS
      */
@@ -15,4 +16,5 @@ public interface OperatingSystemType {
      * @return Suffix (extension) used for library file names.
      */
     String libraryFileSuffix();
+
 }

@@ -8,6 +8,7 @@ import com.sedmelluq.discord.lavaplayer.tools.io.HttpInterface;
 import java.util.List;
 
 public interface OfflineYoutubeTrackFormatExtractor extends YoutubeTrackFormatExtractor {
+
     List<YoutubeTrackFormat> extract(YoutubeTrackJsonData data);
 
     @Override
@@ -18,4 +19,5 @@ public interface OfflineYoutubeTrackFormatExtractor extends YoutubeTrackFormatEx
     ) {
         return extract(data);
     }
+
 }

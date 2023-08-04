@@ -12,6 +12,7 @@ import java.util.stream.Stream;
  * Track loader for an OGG packet stream. Automatically detects the track codec and loads the specific track handler.
  */
 public class OggTrackLoader {
+
     private static final OggCodecHandler[] TRACK_PROVIDERS = new OggCodecHandler[]{
         new OggOpusCodecHandler(),
         new OggFlacCodecHandler(),
@@ -61,6 +62,7 @@ public class OggTrackLoader {
     }
 
     private static class CodecDetection {
+
         private final OggCodecHandler provider;
         private final DirectBufferStreamBroker broker;
 
@@ -68,5 +70,7 @@ public class OggTrackLoader {
             this.provider = provider;
             this.broker = broker;
         }
+
     }
+
 }

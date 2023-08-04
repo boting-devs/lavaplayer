@@ -16,6 +16,7 @@ import java.net.*;
 import java.util.function.IntPredicate;
 
 public class ExtendedConnectionOperator implements HttpClientConnectionOperator {
+
     private static final String SOCKET_FACTORY_REGISTRY = "http.socket-factory-registry";
     private static final String RESOLVED_ADDRESSES = "lp.resolved-addresses";
 
@@ -291,12 +292,15 @@ public class ExtendedConnectionOperator implements HttpClientConnectionOperator 
     }
 
     private static class AdditionalDetails extends Exception {
+
         protected AdditionalDetails(String message) {
             super(message, null, true, false);
         }
+
     }
 
     private static class ResolvedAddresses {
+
         private final HttpHost host;
         private final InetAddress[] addresses;
 
@@ -304,5 +308,7 @@ public class ExtendedConnectionOperator implements HttpClientConnectionOperator 
             this.host = host;
             this.addresses = addresses;
         }
+
     }
+
 }

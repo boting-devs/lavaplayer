@@ -11,6 +11,7 @@ import java.io.InputStream;
  * Handles reading one FLAC audio frame.
  */
 public class FlacFrameReader {
+
     public static final int TEMPORARY_BUFFER_SIZE = 32;
 
     /**
@@ -29,8 +30,12 @@ public class FlacFrameReader {
      * @return The number of samples read, zero on EOF
      * @throws IOException On read error
      */
-    public static int readFlacFrame(InputStream inputStream, BitStreamReader reader, FlacStreamInfo streamInfo,
-                                    int[][] rawSampleBuffers, short[][] sampleBuffers, int[] temporaryBuffer) throws IOException {
+    public static int readFlacFrame(InputStream inputStream,
+                                    BitStreamReader reader,
+                                    FlacStreamInfo streamInfo,
+                                    int[][] rawSampleBuffers,
+                                    short[][] sampleBuffers,
+                                    int[] temporaryBuffer) throws IOException {
         FlacFrameInfo frameInfo = findAndParseFrameHeader(inputStream, reader, streamInfo);
 
         if (frameInfo == null) {
@@ -114,7 +119,10 @@ public class FlacFrameReader {
         }
     }
 
-    private static void convertToShortPcm(FlacStreamInfo streamInfo, int sampleCount, int[][] rawSampleBuffers, short[][] sampleBuffers) {
+    private static void convertToShortPcm(FlacStreamInfo streamInfo,
+                                          int sampleCount,
+                                          int[][] rawSampleBuffers,
+                                          short[][] sampleBuffers) {
         if (streamInfo.bitsPerSample < 16) {
             increaseSampleSize(streamInfo, sampleCount, rawSampleBuffers, sampleBuffers);
         } else if (streamInfo.bitsPerSample > 16) {
@@ -128,7 +136,10 @@ public class FlacFrameReader {
         }
     }
 
-    private static void increaseSampleSize(FlacStreamInfo streamInfo, int sampleCount, int[][] rawSampleBuffers, short[][] sampleBuffers) {
+    private static void increaseSampleSize(FlacStreamInfo streamInfo,
+                                           int sampleCount,
+                                           int[][] rawSampleBuffers,
+                                           short[][] sampleBuffers) {
         int shiftLeft = 16 - streamInfo.bitsPerSample;
 
         for (int channel = 0; channel < streamInfo.channelCount; channel++) {
@@ -138,7 +149,10 @@ public class FlacFrameReader {
         }
     }
 
-    private static void decreaseSampleSize(FlacStreamInfo streamInfo, int sampleCount, int[][] rawSampleBuffers, short[][] sampleBuffers) {
+    private static void decreaseSampleSize(FlacStreamInfo streamInfo,
+                                           int sampleCount,
+                                           int[][] rawSampleBuffers,
+                                           short[][] sampleBuffers) {
         int shiftRight = streamInfo.bitsPerSample - 16;
 
         for (int channel = 0; channel < streamInfo.channelCount; channel++) {
@@ -147,4 +161,5 @@ public class FlacFrameReader {
             }
         }
     }
+
 }

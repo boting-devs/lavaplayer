@@ -7,6 +7,7 @@ import java.util.Map;
  * Builder for FLAC track info.
  */
 public class FlacTrackInfoBuilder {
+
     private final FlacStreamInfo streamInfo;
     private final Map<String, String> tags;
     private FlacSeekPoint[] seekPoints;
@@ -58,4 +59,5 @@ public class FlacTrackInfoBuilder {
     public FlacTrackInfo build() {
         return new FlacTrackInfo(streamInfo, seekPoints, seekPointCount, tags, firstFramePosition);
     }
+
 }

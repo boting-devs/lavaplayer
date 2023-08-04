@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.function.Supplier;
 
 public class SoundCloudMp3SegmentDecoder implements SoundCloudSegmentDecoder {
+
     private final Supplier<SeekableInputStream> nextStreamProvider;
 
     public SoundCloudMp3SegmentDecoder(Supplier<SeekableInputStream> nextStreamProvider) {
@@ -46,4 +47,5 @@ public class SoundCloudMp3SegmentDecoder implements SoundCloudSegmentDecoder {
     public void close() {
         // Nothing to do.
     }
+
 }

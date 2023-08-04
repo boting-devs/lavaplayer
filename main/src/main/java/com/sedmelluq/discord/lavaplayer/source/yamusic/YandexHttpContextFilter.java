@@ -51,4 +51,5 @@ public class YandexHttpContextFilter implements HttpContextFilter {
     public boolean onRequestException(HttpClientContext context, HttpUriRequest request, Throwable error) {
         return false;
     }
+
 }

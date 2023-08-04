@@ -14,6 +14,7 @@ import java.nio.ShortBuffer;
  * layer. The only AAC type verified to work with this is AAC_LC.
  */
 public class AacDecoder extends NativeResourceHolder {
+
     private static final int TRANSPORT_NONE = 0;
 
     private static final ShortBuffer NO_BUFFER = ByteBuffer.allocateDirect(0).asShortBuffer();
@@ -226,6 +227,7 @@ public class AacDecoder extends NativeResourceHolder {
      * AAC stream information.
      */
     public static class StreamInfo {
+
         /**
          * Sample rate (adjusted to SBR) of the current stream.
          */
@@ -249,5 +251,7 @@ public class AacDecoder extends NativeResourceHolder {
             this.channels = channels;
             this.frameSize = frameSize;
         }
+
     }
+
 }
