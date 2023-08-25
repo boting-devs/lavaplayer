@@ -120,10 +120,11 @@ public class VimeoAudioSourceManager implements AudioSourceManager, HttpConfigur
                 return AudioReference.NO_TRACK;
             } else if (!HttpClientTools.isSuccessWithContent(statusCode)) {
                 throw new FriendlyException("Server responded with an error.", SUSPICIOUS,
-                    new IllegalStateException("Response code is " + statusCode));
+                        new IllegalStateException("Response code is " + statusCode));
             }
 
-            return loadTrackFromPageContent(trackUrl, IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8));
+            return loadTrackFromPageContent(trackUrl,
+                    IOUtils.toString(response.getEntity().getContent(), StandardCharsets.UTF_8));
         }
     }
 
@@ -135,14 +136,13 @@ public class VimeoAudioSourceManager implements AudioSourceManager, HttpConfigur
         }
 
         return new VimeoAudioTrack(new AudioTrackInfo(
-            config.get("clip").get("title").text(),
-            config.get("owner").get("display_name").text(),
-            (long) (config.get("clip").get("duration").get("raw").as(Double.class) * 1000.0),
-            trackUrl,
-            false,
-            trackUrl,
-            config.get("thumbnail").get("src").text(),
-            null
-        ), this);
+                config.get("clip").get("title").text(),
+                config.get("owner").get("display_name").text(),
+                (long) (config.get("clip").get("duration").get("raw").as(Double.class) * 1000.0),
+                trackUrl,
+                false,
+                trackUrl,
+                config.get("thumbnail").get("src").text(),
+                null), this);
     }
 }

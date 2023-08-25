@@ -9,21 +9,20 @@ public class YoutubeConstants {
 
     static final String INNERTUBE_ANDROID_API_KEY = "AIzaSyA8eiZmM1FaDVjRy-df2KTyQ_vz_yYM39w";
     static final String CLIENT_ANDROID_NAME = "ANDROID";
-    static final String CLIENT_ANDROID_VERSION = "17.29.34";
+    static final String CLIENT_ANDROID_VERSION = "17.31.35";
 
     static final String INNERTUBE_WEB_API_KEY = "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8";
     static final String CLIENT_WEB_NAME = "WEB";
     static final String CLIENT_WEB_VERSION = "2.20220801.00.00";
 
-    static final String INNERTUBE_TV_API_KEY = "AIzaSyD-L7DIyuMgBk-B4DYmjJZ5UG-D6Y-vkMc";
+    static final String INNERTUBE_TV_API_KEY = "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8";
     static final String CLIENT_TVHTML5_NAME = "TVHTML5_SIMPLY_EMBEDDED_PLAYER";
     static final String CLIENT_TVHTML5_VERSION = "2.0";
 
     static final String CLIENT_SCREEN_EMBED = "EMBED";
     static final String CLIENT_THIRD_PARTY_EMBED = "https://google.com";
-    static final String PLAYER_PARAMS = "2AMBCgIQBg";
-    static final String SEARCH_PARAMS = "EgIQAUICCAE=";
-
+    static final String PLAYER_PARAMS = "CgIQBg==";
+    static final String SEARCH_PARAMS = "EgIQAg==";
     static final String SEARCH_URL = BASE_URL + "/search?key=" + INNERTUBE_ANDROID_API_KEY;
     static final String PLAYER_URL = BASE_URL + "/player";
     static final String BROWSE_URL = BASE_URL + "/browse";
@@ -35,7 +34,7 @@ public class YoutubeConstants {
 
     static final String INNERTUBE_MUSIC_API_KEY = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
     static final String CLIENT_MUSIC_NAME = "WEB_REMIX";
-    static final String CLIENT_MUSIC_VERSION = "0.1";
+    static final String CLIENT_MUSIC_VERSION = "1.20220727.01.00";
 
     static final String SEARCH_MUSIC_PARAMS = "Eg-KAQwIARAAGAAgACgAMABqChADEAQQCRAFEAo=";
 
@@ -47,7 +46,8 @@ public class YoutubeConstants {
     static final String TV_AUTH_MODEL_NAME = "ytlr::";
 
     static final String TV_AUTH_CODE_URL = TV_AUTH_BASE_URL + "/device/code";
-    static final String TV_AUTH_CODE_PAYLOAD = "{\"client_id\":\"%s\",\"device_id\":\"%s\",\"scope\":\"" + TV_AUTH_SCOPE + "\",\"model_name\":\"" + TV_AUTH_MODEL_NAME + "\"}";
+    static final String TV_AUTH_CODE_PAYLOAD = "{\"client_id\":\"%s\",\"device_id\":\"%s\",\"scope\":\"" + TV_AUTH_SCOPE
+            + "\",\"model_name\":\"" + TV_AUTH_MODEL_NAME + "\"}";
     static final String TV_AUTH_TOKEN_URL = TV_AUTH_BASE_URL + "/token";
     static final String TV_AUTH_TOKEN_PAYLOAD = "{\"client_id\":\"%s\",\"client_secret\":\"%s\",\"code\":\"%s\",\"grant_type\":\"http://oauth.net/grant_type/device/1.0\"}";
     static final String TV_AUTH_TOKEN_REFRESH_PAYLOAD = "{\"client_id\":\"%s\",\"client_secret\":\"%s\",\"refresh_token\":\"%s\",\"grant_type\":\"refresh_token\"}";

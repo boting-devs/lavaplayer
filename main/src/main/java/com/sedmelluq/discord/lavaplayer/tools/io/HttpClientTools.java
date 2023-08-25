@@ -38,18 +38,18 @@ public class HttpClientTools {
     private static final Logger log = LoggerFactory.getLogger(HttpClientTools.class);
 
     public static final RequestConfig DEFAULT_REQUEST_CONFIG = RequestConfig.custom()
-        .setConnectTimeout(3000)
-        .setConnectionRequestTimeout(3000)
-        .setSocketTimeout(3000)
-        .setCookieSpec(CookieSpecs.STANDARD)
-        .build();
+            .setConnectTimeout(3000)
+            .setConnectionRequestTimeout(3000)
+            .setSocketTimeout(3000)
+            .setCookieSpec(CookieSpecs.STANDARD)
+            .build();
 
     private static final RequestConfig NO_COOKIES_REQUEST_CONFIG = RequestConfig.custom()
-        .setConnectTimeout(3000)
-        .setConnectionRequestTimeout(3000)
-        .setSocketTimeout(3000)
-        .setCookieSpec(CookieSpecs.IGNORE_COOKIES)
-        .build();
+            .setConnectTimeout(3000)
+            .setConnectionRequestTimeout(3000)
+            .setSocketTimeout(3000)
+            .setCookieSpec(CookieSpecs.IGNORE_COOKIES)
+            .build();
 
     /**
      * @return An HttpClientBuilder which uses the same cookie store for all clients
@@ -69,16 +69,17 @@ public class HttpClientTools {
      * @return HTTP interface manager with thread-local context, ignores cookies
      */
     public static HttpInterfaceManager createCookielessThreadLocalManager() {
-        return new ThreadLocalHttpInterfaceManager(createHttpBuilder(NO_COOKIES_REQUEST_CONFIG), NO_COOKIES_REQUEST_CONFIG);
+        return new ThreadLocalHttpInterfaceManager(createHttpBuilder(NO_COOKIES_REQUEST_CONFIG),
+                NO_COOKIES_REQUEST_CONFIG);
     }
 
     private static HttpClientBuilder createHttpBuilder(RequestConfig requestConfig) {
         CookieStore cookieStore = new BasicCookieStore();
 
         return new ExtendedHttpClientBuilder()
-            .setDefaultCookieStore(cookieStore)
-            .setRetryHandler(NoResponseRetryHandler.RETRY_INSTANCE)
-            .setDefaultRequestConfig(requestConfig);
+                .setDefaultCookieStore(cookieStore)
+                .setRetryHandler(NoResponseRetryHandler.RETRY_INSTANCE)
+                .setDefaultRequestConfig(requestConfig);
     }
 
     /**
@@ -99,7 +100,8 @@ public class HttpClientTools {
     /**
      * @param requestUrl URL of the original request.
      * @param response   Response object.
-     * @return A redirect location if the status code indicates a redirect and the Location header is present.
+     * @return A redirect location if the status code indicates a redirect and the
+     *         Location header is present.
      */
     public static String getRedirectLocation(String requestUrl, HttpResponse response) {
         if (!isRedirectStatus(response.getStatusLine().getStatusCode())) {
@@ -139,13 +141,14 @@ public class HttpClientTools {
      */
     public static boolean isSuccessWithContent(int statusCode) {
         return statusCode == HttpStatus.SC_OK || statusCode == HttpStatus.SC_PARTIAL_CONTENT ||
-            statusCode == HttpStatus.SC_NON_AUTHORITATIVE_INFORMATION;
+                statusCode == HttpStatus.SC_NON_AUTHORITATIVE_INFORMATION;
     }
 
     /**
      * @param response The response.
      * @param context  Additional string to include in exception message.
-     * @throws IOException if this status code indicates an error with a response body
+     * @throws IOException if this status code indicates an error with a response
+     *                     body
      */
     public static void assertSuccessWithContent(HttpResponse response, String context) throws IOException {
         int statusCode = response.getStatusLine().getStatusCode();
@@ -158,7 +161,8 @@ public class HttpClientTools {
     /**
      * @param response The response.
      * @param context  Additional string to include in exception message.
-     * @throws IOException if this status code indicates an error with a response body
+     * @throws IOException if this status code indicates an error with a response
+     *                     body
      */
     public static void assertSuccessWithRedirectContent(HttpResponse response, String context) throws IOException {
         int statusCode = response.getStatusLine().getStatusCode();
@@ -181,36 +185,36 @@ public class HttpClientTools {
     public static void assertJsonContentType(HttpResponse response) throws IOException {
         if (!HttpClientTools.hasJsonContentType(response)) {
             throw ExceptionTools.throwWithDebugInfo(
-                log,
-                null,
-                "Expected JSON content type, got " + HttpClientTools.getRawContentType(response),
-                "responseContent",
-                EntityUtils.toString(response.getEntity())
-            );
+                    log,
+                    null,
+                    "Expected JSON content type, got " + HttpClientTools.getRawContentType(response),
+                    "responseContent",
+                    EntityUtils.toString(response.getEntity()));
         }
     }
 
     /**
      * @param exception Exception to check.
-     * @return True if retrying to connect after receiving this exception is likely to succeed.
+     * @return True if retrying to connect after receiving this exception is likely
+     *         to succeed.
      */
     public static boolean isRetriableNetworkException(Throwable exception) {
         return isConnectionResetException(exception) ||
-            isSocketTimeoutException(exception) ||
-            isIncorrectSslShutdownException(exception) ||
-            isPrematureEndException(exception) ||
-            isRetriableConscryptException(exception) ||
-            isRetriableNestedSslException(exception);
+                isSocketTimeoutException(exception) ||
+                isIncorrectSslShutdownException(exception) ||
+                isPrematureEndException(exception) ||
+                isRetriableConscryptException(exception) ||
+                isRetriableNestedSslException(exception);
     }
 
     public static boolean isConnectionResetException(Throwable exception) {
         return (exception instanceof SocketException || exception instanceof SSLException)
-            && "Connection reset".equals(exception.getMessage());
+                && "Connection reset".equals(exception.getMessage());
     }
 
     private static boolean isSocketTimeoutException(Throwable exception) {
         return (exception instanceof SocketTimeoutException || exception instanceof SSLException)
-            && "Read timed out".equals(exception.getMessage());
+                && "Read timed out".equals(exception.getMessage());
     }
 
     private static boolean isIncorrectSslShutdownException(Throwable exception) {
@@ -219,7 +223,7 @@ public class HttpClientTools {
 
     private static boolean isPrematureEndException(Throwable exception) {
         return exception instanceof ConnectionClosedException && exception.getMessage() != null &&
-            exception.getMessage().startsWith("Premature end of Content-Length");
+                exception.getMessage().startsWith("Premature end of Content-Length");
     }
 
     private static boolean isRetriableConscryptException(Throwable exception) {
@@ -228,8 +232,8 @@ public class HttpClientTools {
 
             if (message != null && message.contains("I/O error during system call")) {
                 return message.contains("No error") ||
-                    message.contains("Connection reset by peer") ||
-                    message.contains("Connection timed out");
+                        message.contains("Connection reset by peer") ||
+                        message.contains("Connection timed out");
             }
         }
 
@@ -248,7 +252,8 @@ public class HttpClientTools {
      * @return Response as a JsonBrowser instance. null in case of 404.
      * @throws IOException On network error or for non-200 response code.
      */
-    public static JsonBrowser fetchResponseAsJson(HttpInterface httpInterface, HttpUriRequest request) throws IOException {
+    public static JsonBrowser fetchResponseAsJson(HttpInterface httpInterface, HttpUriRequest request)
+            throws IOException {
         try (CloseableHttpResponse response = httpInterface.execute(request)) {
             int statusCode = response.getStatusLine().getStatusCode();
 
@@ -256,7 +261,10 @@ public class HttpClientTools {
                 return null;
             } else if (!isSuccessWithContent(statusCode)) {
                 throw new FriendlyException("Server responded with an error.", SUSPICIOUS,
-                    new IllegalStateException("Response code from channel info is " + statusCode));
+                        new IllegalStateException(
+                                "Body is " +
+                                        EntityUtils.toString(response.getEntity(), StandardCharsets.UTF_8)
+                                        + "Response code from channel info is " + statusCode));
             }
 
             return JsonBrowser.parse(response.getEntity().getContent());
@@ -272,7 +280,8 @@ public class HttpClientTools {
      * @return Array of lines from the response
      * @throws IOException On network error or for non-200 response code.
      */
-    public static String[] fetchResponseLines(HttpInterface httpInterface, HttpUriRequest request, String name) throws IOException {
+    public static String[] fetchResponseLines(HttpInterface httpInterface, HttpUriRequest request, String name)
+            throws IOException {
         try (CloseableHttpResponse response = httpInterface.execute(request)) {
             int statusCode = response.getStatusLine().getStatusCode();
             if (!isSuccessWithContent(statusCode)) {
